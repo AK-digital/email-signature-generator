@@ -1,0 +1,70 @@
+/* Tab pane admin with vanilla JS */
+
+.egs_nav-tabs {
+    float: left;
+    width: 100%;
+    margin: 0;
+    list-style-type: none;
+    border-bottom: 1px solid transparent
+}
+
+.egs_nav-tabs > li {
+    float: left;
+    margin-bottom: -7px
+}
+
+.egs_nav-tabs > li > a {
+    line-height: 1.5;
+    border: 1px solid transparent;
+    border-radius: 6px 6px 0 0;
+    float: left;
+    text-decoration: none;
+}
+
+.egs_nav-tabs > li > a:hover {
+    border-color: #eee #eee #ddd
+}
+
+.egs_nav-tabs > li.active > a, .egs_nav-tabs > li.active > a:hover, .egs_nav-tabs > li.active > a:focus {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border-color: transparent
+}
+
+.egs_tab-content > .egs_tab-pane {
+    float: left;
+    width: 100%;
+    display: none;
+    border-radius: 7px 7px 7px 7px;
+}
+
+.egs_tab-content > .egs_tab-pane.active {
+    display: block;
+    padding: 15px 20px 30px 20px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 5px 4px -2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 4px -2px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    box-sizing: border-box;
+    min-height: 400px;
+}
+
+/* End tab pane */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 300ms;
+}

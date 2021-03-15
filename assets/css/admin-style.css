@@ -1,0 +1,124 @@
+/* reset */
+
+#esg-settings .wp-person a:focus .gravatar, #esg-settings a:focus, #esg-settings a:focus .media-icon img{
+    box-shadow: none;
+}
+
+/* end reset */
+
+#esg-title{
+    margin-bottom:16px;
+}
+
+.egs_tab-content > .egs_tab-pane.active {
+    background-image: url("../img/krack-logo.png");
+}
+
+.egs_nav-tabs > li > a {
+    padding: 10px 30px 17px 30px;
+    font-weight: 600;
+    font-size: 1.18em;
+}
+
+.text-center {
+    text-align: center
+}
+
+.inline-block {
+    display: inline-block
+}
+
+.text-left {
+    text-align: left
+}
+
+.text-right {
+    text-align: right
+}
+
+.w-50 {
+    width: 49%
+}
+
+.egs_nav-tabs > li.float-right{
+    float:right;
+}
+
+.inline {
+    display: inline-block
+}
+
+.meta-label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 5px
+}
+
+.meta-container {
+    display: block;
+    margin-top: 20px
+}
+
+p.submit {
+    padding: 0;
+}
+
+
+
+#esg-settings #logo_image, #esg-settings #banner_image{
+    max-width: 150px;
+    float: left;
+    margin-right:15px;
+}
+
+#esg-settings #banner_image{
+    max-width: 500px;
+    float: left;
+    margin-right:15px;
+}
+
+.shortcode{
+    display: inline;
+    background-color:#2c3338;
+    color:white;
+    padding:3px;
+}
+
+#esg-settings textarea{
+    width:80%;
+    min-height: 200px;
+}
+
+/* HIDE RADIO */
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+#esg-settings [type=radio] + img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+#esg-settings [type=radio]:checked + img {
+    outline: 3px solid #2271b1;
+    box-shadow: 0 0 7px 2px #102b5457;
+}
+
+#layouts .form-table tbody{
+    display: flex;
+}
+
+#layouts .form-table tbody tr{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+#layouts .form-table [type=radio]:not(:checked) + img:hover{
+    outline: 3px solid #dedede;
+    box-shadow: 0 0 7px 2px rgba(133, 133, 133, 0.34);
+}

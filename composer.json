@@ -1,0 +1,17 @@
+{
+  "name": "aurelien/email-signature-generator",
+  "description": "Awesome plugin for Studio Krack",
+  "type": "project",
+  "license": "GPL",
+  "authors": [
+    {
+      "name": "Aurélien",
+      "email": "aurelien.kohler@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {"Includes\\" : "./includes"}
+  }
+}

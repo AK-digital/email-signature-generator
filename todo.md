@@ -1,0 +1,4 @@
+- Mettre des label sur le form.php comme sur talent.io.
+- Revenir sur l'onglet actif après rechargement de la page.
+- Mettre instructions pour upload image dimensions, extensions et poids.
+- Additionnal content disparait, checker sanitize et callback.

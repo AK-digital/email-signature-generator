@@ -1,0 +1,23 @@
+#esg-landing_header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#sign-preview {
+    background-color: #fff;
+    padding:20px;
+    border-radius:7px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.egs_nav-tabs > li > a {
+    padding: 10px 10px 13px 10px;
+}
+
+/* reset all css in sign preview */
+
+#sign-preview table td {
+    padding: 0;
+}
