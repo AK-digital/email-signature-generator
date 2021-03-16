@@ -3,73 +3,73 @@
     <tbody>
     <tr>
         <td>
-            <img src="<?php echo $options['logo']; ?>" alt="logo" style="max-width:100px;"/>
+            <img src="<?php echo $logo; ?>" alt="logo" style="max-width:100px;"/>
         </td>
-        <td style="padding: 0px; vertical-align: middle;text-align:left;"><h3 color="#000000"
+        <td style="padding: 0px; vertical-align: middle;text-align:left;"><h3 color="<?php echo $text_color; ?>"
                                                                               style="margin: 0px; font-size: 18px; color: rgb(0, 0, 0);">
                 <span><?php echo $firstname ?></span><span>&nbsp;</span><span><?php echo $surname ?></span></h3>
 
-            <p color="#000000" font-size="medium"
-               style="margin: 0px; color: rgb(0, 0, 0); font-size: 14px; line-height: 22px;">
+            <p color="<?php echo $text_color; ?>" font-size="medium"
+               style="margin: 0px; color:<?php echo $text_color; ?>; font-size: 14px; line-height: 22px;">
                 <span><?php echo $title ?></span></p>
 
-            <p color="#000000" font)-size="medium"
-               style="margin: 0px; color: rgb(0, 0, 0); font-size: 14px; line-height: 22px;">
-                <span><?php echo $options['company_name'] ?></span></p>
+            <p color="<?php echo $text_color; ?>" font-size="medium"
+               style="margin: 0px; color:<?php echo $text_color; ?>; font-size: 14px; line-height: 22px;">
+                <span><?php echo $company_name ?></span></p>
     </tr>
     <tr>
         <table cellpadding="0" cellspacing="0"
                style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: Arial; text-align:left;">
             <tbody>
             <tr style="vertical-align: middle;">
-                <td style="vertical-align: middle;"><span color="#F2547D" width="11"><img
+                <td style="vertical-align: middle;"><span color="<?php echo $icon_color; ?>" width="11"><img
                                 src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
-                                color="#F2547D"
-                                style="display: block; background-color: rgb(242, 84, 125);"></span>
+                                color="<?php echo $icon_color; ?>"
+                                style="display: block; background-color:<?php echo $icon_color; ?>;"></span>
                 </td>
-                <td style="padding: 0px; color: rgb(0, 0, 0);text-align:left;"><a href="tel:<?php echo $mobile; ?>" color="#000000"
+                <td style="padding: 0px; color: <?php echo $text_color; ?>;text-align:left;"><a href="tel:<?php echo $mobile; ?>" color="<?php echo $text_color; ?>"
                                                                   style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px;text-align:left;"><span><?php echo $mobile; ?></span></a>
-                    | <a href="tel:<?php echo $options['phone']; ?>" color="#000000"
-                         style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px;"><span><?php echo $options['phone']; ?></span></a>
+                    | <a href="tel:<?php echo $phone; ?>" color="<?php echo $text_color; ?>"
+                         style="text-decoration: none; color:<?php echo $text_color; ?>; font-size: 12px;"><span><?php echo $phone; ?></span></a>
                 </td>
             </tr>
             <tr style="vertical-align: middle;">
-                <td style="vertical-align:middle;text-align:left;"><span color="#F2547D"><img
-                                src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
-                                color="#F2547D" style="display: block; background-color: rgb(242, 84, 125);"></span>
+                <td style="vertical-align:middle;text-align:left;">
+                    <span color="<?php echo $icon_color; ?>"><img
+                                src="<?php echo $this->plugin_url;?>assets/img/email-icon.webp"
+                                color="<?php echo $icon_color; ?>" style="display: block; background-color:<?php echo $icon_color; ?>;"></span>
                 </td>
                 </td>
-                <td style="padding: 0px;text-align:left;"><a href="mailto:" color="#000000"
-                                                             style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px;text-align:left;"><span><?php echo $email; ?></span></a>
+                <td style="padding: 0px;text-align:left;"><a href="mailto:" color="<?php echo $text_color; ?>"
+                                                             style="text-decoration: none; <?php echo $text_color; ?>; font-size: 12px;text-align:left;"><span><?php echo $email; ?></span></a>
                 </td>
             </tr>
             <tr style="vertical-align: middle;">
-                <td style="vertical-align: bottom;text-align:left;"><span color="#F2547D"><img
-                                src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
-                                color="#F2547D"
-                                style="display: block; background-color: rgb(242, 84, 125);"></span>
+                <td style="vertical-align: bottom;text-align:left;"><span color="<?php echo $icon_color; ?>"><img
+                                src="<?php echo $this->plugin_url;?>assets/img/link-icon.webp"                                color="<?php echo $icon_color; ?>"
+                                style="display: block; background-color:<?php echo $icon_color; ?>;"></span>
                 </td>
-                <td style="padding: 0px;text-align:left;"><a href="<?php echo $options['website']; ?>" color="#000000"
-                                                             style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px;text-align:left;"><span><?php echo $options['website']; ?></span></a>
+                <td style="padding: 0px;text-align:left;"><a href="<?php echo $website; ?>" color="<?php echo $text_color; ?>"
+                                                             style="text-decoration: none; color: <?php echo $text_color; ?>; font-size: 12px;text-align:left;"><span><?php echo $website; ?></span></a>
                 </td>
             </tr>
             <tr style="vertical-align: middle;text-align:left;">
-                <td style="vertical-align:middle;"><span color="#F2547D" width="11"
+                <td style="vertical-align:middle;"><span color="<?php echo $icon_color; ?>" width="11"
                     ><img
-                                src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png"
-                                color="#F2547D"
-                                style="display: block; background-color: rgb(242, 84, 125);"></span>
+                                src="<?php echo $this->plugin_url;?>assets/img/address-icon.webp"
+                                color="<?php echo $icon_color; ?>"
+                                style="display: block; background-color:<?php echo $text_color; ?>;"></span>
                 </td>
-                <td style="padding: 0px;text-align:left;"><span color="#000000"
-                                                                style="font-size: 12px; color: rgb(0, 0, 0);"><span><?php echo $options['adress']; ?></span></span>
+                <td style="padding: 0px;text-align:left;"><span color="<?php echo $text_color; ?>"
+                                                                style="font-size: 12px; color:<?php echo $text_color; ?>"><span><?php echo $adress; ?></span></span>
                 </td>
-                <td style="padding: 0px;text-align:left;"><span color="#000000"
-                                                                style="font-size: 12px; color: rgb(0, 0, 0);"><span><?php echo $linkedin; ?></span></span>
+                <td style="padding: 0px;text-align:left;"><span color="<?php echo $text_color; ?>"
+                                                                style="font-size: 12px; color:<?php echo $text_color; ?>"><span><?php echo $linkedin; ?></span></span>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <img src="<?php echo $options['banner']; ?>" alt="logo" style="max-width:300px;"/>
+                    <img src="<?php echo $banner; ?>" alt="logo" style="max-width:300px;"/>
                 </td>
             </tr>
             </tbody>

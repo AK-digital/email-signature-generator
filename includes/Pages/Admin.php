@@ -141,6 +141,14 @@ class Admin extends BaseController
             'setting_section_branding'
         );
 
+        add_settings_field(
+            'link_color',
+            'Links & highlights color',
+            array($this->callbacks, 'link_color_callback'),
+            'esg-settings-branding',
+            'setting_section_branding'
+        );
+
         // Field 3
 
         add_settings_field(
@@ -272,17 +280,17 @@ class Admin extends BaseController
         );
 
         add_settings_field(
-            'standard-horizontal',
-            'Standard horizontal',
-            array($this->callbacks, 'standard_horizontal_callback'),
+            'standard-vertical-inverse',
+            'Standard vertical inversé',
+            array($this->callbacks, 'standard_vertical_inverse_callback'),
             'esg-settings-layout',
             'setting_section_layout'
         );
 
         add_settings_field(
-            'studiokrack',
-            'Studiokrack',
-            array($this->callbacks, 'studiokrack_callback'),
+            'standard-horizontal',
+            'Standard horizontal',
+            array($this->callbacks, 'standard_horizontal_callback'),
             'esg-settings-layout',
             'setting_section_layout'
         );
@@ -367,7 +375,7 @@ class Admin extends BaseController
             $new_input['layout'] = $input['layout'];
 
         if (isset($input['additional_content']))
-            $new_input['additional_content'] = sanitize_text_field($input['additional_content']);
+            $new_input['additional_content'] =  $input['additional_content'];
 
         // Validate text_color Color
         $text_color = trim( $input['text_color'] );
@@ -403,6 +411,24 @@ class Admin extends BaseController
         } else {
 
             $new_input['icon_color'] = $icon_color;
+        }
+
+        // Validate link_color Color
+        $link_color = trim( $input['link_color'] );
+        $link_color = strip_tags( stripslashes( $link_color ) );
+
+        // Check if is a valid hex color
+        if( FALSE === $this->check_color( $link_color ) ) {
+
+            // Set the error message
+            add_settings_error( 'esg_admin_settings', 'link_color_error', 'Insert a valid color for link_color', 'error' ); // $setting, $code, $message, $type
+
+            // Get the previous valid value
+            $new_input['link_color'] = $this->options['link_color'];
+
+        } else {
+
+            $new_input['link_color'] = $text_color;
         }
 
         return $new_input;

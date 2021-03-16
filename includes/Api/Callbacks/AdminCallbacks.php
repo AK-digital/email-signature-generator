@@ -55,6 +55,14 @@ class AdminCallbacks extends BaseController
         echo '<input type="text" name="esg_admin_settings[icon_color]" value="' . $val . '" class="color-picker" data-default-color="#000000" >';
     }
 
+    public function link_color_callback()
+    {
+        // Css rules for Color Picker
+
+        $val = (isset($this->options['link_color'])) ? $this->options['link_color'] : '';
+        echo '<input type="text" name="esg_admin_settings[link_color]" value="' . $val . '" class="color-picker" data-default-color="#000000" >';
+    }
+
 
     public function company_name_callback()
     {
@@ -169,7 +177,7 @@ class AdminCallbacks extends BaseController
     {
         printf(
             '<label><input type="radio" id="standard-vertical" name="esg_admin_settings[layout]" class="regular-text" value="standard-vertical" %s checked/><img src="%s" width="200px"/></label>',
-            ($this->options['layout'] == 'standard-vertical') ? 'checked' : '', $this->plugin_url . '/assets/img/template-3.svg'
+            ($this->options['layout'] == 'standard-vertical') ? 'checked' : '', $this->plugin_url . '/assets/img/standard-vertical.svg'
         );
     }
 
@@ -177,15 +185,15 @@ class AdminCallbacks extends BaseController
     {
         printf(
             '<label><input type="radio" id="standard_horizontal" name="esg_admin_settings[layout]" class="regular-text" value="standard-horizontal" %s/><img src="%s" width="200px"/></label>',
-            ($this->options['layout'] == 'standard-horizontal') ? 'checked' : '', $this->plugin_url . '/assets/img/template-4.svg'
+            ($this->options['layout'] == 'standard-horizontal') ? 'checked' : '', $this->plugin_url . '/assets/img/standard-horizontal.svg'
         );
     }
 
-    public function studiokrack_callback()
+    public function standard_vertical_inverse_callback()
     {
         printf(
-            '<label><input type="radio" id="studiokrack" name="esg_admin_settings[layout]" class="regular-text" value="studiokrack" %s/><img src="%s" width="200px"/></label>',
-            ($this->options['layout'] == 'studiokrack') ? 'checked' : '', $this->plugin_url . '/assets/img/template-studiokrack.svg'
+            '<label><input type="radio" id="standard_vertical_inverse" name="esg_admin_settings[layout]" class="regular-text" value="standard-vertical-inverse" %s/><img src="%s" width="200px"/></label>',
+            ($this->options['layout'] == 'standard-vertical-inverse') ? 'checked' : '', $this->plugin_url . '/assets/img/standard-vertical-inverse.svg'
         );
     }
 
