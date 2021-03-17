@@ -122,3 +122,8 @@ p.submit {
     outline: 3px solid #dedede;
     box-shadow: 0 0 7px 2px rgba(133, 133, 133, 0.34);
 }
+
+.egs_tab-content > .egs_tab-pane.active {
+    min-height: 400px;
+    padding: 15px 20px 30px 20px;
+}
