@@ -352,6 +352,7 @@ class Admin extends BaseController
 
         if (isset($input['website']))
             $new_input['website'] = sanitize_text_field($input['website']);
+            $new_input['website'] = sanitize_text_field($input['website']);
 
         if (isset($input['facebook']))
             $new_input['facebook'] = sanitize_text_field($input['facebook']);

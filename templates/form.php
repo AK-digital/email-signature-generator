@@ -4,7 +4,7 @@
 	<!--			<h1 style="text-align: center;">Generate your e-mail signature</h1>-->
 	<h1 style="text-align: center;">Signature generator by Studio Krack</h1>
 	<p style="text-align: center;">A simple	tool made to automate email signature generation.</p>
-	<form action="" method="POST" name="signatureForm" enctype="multipart/form-data" id="signature-form">
+	<form action="" method="POST" name="signatureForm" enctype="multipart/form-data" id="signature-form" class="esg_flex-two-col">
 		<input type="text" id="firstname" name="firstname" placeholder="First name"
 		class="wpcf7-form-control wpcf7-text" required>
 		<input type="text" id="surname" name="surname" placeholder="Surname" class="wpcf7-form-control wpcf7-text" required>
@@ -14,6 +14,6 @@
 		required>
 		<input type="text" id="linkedin" name="linkedin" placeholder="Linkedin"
 		class="wpcf7-form-control wpcf7-text">
-		<input type="submit" name="submit" id="submit" value="Generate signature" class="wpcf7-form-control wpcf7-submit">
+		<input type="submit" name="submit" id="submit" value="Generate signature" class="esg_button">
 	</form>
 </div>

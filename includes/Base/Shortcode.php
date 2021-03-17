@@ -33,8 +33,32 @@ class Shortcode extends BaseController
             $email = $_REQUEST['email'];
             $linkedin_url = $_REQUEST['linkedin'];
 
-            $layout = $this->options['layout'];
             // get plugin options
+            $layout = $this->options['layout'] ? $this->options['layout'] : 'standard-vertical';
+
+            // Details variables
+            $company_name = $this->options['company_name'];
+            $baseline = $this->options['baseline'];
+            $phone = $this->options['phone'];
+            $website = $this->options['website'];
+            $adress = $this->options['adress'];
+
+            // Company social network links
+            $facebook_url = $this->options['facebook'];
+            $youtube_url = $this->options['youtube'];
+            $twitter_url = $this->options['twitter'];
+            $tiktok_url = $this->options['tiktok'];
+            $instagram_url = $this->options['instagram'];
+            $linkedin_url = $this->options['linkedin'];
+
+            // Branding variables
+            $logo = $this->options['logo'];
+            $banner = $this->options['banner'];
+            $text_color = $this->options['text_color'];
+            $icon_color = $this->options['icon_color'];
+
+            // More variables
+            $additional_content = $this->options['additional_content'];
 
             // Get and process the template and store in the $signature variable
             ob_start();
@@ -69,10 +93,11 @@ class Shortcode extends BaseController
         $layout = $this->options['layout'] ? $this->options['layout'] : 'standard-vertical';
 
         // Details variables
-        $company_name = $this->options['$company_name'];
-        $baseline = $this->options['$baseline'];
+        $company_name = $this->options['company_name'];
+        $baseline = $this->options['baseline'];
         $phone = $this->options['phone'];
         $website = $this->options['website'];
+        $adress = $this->options['adress'];
 
         // Company social network links
         $facebook_url = $this->options['facebook'];
