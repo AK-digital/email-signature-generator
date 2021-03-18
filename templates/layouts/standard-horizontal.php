@@ -5,7 +5,7 @@
         <?php if ($logo): ?>
             <td>
                 <img src="<?= $logo; ?>" alt="logo"
-                     style="max-height: 120px;padding-right: 15px;margin-right:15px; border-right: 1px solid <?= $icon_color; ?>"/>
+                     style="max-height: 170px;margin-right:30px; border-right: 1px solid <?= $icon_color; ?>"/>
             </td>
         <?php endif; ?>
         <?php if ($firstname || $surname || $title || $company_name): ?>
