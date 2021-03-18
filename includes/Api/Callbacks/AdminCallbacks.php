@@ -64,6 +64,19 @@ class AdminCallbacks extends BaseController
     }
 
 
+    public function font_family_callback()
+    {
+
+        $font = array('Arial','Calibri', 'Cambria', 'Comic Sans MS','Courier', 'Georgia', 'Garamond', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana');
+        ?>
+        <select name="esg_admin_settings[font_family]" id="font_family">
+            <?php foreach ($font as $key => $value): ?>
+                <?php $selected = (isset($this->options['font_family']) && $this->options['font_family'] === $value) ? 'selected' : ''; ?>
+                <option value="<?= $value; ?>" style="font-family:'<?= $value; ?>';" <?= $selected; ?>><?= $value; ?></option>
+            <? endforeach; ?>
+        </select> <?php
+    }
+
     public function company_name_callback()
     {
         printf(
@@ -80,11 +93,11 @@ class AdminCallbacks extends BaseController
         );
     }
 
-    public function adress_callback()
+    public function address_callback()
     {
         printf(
-            '<input type="text" id="adress" name="esg_admin_settings[adress]" class="regular-text" value="%s" />',
-            isset($this->options['adress']) ? esc_attr($this->options['adress']) : ''
+            '<input type="text" id="address" name="esg_admin_settings[address]" class="regular-text" value="%s" />',
+            isset($this->options['address']) ? esc_attr($this->options['address']) : ''
         );
     }
 

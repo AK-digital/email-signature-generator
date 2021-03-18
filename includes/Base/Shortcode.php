@@ -31,17 +31,19 @@ class Shortcode extends BaseController
             $title = $_REQUEST['title'];
             $mobile = $_REQUEST['mobile'];
             $email = $_REQUEST['email'];
-            $linkedin_url = $_REQUEST['linkedin'];
+            $linkedin_perso = $_REQUEST['linkedin'];
 
             // get plugin options
             $layout = $this->options['layout'] ? $this->options['layout'] : 'standard-vertical';
 
             // Details variables
+            $font_family = $this->options['font_family'] . ",'Sans Serif'";
+
             $company_name = $this->options['company_name'];
             $baseline = $this->options['baseline'];
             $phone = $this->options['phone'];
             $website = $this->options['website'];
-            $adress = $this->options['adress'];
+            $address = $this->options['address'];
 
             // Company social network links
             $facebook_url = $this->options['facebook'];
@@ -87,17 +89,18 @@ class Shortcode extends BaseController
             $title = get_user_meta($current_user->ID, 'esg_position', true);
 
             // Personal social network links
-            $linkedin_url = get_user_meta($current_user->ID, 'esg_linkedin', true);
+            $linkedin_perso = get_user_meta($current_user->ID, 'esg_linkedin', true);
         }
 
         $layout = $this->options['layout'] ? $this->options['layout'] : 'standard-vertical';
 
         // Details variables
+        $font_family = $this->options['font_family'] . ",'Sans Serif'";;
         $company_name = $this->options['company_name'];
         $baseline = $this->options['baseline'];
         $phone = $this->options['phone'];
         $website = $this->options['website'];
-        $adress = $this->options['adress'];
+        $address = $this->options['address'];
 
         // Company social network links
         $facebook_url = $this->options['facebook'];

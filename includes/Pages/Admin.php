@@ -152,6 +152,14 @@ class Admin extends BaseController
         // Field 3
 
         add_settings_field(
+            'font_family', // ID
+            'Font family', // Title
+            array($this->callbacks, 'font_family_callback'), // Callback
+            'esg-settings-general', // Page
+            'setting_section_general' // Section
+        );
+
+        add_settings_field(
             'company_name', // ID
             'Company name', // Title
             array($this->callbacks, 'company_name_callback'), // Callback
@@ -172,9 +180,9 @@ class Admin extends BaseController
         // Field 5
 
         add_settings_field(
-            'adress',
-            'Company adress',
-            array($this->callbacks, 'adress_callback'),
+            'address',
+            'Company address',
+            array($this->callbacks, 'address_callback'),
             'esg-settings-general',
             'setting_section_general'
         );
@@ -341,17 +349,19 @@ class Admin extends BaseController
         if (isset($input['company_name']))
             $new_input['company_name'] = sanitize_text_field($input['company_name']);
 
+        if (isset($input['font_family']))
+            $new_input['font_family'] = sanitize_text_field($input['font_family']);
+
         if (isset($input['baseline']))
             $new_input['baseline'] = sanitize_text_field($input['baseline']);
 
-        if (isset($input['adress']))
-            $new_input['adress'] = sanitize_text_field($input['adress']);
+        if (isset($input['address']))
+            $new_input['address'] = sanitize_text_field($input['address']);
 
         if (isset($input['phone']))
             $new_input['phone'] = sanitize_text_field($input['phone']);
 
         if (isset($input['website']))
-            $new_input['website'] = sanitize_text_field($input['website']);
             $new_input['website'] = sanitize_text_field($input['website']);
 
         if (isset($input['facebook']))

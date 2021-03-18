@@ -8,15 +8,17 @@
 
 .egs_nav-tabs > li {
     float: left;
-    margin-bottom: -7px
+    margin-bottom: -7px;
+    margin-right: 3px;
 }
 
 .egs_nav-tabs > li > a {
-    line-height: 1.5;
+    line-height: 1.5em;
     border: 1px solid transparent;
     border-radius: 6px 6px 0 0;
     float: left;
     text-decoration: none;
+    background-color: #ffffff;
 }
 
 .egs_nav-tabs > li > a:hover {
@@ -26,7 +28,7 @@ border-color: #eee #eee #ddd;
 }
 
 .egs_nav-tabs > li.active > a, .egs_nav-tabs > li.active > a:hover, .egs_nav-tabs > li.active > a:focus {
-    color: #555;
+    color: #292929;
     cursor: default;
     background-color: #fff;
     border-color: transparent

@@ -1,18 +1,18 @@
 #esg-landing_header{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-bottom: 30px;
 }
 
 #sign-preview {
     background-color: #fff;
     border-radius:7px;
-    margin: auto;
     margin-bottom: 30px;
 }
-
 .egs_nav-tabs > li > a {
     padding: 8px 13px 10px 13px;
+    background: #ffffff63;
+    color: #545454;
 }
 
 .egs_nav-tabs label{
@@ -22,8 +22,9 @@
     margin-right:8px;
 }
 
-.egs_tab-pane.active{
+.egs_tab-pane{
     padding:30px;
+    text-align: left;
 }
 
 .egs_tab-pane h4{
@@ -40,9 +41,10 @@
 }
 
 .esg_action-bar button {
-    width: calc(50% - 3px);
+    width: calc(50% - 6px);
     display: flex;
     flex-direction: row;
+    padding: 0;
 }
 
 .esg_action-bar img {
@@ -51,9 +53,7 @@
 }
 
 .esg_button{
-    background-color: #2e325d;
     border: none;
-    color: #fff;
     justify-content: center;
     border-radius: 2px;
     letter-spacing: .5px;
@@ -61,10 +61,12 @@
     padding: 10px;
     align-items: center;
     cursor: pointer;
+
 }
 
-.esg_action-bar button:hover {
-    background-color: #5f628d;
+[type="submit"].esg_button{
+
+    margin-top: 25px;
 }
 
 .esg_flex-two-col{
@@ -80,12 +82,19 @@
     margin-bottom: 3px !important;
 }
 
+.esg_icon{
+    position: relative;
+    top:3px;
+    margin-right:5px;
+}
+
 #sign-preview table{
     margin-bottom: 30px;
 }
 
 #sign-preview table td {
     padding: 0;
+    text-align: left;
 }
 
 #sign-raw-html {
@@ -97,4 +106,9 @@ padding: 20px;
 box-sizing: border-box;
 line-height: 18px;
 border-radius: 7px;
+}
+
+#signature-form{
+    max-width: 450px;
+    margin:auto;
 }
