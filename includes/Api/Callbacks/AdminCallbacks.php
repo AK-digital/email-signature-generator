@@ -70,10 +70,10 @@ class AdminCallbacks extends BaseController
         $font = array('Arial','Calibri', 'Cambria', 'Comic Sans MS','Courier', 'Georgia', 'Garamond', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana');
         ?>
         <select name="esg_admin_settings[font_family]" id="font_family">
-            <?php foreach ($font as $key => $value): ?>
+            <?php foreach ($font as $key => $value){ ?>
                 <?php $selected = (isset($this->options['font_family']) && $this->options['font_family'] === $value) ? 'selected' : ''; ?>
                 <option value="<?= $value; ?>" style="font-family:'<?= $value; ?>';" <?= $selected; ?>><?= $value; ?></option>
-            <? endforeach; ?>
+            <?php } ?>
         </select> <?php
     }
 
