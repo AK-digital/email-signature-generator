@@ -23,7 +23,7 @@
                     style="background-color:<?= $icon_color; ?>;"
                     width="12px">
             <a href="tel:<?= $mobile; ?>" color="<?= $text_color; ?>"
-               style="text-decoration: none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;"><span><?= $mobile; ?></span></a>
+               style="text-decoration: none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;"><?= $mobile; ?></a>
         </td>
     </tr>
     <tr>
@@ -34,19 +34,19 @@
                     style="background-color:<?= $icon_color; ?>;"
                     width="12px">
             <a href="tel:<?= $phone; ?>" color="<?= $text_color; ?>"
-               style="text-decoration: none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;"><span><?= $phone; ?></span></a>
+               style="text-decoration:none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;"><?= $phone; ?></a>
 
         </td>
     </tr>
     <tr style="vertical-align:middle;line-height:18px;font-size:13px;">
         <td style="vertical-align:middle;text-align:left;"><img
-                    src="<?= $this->plugin_url; ?>assets/img/icon-website.png"
+                    src="<?= $this->plugin_url; ?>assets/img/website-icon.png"
                     color="<?= $icon_color; ?>"
                     style="background-color:<?= $icon_color; ?>;"
                     width="12px">
             <a href="<?= $website; ?>"
                color="<?= $text_color; ?>"
-               style="text-decoration: none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;"><span><?= $website; ?></span></a>
+               style="text-decoration:none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;"><?= $website; ?></a>
         </td>
     </tr>
     <?php if ($address): ?>
@@ -58,7 +58,7 @@
                         width="12px">
                 <a href="<?= $address; ?>"
                    color="<?= $text_color; ?>"
-                   style="text-decoration: none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;"><span><?= $address; ?></span></a>
+                   style="text-decoration:none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;"><span><?= $address; ?></span></a>
             </td>
         </tr>
     <?php endif; ?>

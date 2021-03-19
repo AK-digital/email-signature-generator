@@ -64,7 +64,7 @@
     <?php if ($website): ?>
         <tr style="vertical-align:middle;line-height:17px;">
             <td style="vertical-align:middle;"><span color="<?= $icon_color ?>"><img
-                            src="<?= $this->plugin_url; ?>assets/img/icon-website.png"
+                            src="<?= $this->plugin_url; ?>assets/img/website-icon.png"
                             color="<?= $icon_color; ?>"
                             style="background-color:<?= $icon_color ?>;float:right; margin-right:10px;"
                             width="12px"></span>

@@ -44,7 +44,7 @@
                 <a href="mailto:" color="<?= $text_color; ?>"
                    style="text-decoration: none; <?= $text_color; ?>; font-size: 12px;text-align:left;font-family: <?= $font_family ?>"><span><?= $email; ?></span></a></span>
                 | <span color="<?= $icon_color; ?>" style="vertical-align:middle;"><img
-                            src="<?= $this->plugin_url; ?>assets/img/icon-website.png" width="12px"
+                            src="<?= $this->plugin_url; ?>assets/img/website-icon.png" width="12px"
                             color="<?= $icon_color; ?>" width="13px"
                             style="background-color:<?= $icon_color; ?>;margin-right:4px;"></span><a
                         href="<?= $website; ?>"
@@ -59,7 +59,7 @@
                   color="<?= $icon_color; ?>" width="13px"
                   style="background-color:<?= $icon_color; ?>;margin-right:4px;"></span><span
                         color="<?= $text_color; ?>"
-                        style="font-size: 12px; color:<?= $text_color; ?>"><span><?= $address; ?></span></span></p>
+                        style="font-size: 12px; color:<?= $text_color; ?>"><?= $address; ?></span></p>
 <div style="margin-bottom:10px"></div>
             <?php if ($linkedin_url || $facebook_url || $instagram_url || $youtube_url || $twitter_url || $tiktok_url): ?>
 
