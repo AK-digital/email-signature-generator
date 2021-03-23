@@ -9,10 +9,14 @@
     border-radius:7px;
     margin-bottom: 30px;
 }
+
 .egs_nav-tabs > li > a {
     padding: 8px 13px 10px 13px;
     background: #ffffff63;
     color: #545454;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .egs_nav-tabs label{
@@ -83,9 +87,7 @@
 }
 
 .esg_icon{
-    position: relative;
-    top:3px;
-    margin-right:5px;
+    margin-right:6px;
 }
 
 #sign-preview table{

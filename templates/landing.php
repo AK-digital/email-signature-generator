@@ -1,7 +1,7 @@
 <section>
     <ul class="nav egs_nav-tabs" style="float:left">
-        <li class="fadeIn active"><a href="#preview-tab"><img src="<?= $this->plugin_url; ?>assets/img/eye-icon.png" alt="eye icon" class="esg_icon" width="18px" />Preview</a></li>
-        <li class="fadeIn"><a href="#html-tab"><img src="<?= $this->plugin_url; ?>assets/img/code-icon.png" alt="html icon" class="esg_icon" width="24px" />HTML</a></li>
+        <li class="fadeIn active"><a href="#preview-tab"><img src="<?= $this->plugin_url; ?>assets/img/eye-icon.png" alt="eye icon" class="esg_icon" width="16px" />Preview</a></li>
+        <li class="fadeIn"><a href="#html-tab"><img src="<?= $this->plugin_url; ?>assets/img/code-icon.png" alt="html icon" class="esg_icon" width="18px" />HTML</a></li>
     </ul>
 
     <ul class="nav egs_nav-tabs" style="float:right">
