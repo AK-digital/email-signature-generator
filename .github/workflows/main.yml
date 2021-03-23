@@ -13,9 +13,8 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: ftp.access811905793.webspace-data.io/
+        server: access811905793.webspace-data.io/
         username: u99623908
         password: ${{ secrets.KRACK_FTP_KEY }}
-        protocol: ftps
-        port: 22
+        protocol: ftps-legacy
         server-dir:	/clickandbuilds/Studiokrack/wp-content/plugins/email-signature-generator/
