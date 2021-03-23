@@ -15,7 +15,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         protocol: ftps
-        server: sftp.access811905793.webspace-data.io
+        server: access811905793.webspace-data.io
         username: u99623908-aure
         password: ${{ secrets.KRACK_FTP_KEY }}
         server-dir: /Studiokrack/wp-content/plugins/email-signature-generator/
