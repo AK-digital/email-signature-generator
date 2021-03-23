@@ -15,7 +15,7 @@ jobs:
       with:
         server: http://access811905793.webspace-data.io/
         username: u99623908
-        password: ${{ .4%w5?r7nBnY75M+[PFm }}
+        password: ${{ secrets.KRACK_FTP_KEY }}
         protocol: ftps
         port: 22
         server-dir:	/clickandbuilds/Studiokrack/wp-content/plugins/email-signature-generator
