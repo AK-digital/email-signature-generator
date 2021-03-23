@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-  
+
 on: push
 name: 🚀 Deploy website on push
 jobs:
@@ -9,11 +9,11 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2.3.2
-    
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: access811905793.webspace-data.io/
+        server: ftp.access811905793.webspace-data.io/
         username: u99623908
         password: ${{ secrets.KRACK_FTP_KEY }}
         protocol: ftps
