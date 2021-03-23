@@ -18,4 +18,4 @@ jobs:
         password: ${{ secrets.KRACK_FTP_KEY }}
         protocol: ftps
         port: 22
-        server-dir:	/clickandbuilds/Studiokrack/wp-content/plugins/email-signature-generator
+        server-dir:	/clickandbuilds/Studiokrack/wp-content/plugins/email-signature-generator/
