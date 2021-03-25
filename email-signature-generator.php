@@ -12,6 +12,7 @@ Author: aurelien@studiokrack.fr
 Author URI: https://studiokrack.fr/
 License: GPLv2 or later
 Text Domain: emailSignatureGenerator
+Domain Path: /languages
 */
 
 /*
