@@ -4,9 +4,13 @@
     <tr>
         <td style="vertical-align: middle;text-align:left;"><h3
                     color="<?= $text_color; ?>"
-                    style="margin: 0px; letter-spacing:0.05em;text-transform:capitalize;font-size:16px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;">
-                <span><?= $firstname ?></span><span>&nbsp;</span><span><?= $surname ?></span></h3>
-
+                    style="margin: 0px;text-transform:capitalize;font-size:16px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;">
+                <span><?= $firstname ?></span><span>&nbsp;</span><span><?= $surname ?></span>
+                <?php if ($linkedin_perso): ?>
+                <a href="<?= $linkedin_perso ?>" style="margin-left:6px;"><img
+                            src="<?= $this->plugin_url; ?>assets/img/social-icons/linkedin-perso-icon.png" width="12px"
+                            style="background-color:<?= $icon_color; ?>; position: relative;top:1px;"/></a>
+            <?php endif; ?></h3>
             <p color="<?= $text_color; ?>" font-size="medium"
                style="margin: 0px; color: <?= $text_color; ?>; font-size: 13px; line-height: 22px;font-family:<?= $font_family ?>;">
                 <span style="font-style: italic;"><?= $title ?></span> - <span
@@ -58,7 +62,7 @@
                         width="12px">
                 <a href="<?= $address; ?>"
                    color="<?= $text_color; ?>"
-                   style="text-decoration:none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;"><span><?= $address; ?></span></a>
+                   style="text-decoration:none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;"><?= $address; ?></a>
             </td>
         </tr>
     <?php endif; ?>
