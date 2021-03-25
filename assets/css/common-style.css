@@ -9,15 +9,17 @@
 .egs_nav-tabs > li {
     float: left;
     margin-bottom: -6px;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid transparent;
+    float: left;
+    background-color: #ffffff;
+    padding: 10px;
 }
 
 .egs_nav-tabs > li > a {
     line-height: 1.5em;
-    border: 1px solid transparent;
-    border-radius: 6px 6px 0 0;
-    float: left;
     text-decoration: none;
-    background-color: #ffffff;
+    margin: 0;
 }
 
 .egs_nav-tabs > li > a:hover {

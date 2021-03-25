@@ -1,6 +1,4 @@
-#esg-landing_header{
-    display: flex;
-    justify-content: flex-end;
+#esg-landing_footer{
     margin-bottom: 30px;
 }
 
@@ -11,7 +9,6 @@
 }
 
 .egs_nav-tabs > li > a {
-    padding: 8px 13px 10px 13px;
     background: #ffffff63;
     color: #545454;
     display: flex;
