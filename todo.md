@@ -2,3 +2,4 @@
 - Revenir sur l'onglet actif après rechargement de la page.
 - Mettre instructions pour upload image dimensions, extensions et poids.
 - Additionnal content disparait, checker sanitize et callback.
+- Charger les scripts et le css que sur les pages d'admin du plugin et les pages contenant un shortcode du plugin

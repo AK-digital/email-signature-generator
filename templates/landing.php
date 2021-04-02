@@ -1,25 +1,27 @@
 <section>
-    <ul class="nav egs_nav-tabs" style="float:left">
-        <li class="fadeIn active"><a href="#preview-tab"><img src="<?= $this->plugin_url; ?>assets/img/eye-icon.png"
-                                                              alt="eye icon" class="esg_icon"
-                                                              width="18px"/><?= __('Prévisualisation'); ?></a>
-        </li>
-        <li class="fadeIn"><a href="#html-tab"><img src="<?= $this->plugin_url; ?>assets/img/code-icon.png"
-                                                    alt="html icon" class="esg_icon" width="18px"/><?= __('HTML'); ?>
-            </a></li>
-    </ul>
 
-    <ul class="nav egs_nav-tabs" style="float:right">
-        <li class="fadeIn"><a href="#tab-1"><?= __('Outlook client'); ?></a></li>
-        <li class="fadeIn"><a href="#tab-2"><?= __('Outlook.com'); ?></a></li>
-        <li class="fadeIn"><a href="#tab-3"><?= __('Gmail'); ?></a></li>
-        <li class="fadeIn"><a href="#tab-4"><?= __('Yahoo'); ?></a></li>
-        <li class="fadeIn"><a href="#tab-5"><?= __('Apple mail'); ?></a></li>
-        <li class="fadeIn"><a href="#tab-6"><?= __('Thunderbird'); ?></a></li>
-    </ul>
+    <div class="js-tabs" id="tabs">
+        <ul class="js-tabs__header">
+            <li class="js-tabs__title">
+<!--                <img src="--><?//= $this->plugin_url; ?><!--assets/img/eye-icon.png"-->
+<!--                                           alt="eye icon" class="esg_icon"-->
+<!--                                           width="18px"/>-->
+                <?= __('Prévisualisation'); ?>
+            </li>
+            <li class="js-tabs__title">
+<!--                <img src="--><?//= $this->plugin_url; ?><!--assets/img/code-icon.png"-->
+<!--                                    alt="html icon" class="esg_icon" width="18px"/>-->
+                <?= __('HTML'); ?>
+            </li>
+            <li class="js-tabs__title float-right"><?= __('Outlook client'); ?></a></li>
+            <li class="js-tabs__title float-right"><?= __('Outlook.com'); ?></a></li>
+            <li class="js-tabs__title float-right"><?= __('Gmail'); ?></li>
+            <li class="js-tabs__title float-right"><?= __('Yahoo'); ?></li>
+            <li class="js-tabs__title float-right"><?= __('Apple mail'); ?></li>
+            <li class="js-tabs__title float-right"><?= __('Thunderbird'); ?></li>
+        </ul>
 
-    <div class="egs_tab-content">
-        <div id="preview-tab" class="egs_tab-pane fadeIn active">
+        <div id="preview-tab" class="js-tabs__content">
             <div id="sign-preview"><?= $signature; ?></div>
             <div class="esg_action-bar">
                 <button class="esg_button esg_button-copy qbutton"
@@ -32,7 +34,7 @@
             </div>
         </div>
 
-        <div id="html-tab" class="egs_tab-pane fadeIn">
+        <div id="html-tab" class="js-tabs__content">
                        <textarea id="sign-raw-html" style="width:100%" rows="13">
 <?php echo $signature; ?>
         </textarea>
@@ -46,7 +48,7 @@
                 </button>
             </div>
         </div>
-        <div id="tab-1" class="egs_tab-pane fadeIn">
+        <div id="tab-1" class="js-tabs__content">
             <h4><?= __('Intégration Outlook client'); ?></h4>
             <ol>
                 <li>
@@ -70,7 +72,7 @@
             </ol>
         </div>
 
-        <div id="tab-2" class="egs_tab-pane fadeIn">
+        <div id="tab-2" class="js-tabs__content">
             <h4><?= __('Intégration Outlook.com'); ?></h4>
             <ol>
                 <li>
@@ -87,7 +89,7 @@
             </ol>
         </div>
 
-        <div id="tab-3" class="egs_tab-pane fadeIn">
+        <div id="tab-3" class="js-tabs__content">
             <h4><?= __('Intégration Gmail'); ?></h4>
             <ol>
                 <li>
@@ -104,7 +106,7 @@
             </ol>
         </div>
 
-        <div id="tab-4" class="egs_tab-pane fadeIn">
+        <div id="tab-4" class="js-tabs__content">
             <h4><?= __('Intégration Yahoo'); ?></h4>
             <ol>
                 <li>
@@ -120,7 +122,7 @@
                 <li> <?= __('Enregistrer les modifications'); ?> </li>
             </ol>
         </div>
-        <div id="tab-5" class="egs_tab-pane fadeIn">
+        <div id="tab-5" class="js-tabs__content">
             <h4><?= __('Intégration Apple mail'); ?></h4>
             <ol>
                 <li>
@@ -133,7 +135,7 @@
                 <li> <?= __('Collez votre contenu dans ce champ de texte et cliquez sur Enregistrer') ?> </li>
             </ol>
         </div>
-        <div id="tab-6" class="egs_tab-pane fadeIn">
+        <div id="tab-6" class="js-tabs__content">
             <h4><?= __('Intégration Thunderbird'); ?></h4>
             <ol>
                 <li>
@@ -145,6 +147,7 @@
                 <li> <?= __('Parcourez et sélectionnez votre fichier signature.html, puis cliquez sur "OK"') ?> </li>
             </ol>
         </div>
+        </div>
     </div>
 </section>
 <section>
@@ -155,4 +158,10 @@
             </form>
         <?php endif; ?>
     </div>
+    <script type="text/javascript">
+        var tabs = new Tabs({
+            elem: "tabs",
+            open: 0
+        });
+    </script>
 </section>

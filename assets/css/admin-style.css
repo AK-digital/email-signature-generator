@@ -1,23 +1,13 @@
 /* reset */
 
-#esg-settings .wp-person a:focus .gravatar, #esg-settings a:focus, #esg-settings a:focus .media-icon img{
+#esg-settings .wp-person a:focus .gravatar, #esg-settings a:focus, #esg-settings a:focus .media-icon img {
     box-shadow: none;
 }
 
 /* end reset */
 
-#esg-title{
-    margin-bottom:16px;
-}
-
-.egs_tab-content > .egs_tab-pane.active {
-    background-image: url("../img/krack-logo.png");
-}
-
-.egs_nav-tabs > li > a {
-    padding: 10px 30px 17px 30px;
-    font-weight: 600;
-    font-size: 1.18em;
+#esg-title {
+    margin-bottom: 16px;
 }
 
 .text-center {
@@ -40,8 +30,8 @@
     width: 49%
 }
 
-.egs_nav-tabs > li.float-right{
-    float:right;
+.egs_nav-tabs > li.float-right {
+    float: right;
 }
 
 .inline {
@@ -64,28 +54,27 @@ p.submit {
 }
 
 
-
-#esg-settings #logo_image, #esg-settings #banner_image{
+#esg-settings #logo_image, #esg-settings #banner_image {
     max-width: 150px;
     float: left;
-    margin-right:15px;
+    margin-right: 15px;
 }
 
-#esg-settings #banner_image{
+#esg-settings #banner_image {
     max-width: 500px;
     float: left;
-    margin-right:15px;
+    margin-right: 15px;
 }
 
-.shortcode{
+.shortcode {
     display: inline;
-    background-color:#2c3338;
-    color:white;
-    padding:3px;
+    background-color: #2c3338;
+    color: white;
+    padding: 3px;
 }
 
-#esg-settings textarea{
-    width:80%;
+#esg-settings textarea {
+    width: 80%;
     min-height: 200px;
 }
 
@@ -108,22 +97,19 @@ p.submit {
     box-shadow: 0 0 7px 2px #102b5457;
 }
 
-#layouts .form-table tbody{
+#layouts .form-table tbody {
     display: flex;
 }
 
-#layouts .form-table tbody tr{
+#layouts .form-table tbody tr {
     display: flex;
     flex-direction: column;
     padding: 10px;
 }
 
-#layouts .form-table [type=radio]:not(:checked) + img:hover{
+#layouts .form-table [type=radio]:not(:checked) + img:hover {
     outline: 3px solid #dedede;
     box-shadow: 0 0 7px 2px rgba(133, 133, 133, 0.34);
 }
 
-.egs_tab-content > .egs_tab-pane.active {
-    min-height: 400px;
-    padding: 15px 20px 30px 20px;
-}
+
