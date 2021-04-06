@@ -6,8 +6,8 @@
                     color="<?= $text_color; ?>"
                     style="margin: 0px;text-transform:capitalize;font-size:16px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;">
                 <span><?= $firstname ?></span><span>&nbsp;</span><span><?= $surname ?></span>
-                <?php if ($linkedin_perso): ?>
-                <a href="<?= $linkedin_perso ?>" style="margin-left:6px;"><img
+                <?php if ($user_linkedin): ?>
+                <a href="<?= $user_linkedin ?>" style="margin-left:6px;"><img
                             src="<?= $this->plugin_url; ?>assets/img/social-icons/linkedin-perso-icon.png" width="12px"
                             style="background-color:<?= $icon_color; ?>; position: relative;top:1px;"/></a>
             <?php endif; ?></h3>

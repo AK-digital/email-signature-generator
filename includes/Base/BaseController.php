@@ -33,7 +33,5 @@ class BaseController
         }
 
         $this->options = get_option('esg_admin_settings');
-
-        add_image_size('esg_logo', 80, 80, true); //test
 	}
 }

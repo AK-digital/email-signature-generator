@@ -3,14 +3,9 @@
     <div class="js-tabs" id="tabs">
         <ul class="js-tabs__header">
             <li class="js-tabs__title">
-<!--                <img src="--><?//= $this->plugin_url; ?><!--assets/img/eye-icon.png"-->
-<!--                                           alt="eye icon" class="esg_icon"-->
-<!--                                           width="18px"/>-->
                 <?= __('Prévisualisation'); ?>
             </li>
             <li class="js-tabs__title">
-<!--                <img src="--><?//= $this->plugin_url; ?><!--assets/img/code-icon.png"-->
-<!--                                    alt="html icon" class="esg_icon" width="18px"/>-->
                 <?= __('HTML'); ?>
             </li>
             <li class="js-tabs__title float-right"><?= __('Outlook client'); ?></a></li>

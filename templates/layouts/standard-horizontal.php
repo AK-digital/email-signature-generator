@@ -2,19 +2,25 @@
        style="vertical-align: middle; font-size: medium; font-family: <?= $font_family ?>; text-align:left;">
     <tbody>
     <tr>
-        <?php if ($logo): ?>
+        <?php if($logo): ?>
+
             <td style="width:200px;padding-right: 20px;margin-right: 20px;border-right: 1px solid <?= $icon_color; ?>;vertical-align: middle; ">
                 <img src="<?= $logo; ?>" alt="logo"
-                     style="max-height: 170px;padding-right:20px;margin-right:20px; border-right: 1px solid <?= $icon_color; ?>"/>
+                     style="max-height: 170px;padding-right:20px;margin-right:20px;"/>
             </td>
         <?php endif; ?>
         <?php if ($firstname || $surname || $title || $company_name): ?>
         <td style="padding-left: 20px; vertical-align: middle;text-align:left;">
-            <h3 color="<?= $text_color; ?>"  style="margin: 0px; font-size: 18px; color:<?= $text_color; ?>;letter-spacing:0.05em;font-family: <?= $font_family ?>">
-                <?= $firstname ?><span>&nbsp;</span><?= $surname ?><a href="<?= $linkedin_perso ?>" style="margin-left:6px;"><img src="<?= $this->plugin_url; ?>assets/img/social-icons/linkedin-perso-icon.png" width="12px" style="background-color:<?= $icon_color;?> position: relative;top:1px;?>;"/></a></h3>
+            <h3 color="<?= $text_color; ?>"
+                style="margin: 0px; font-size: 18px; color:<?= $text_color; ?>;letter-spacing:0.05em;font-family: <?= $font_family ?>">
+                <?= $firstname ?><span>&nbsp;</span><?= $surname ?><a href="<?= $user_linkedin ?>"
+                                                                      style="margin-left:6px;"><img
+                            src="<?= $this->plugin_url; ?>assets/img/social-icons/linkedin-perso-icon.png" width="12px"
+                            style="background-color:<?= $icon_color; ?> position: relative;top:1px;?>;"/></a></h3>
             <p color="<?= $text_color; ?>" font-size="medium"
                style="margin: 0px; color:<?= $text_color; ?>; font-size: 14px; line-height: 20px;font-family: <?= $font_family ?>">
-                <?= $title ?> <?php if($title || $company_name){ echo '-'; } ?> <?= $company_name ?></p>
+                <?= $title ?><?php if ($title || $company_name) { echo ' - '; } ?><?= $company_name ?></p>
+            <?php endif; ?>
             <?php if ($mobile): ?>
             <p color="<?= $text_color; ?>" font-size="medium"
                style="margin: 0px; color:<?= $text_color; ?>; font-size:14px; line-height: 20px;font-family: <?= $font_family ?>"> <span
@@ -27,7 +33,8 @@
                         style="text-decoration: none; color:<?= $text_color; ?>; font-size: 12px;text-align:left;"><span><?= $mobile; ?></span></a>
 
                 | <?php endif; ?>
-                <?php if ($phone): ?><span color="<?= $icon_color; ?>" style="vertical-align:middle;"><img
+                <?php if ($phone): ?>
+                <span color="<?= $icon_color; ?>" style="vertical-align:middle;"><img
                             src="<?= $this->plugin_url; ?>assets/img/phone-icon.png"
                             color="<?= $icon_color; ?>" width="12px"
                             style="background-color:<?= $icon_color; ?>;margin-right:4px;"></span>
@@ -35,6 +42,7 @@
                    style="text-decoration: none; color:<?= $text_color; ?>; font-size: 12px;"><span><?= $phone; ?></span></a>
             </p>
         <?php endif; ?>
+            <?php if ($email): ?>
             <p color="<?= $text_color; ?>" font-size="medium"
                style="margin: 0px; color:<?= $text_color; ?>; font-size: 14px;line-height:20px;font-family: <?= $font_family ?>">
                  <span color="<?= $icon_color; ?>" style="vertical-align:middle;"><img
@@ -43,6 +51,8 @@
                              style="background-color:<?= $icon_color; ?>;margin-right:4px;"></span>
                 <a href="mailto:" color="<?= $text_color; ?>"
                    style="text-decoration: none; <?= $text_color; ?>; font-size: 12px;text-align:left;font-family: <?= $font_family ?>"><span><?= $email; ?></span></a></span>
+                <?php endif; ?>
+                <?php if ($website): ?>
                 | <span color="<?= $icon_color; ?>" style="vertical-align:middle;"><img
                             src="<?= $this->plugin_url; ?>assets/img/website-icon.png" width="12px"
                             color="<?= $icon_color; ?>" width="13px"
@@ -52,6 +62,7 @@
                         style="text-decoration: none; color: <?= $text_color; ?>; font-size: 12px;text-align:left;font-family: <?= $font_family ?>"><span><?= $website; ?></span></a>
             </p>
             <?php endif; ?>
+            <?php if ($adress): ?>
             <p color="<?= $text_color; ?>" font-size="medium"
                style="margin:0px; color:<?= $text_color; ?>;font-size: 14px;line-height:20px;font-family: <?= $font_family ?>">
             <span color="<?= $icon_color; ?>" style="vertical-align:middle;"
@@ -60,7 +71,8 @@
                   style="background-color:<?= $icon_color; ?>;margin-right:4px;"></span><span
                         color="<?= $text_color; ?>"
                         style="font-size: 12px; color:<?= $text_color; ?>"><?= $address; ?></span></p>
-<div style="margin-bottom:10px"></div>
+            <?php endif; ?>
+            <div style="margin-bottom:10px"></div>
             <?php if ($linkedin_url || $facebook_url || $instagram_url || $youtube_url || $twitter_url || $tiktok_url): ?>
 
                 <?php if (!empty($linkedin_url)): ?>

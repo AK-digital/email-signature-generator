@@ -19,7 +19,7 @@ class AdminCallbacks extends BaseController
         printf('<img id="logo_image" src="%s" alt="company logo" %s />', esc_attr($this->options['logo']), empty($this->options['logo']) ? 'hidden' : '');
 
         printf(
-            '<input id="logo_input_url" type="text" name="esg_admin_settings[logo]" class="regular-text" value="%s" hidden />
+            '<input id="logo_input_url" type="text" name="esg_admin_settings[logo]" class="regular-text" value="%s" />
             <input id="remove_logo_button" type="button" class="button-secondary" value="Remove" %s />
             <input id="upload_logo_button" type="button" class="button-primary" value="Choose logo" />',
             isset($this->options['logo']) ? esc_attr($this->options['logo']) : '', empty($this->options['logo']) ? 'hidden' : ''
@@ -31,7 +31,7 @@ class AdminCallbacks extends BaseController
         printf('<img id="banner_image" src="%s" alt="company banner" %s />', esc_attr($this->options['banner']), empty($this->options['banner']) ? 'hidden' : '');
 
         printf(
-            '<input id="banner_input_url" type="text" name="esg_admin_settings[banner]" class="regular-text" value="%s" hidden/>
+            '<input id="banner_input_url" type="text" name="esg_admin_settings[banner]" class="regular-text" value="%s"/>
             <input id="remove_banner_button" type="button" class="button-secondary" value="Remove" %s />
             <input id="upload_banner_button" type="button" class="button-primary" value="Choose banner" />',
             isset($this->options['banner']) ? esc_attr($this->options['banner']) : '', empty($this->options['banner']) ? 'hidden' : ''
