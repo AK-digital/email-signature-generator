@@ -105,3 +105,8 @@ border-radius: 7px;
     max-width: 450px;
     margin:auto;
 }
+
+.fl-form input.fl-input, .fl-form select.fl-select, .fl-form textarea.fl-textarea{
+    margin-bottom: 12px;
+    font-size: 15px;
+}
