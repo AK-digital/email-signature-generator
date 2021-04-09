@@ -16,7 +16,7 @@
 		<input  type="text" id="title" name="title" required />
 
         <label for="email"><?= __('Email'); ?></label>
-		<input type="email" id="email" name="email" required />
+		<input type="email" id="email" name="email" />
 
         <label for="mobile"><?= __('Mobile'); ?></label>
 		<input  type="text" id="mobile" name="mobile" />
