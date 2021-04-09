@@ -97,17 +97,17 @@ p.submit {
     box-shadow: 0 0 7px 2px #102b5457;
 }
 
-#layouts .form-table tbody {
+#templates .form-table tbody {
     display: flex;
 }
 
-#layouts .form-table tbody tr {
+#templates .form-table tbody tr {
     display: flex;
     flex-direction: column;
     padding: 10px;
 }
 
-#layouts .form-table [type=radio]:not(:checked) + img:hover {
+#templates .form-table [type=radio]:not(:checked) + img:hover {
     outline: 3px solid #dedede;
     box-shadow: 0 0 7px 2px rgba(133, 133, 133, 0.34);
 }

@@ -25,6 +25,10 @@
     line-height: 33px;
 }
 
+.js-tabs__title {
+    text-transform: uppercase;
+}
+
 .esg_action-bar{
     display: flex;
     justify-content: space-between;

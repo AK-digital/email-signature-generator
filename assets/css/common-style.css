@@ -35,7 +35,6 @@
     transition: all .25s;
     font-size: 14px;
     font-weight: 600;
-    text-transform: uppercase;
 }
 
 .js-tabs__title:hover {

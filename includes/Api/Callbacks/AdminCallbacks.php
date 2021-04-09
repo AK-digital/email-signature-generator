@@ -39,6 +39,14 @@ class AdminCallbacks extends BaseController
 
     }
 
+    public function banner_link_callback()
+    {
+        printf(
+            '<input type="text" id="banner_link" name="esg_admin_settings[banner_link]" class="regular-text" value="%s" />',
+            isset($this->options['banner_link']) ? esc_attr($this->options['banner_link']) : ''
+        );
+    }
+
     public function text_color_callback()
     {
         // Css rules for Color Picker
@@ -67,7 +75,7 @@ class AdminCallbacks extends BaseController
     public function font_family_callback()
     {
 
-        $font = array('Arial','Calibri', 'Cambria', 'Comic Sans MS','Courier', 'Georgia', 'Garamond', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana');
+        $font = array('Arial','Calibri', 'Cambria', 'Comic Sans MS','Courier', 'Georgia', 'Garamond', 'Open Sans', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana');
         ?>
         <select name="esg_admin_settings[font_family]" id="font_family">
             <?php foreach ($font as $key => $value){ ?>
@@ -186,27 +194,27 @@ class AdminCallbacks extends BaseController
  *   LAYOUTS CALLBACKS
  */
 
-    public function standard_vertical_callback()
-    {
-        printf(
-            '<label><input type="radio" id="standard-vertical" name="esg_admin_settings[layout]" class="regular-text" value="standard-vertical" %s checked/><img src="%s" width="200px"/></label>',
-            ($this->options['layout'] == 'standard-vertical') ? 'checked' : '', $this->plugin_url . '/assets/img/standard-vertical.svg'
-        );
-    }
+//    public function standard_vertical_callback()
+//    {
+//        printf(
+//            '<label><input type="radio" id="standard-vertical" name="esg_admin_settings[template]" class="regular-text" value="standard-vertical" %s checked/><img src="%s" width="200px"/></label>',
+//            ($this->options['template'] == 'standard-vertical') ? 'checked' : '', $this->plugin_url . '/assets/img/standard-vertical.svg'
+//        );
+//    }
+//
+//    public function standard_horizontal_callback()
+//    {
+//        printf(
+//            '<label><input type="radio" id="standard_horizontal" name="esg_admin_settings[template]" class="regular-text" value="standard-horizontal" %s/><img src="%s" width="200px"/></label>',
+//            ($this->options['template'] == 'standard-horizontal') ? 'checked' : '', $this->plugin_url . '/assets/img/standard-horizontal.svg'
+//        );
+//    }
 
-    public function standard_horizontal_callback()
+    public function studio_krack_callback()
     {
         printf(
-            '<label><input type="radio" id="standard_horizontal" name="esg_admin_settings[layout]" class="regular-text" value="standard-horizontal" %s/><img src="%s" width="200px"/></label>',
-            ($this->options['layout'] == 'standard-horizontal') ? 'checked' : '', $this->plugin_url . '/assets/img/standard-horizontal.svg'
-        );
-    }
-
-    public function standard_vertical_inverse_callback()
-    {
-        printf(
-            '<label><input type="radio" id="standard_vertical_inverse" name="esg_admin_settings[layout]" class="regular-text" value="studio-krack-template" %s/><img src="%s" width="200px"/></label>',
-            ($this->options['layout'] == 'studio-krack-template') ? 'checked' : '', $this->plugin_url . '/assets/img/studio-krack-template.svg'
+            '<label><input type="radio" id="studio-krack" name="esg_admin_settings[template]" class="regular-text" value="studio-krack" %s/><img src="%s" width="200px"/></label>',
+            ($this->options['template'] == 'studio-krack') ? 'checked' : '', $this->plugin_url . '/assets/img/studio-krack-template.png'
         );
     }
 

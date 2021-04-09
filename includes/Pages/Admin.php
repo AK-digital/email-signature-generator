@@ -65,36 +65,36 @@ class Admin extends BaseController
         );
 
         add_settings_section(
-            'setting_section_layout', // ID
-            'Signature layouts', // Title
+            'setting_section_template', // ID
+            'Templates de signature', // Title
             array($this, 'print_section_info'), // Callback
-            'esg-settings-layout' // Page
+            'esg-settings-template' // Page
         );
 
         add_settings_section(
             'setting_section_general', // ID
-            'Company general infos', // Title
+            'Informations générales', // Title
             array($this, 'print_section_info'), // Callback
             'esg-settings-general' // Page
         );
 
         add_settings_section(
             'setting_section_social', // ID
-            'Company social networks', // Title
+            'Réseaux sociaux', // Title
             array($this, 'print_section_info'), // Callback
             'esg-settings-social' // Page
         );
 
         add_settings_section(
             'setting_section_branding', // ID
-            'Company branding', // Title
+            'Branding', // Title
             array($this, 'print_section_info'), // Callback
             'esg-settings-branding' // Page
         );
 
         add_settings_section(
             'setting_section_additional', // ID
-            'Additional content', // Title
+            'Contenu additionnel', // Title
             array($this, 'print_section_info'), // Callback
             'esg-settings-additional' // Page
         );
@@ -107,7 +107,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'logo',
-            'Company logo',
+            'Logo',
             array($this->callbacks, 'logo_callback'),
             'esg-settings-branding',
             'setting_section_branding'
@@ -117,8 +117,16 @@ class Admin extends BaseController
 
         add_settings_field(
             'banner',
-            'Company banner',
+            'Bannière',
             array($this->callbacks, 'banner_callback'),
+            'esg-settings-branding',
+            'setting_section_branding'
+        );
+
+        add_settings_field(
+            'banner_link',
+            'Lien bannière',
+            array($this->callbacks, 'banner_link_callback'),
             'esg-settings-branding',
             'setting_section_branding'
         );
@@ -127,7 +135,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'text_color',
-            'Text color',
+            'Couleur du texte',
             array($this->callbacks, 'text_color_callback'),
             'esg-settings-branding',
             'setting_section_branding'
@@ -135,7 +143,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'icon_color',
-            'Icon color',
+            'Couleur des icones',
             array($this->callbacks, 'icon_color_callback'),
             'esg-settings-branding',
             'setting_section_branding'
@@ -143,7 +151,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'link_color',
-            'Links & highlights color',
+            'Couleur des liens',
             array($this->callbacks, 'link_color_callback'),
             'esg-settings-branding',
             'setting_section_branding'
@@ -161,7 +169,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'company_name', // ID
-            'Company name', // Title
+            'Nom de l\'entreprise', // Title
             array($this->callbacks, 'company_name_callback'), // Callback
             'esg-settings-general', // Page
             'setting_section_general' // Section
@@ -171,7 +179,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'baseline',
-            'Company baseline',
+            'Slogan',
             array($this->callbacks, 'baseline_callback'),
             'esg-settings-general',
             'setting_section_general'
@@ -181,7 +189,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'address',
-            'Company address',
+            'Adresse',
             array($this->callbacks, 'address_callback'),
             'esg-settings-general',
             'setting_section_general'
@@ -191,7 +199,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'phone',
-            'Company phone number',
+            'Numéro de téléphone',
             array($this->callbacks, 'phone_callback'),
             'esg-settings-general',
             'setting_section_general'
@@ -201,7 +209,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'website',
-            'Company website',
+            'Lien site internet (avec https://)',
             array($this->callbacks, 'website_callback'),
             'esg-settings-general',
             'setting_section_general'
@@ -216,7 +224,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'facebook',
-            'Facebook page url',
+            'Url page Facebook',
             array($this->callbacks, 'facebook_callback'),
             'esg-settings-social',
             'setting_section_social'
@@ -226,7 +234,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'youtube',
-            'Youtube channel url',
+            'Url chaîne Youtube',
             array($this->callbacks, 'youtube_callback'),
             'esg-settings-social',
             'setting_section_social'
@@ -236,7 +244,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'linkedin',
-            'Linkedin page url',
+            'Url page Linkedin',
             array($this->callbacks, 'linkedin_callback'),
             'esg-settings-social',
             'setting_section_social'
@@ -246,7 +254,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'twitter',
-            'Twitter account url',
+            'Url compte Twitter',
             array($this->callbacks, 'twitter_callback'),
             'esg-settings-social',
             'setting_section_social'
@@ -256,7 +264,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'tiktok',
-            'Tiktok account url',
+            'Url compte Tiktok',
             array($this->callbacks, 'tiktok_callback'),
             'esg-settings-social',
             'setting_section_social'
@@ -265,7 +273,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'instagram',
-            'Instagram account url',
+            'Url compte Instagram',
             array($this->callbacks, 'instagram_callback'),
             'esg-settings-social',
             'setting_section_social'
@@ -280,27 +288,27 @@ class Admin extends BaseController
         // Field 13
 
         add_settings_field(
-            'studio-krack-template',
-            'Studio Krack Layout',
-            array($this->callbacks, 'standard_vertical_inverse_callback'),
-            'esg-settings-layout',
-            'setting_section_layout'
+            'studio-krack',
+            'Template Studio Krack',
+            array($this->callbacks, 'studio_krack_callback'),
+            'esg-settings-template',
+            'setting_section_template'
         );
 
 //        add_settings_field(
 //            'standard-vertical',
 //            'Standard vertical',
 //            array($this->callbacks, 'standard_vertical_callback'),
-//            'esg-settings-layout',
-//            'setting_section_layout'
+//            'esg-settings-template',
+//            'setting_section_template'
 //        );
 
 //        add_settings_field(
 //            'standard-horizontal',
 //            'Standard horizontal',
 //            array($this->callbacks, 'standard_horizontal_callback'),
-//            'esg-settings-layout',
-//            'setting_section_layout'
+//            'esg-settings-template',
+//            'setting_section_template'
 //        );
 
         // LAYOUT SETTINGS SECTION END -------------
@@ -313,7 +321,7 @@ class Admin extends BaseController
 
         add_settings_field(
             'additional_content',
-            'Additional content',
+            'Contenu additionnel',
             array($this->callbacks, 'additional_content_callback'),
             'esg-settings-additional',
             'setting_section_additional'
@@ -327,7 +335,7 @@ class Admin extends BaseController
      */
     public function print_section_info()
     {
-        print '<p>These infos will be displayed in every signature created with this plugin</p>';
+        print '<p>Ces informations seront affichées dans chaque signature créée avec ce plugin</p>';
     }
 
     /**
@@ -345,6 +353,9 @@ class Admin extends BaseController
 
         if (isset($input['banner']))
             $new_input['banner'] = $input['banner'];
+
+        if (isset($input['banner_link']))
+            $new_input['banner_link'] = sanitize_text_field($input['banner_link']);
 
         if (isset($input['company_name']))
             $new_input['company_name'] = sanitize_text_field($input['company_name']);
@@ -382,8 +393,8 @@ class Admin extends BaseController
         if (isset($input['instagram']))
             $new_input['instagram'] = sanitize_text_field($input['instagram']);
 
-        if (isset($input['layout']))
-            $new_input['layout'] = $input['layout'];
+        if (isset($input['template']))
+            $new_input['template'] = $input['template'];
 
         if (isset($input['additional_content']))
             $new_input['additional_content'] =  $input['additional_content'];

@@ -26,10 +26,10 @@ class Shortcode extends BaseController
         $this->company_data = [
 
             // Layout
-            'layout' => $this->options['layout'] ? $this->options['layout'] : 'standard-vertical',
+            'template' => $this->options['template'] ? $this->options['template'] : 'studio-krack',
 
             // Company details
-            'font_family' => $this->options['font_family'] . ",'Sans Serif'",
+            'font_family' => "'" . $this->options['font_family'] . "', Sans-Serif",
             'company_name' => $this->options['company_name'],
             'baseline' => $this->options['baseline'],
             'phone' => $this->options['phone'],
@@ -47,6 +47,7 @@ class Shortcode extends BaseController
             // Branding variables
             'logo' => $this->options['logo'],
             'banner' => $this->options['banner'],
+            'banner_link' => $this->options['banner_link'],
             'text_color' => $this->options['text_color'],
             'icon_color' => $this->options['icon_color'],
 
@@ -114,7 +115,7 @@ class Shortcode extends BaseController
 
         // Prepare the object, include the template and store in the $signature variable
         ob_start();
-        include $this->templates_path . 'layouts/' . $layout . '.php';
+        include $this->templates_path . 'emails/' . $template . '.php';
         $signature = ob_get_clean();
 
         require_once($this->templates_path . 'landing.php');
