@@ -280,28 +280,28 @@ class Admin extends BaseController
         // Field 13
 
         add_settings_field(
-            'standard-vertical',
-            'Standard vertical',
-            array($this->callbacks, 'standard_vertical_callback'),
-            'esg-settings-layout',
-            'setting_section_layout'
-        );
-
-        add_settings_field(
-            'standard-vertical-inverse',
-            'Standard vertical inversé',
+            'studio-krack-template',
+            'Studio Krack Layout',
             array($this->callbacks, 'standard_vertical_inverse_callback'),
             'esg-settings-layout',
             'setting_section_layout'
         );
 
-        add_settings_field(
-            'standard-horizontal',
-            'Standard horizontal',
-            array($this->callbacks, 'standard_horizontal_callback'),
-            'esg-settings-layout',
-            'setting_section_layout'
-        );
+//        add_settings_field(
+//            'standard-vertical',
+//            'Standard vertical',
+//            array($this->callbacks, 'standard_vertical_callback'),
+//            'esg-settings-layout',
+//            'setting_section_layout'
+//        );
+
+//        add_settings_field(
+//            'standard-horizontal',
+//            'Standard horizontal',
+//            array($this->callbacks, 'standard_horizontal_callback'),
+//            'esg-settings-layout',
+//            'setting_section_layout'
+//        );
 
         // LAYOUT SETTINGS SECTION END -------------
 

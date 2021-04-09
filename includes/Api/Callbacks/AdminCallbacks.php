@@ -205,8 +205,8 @@ class AdminCallbacks extends BaseController
     public function standard_vertical_inverse_callback()
     {
         printf(
-            '<label><input type="radio" id="standard_vertical_inverse" name="esg_admin_settings[layout]" class="regular-text" value="standard-vertical-inverse" %s/><img src="%s" width="200px"/></label>',
-            ($this->options['layout'] == 'standard-vertical-inverse') ? 'checked' : '', $this->plugin_url . '/assets/img/standard-vertical-inverse.svg'
+            '<label><input type="radio" id="standard_vertical_inverse" name="esg_admin_settings[layout]" class="regular-text" value="studio-krack-template" %s/><img src="%s" width="200px"/></label>',
+            ($this->options['layout'] == 'studio-krack-template') ? 'checked' : '', $this->plugin_url . '/assets/img/studio-krack-template.svg'
         );
     }
 

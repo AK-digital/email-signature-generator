@@ -92,11 +92,10 @@
                             onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><?= __('Copier ma signature'); ?>
                     </button>
                 </li>
-                <li>  <?= __('Connectez-vous à outlook.com ou live.com et cliquez sur l\'icône d\'engrenage Paramètres'); ?></li>
-                <li> <?= __('Sélectionnez "Plus de paramètres de messagerie", puis "Police et signature du message" sous Ecrire
-                    un e-mail'); ?>
-                </li>
-                <li> <?= __('Sélectionnez l\'option "Modifier en HTML" et collez votre contenu'); ?></li>
+                <li>  <?= __('Connectez vous à Gmail et cliquez sur l\'icône d\'engrenage en haut à droite pour atteindre les Paramètres'); ?></li>
+                <li> <?= __('Sous l\'onglet "Général", faites défiler vers le bas jusqu\'à ce que vous trouviez la section Signature'); ?></li>
+                <li> <?= __('Cliquez dans la zone Signature et collez le contenu copié'); ?></li>
+                <li> <?= __('Dessous, cochez la case "Insérer cette signature avant le texte des messages précédents…"'); ?></li>
                 <li> <?= __('Cliquez sur "Enregistrer"'); ?></li>
             </ol>
         </div>

@@ -20,10 +20,7 @@ class UserProfile extends BaseController
     {
         add_filter('user_contactmethods', array($this, 'user_position'));
         add_filter('user_contactmethods', array($this, 'user_linkedin'));
-
-       if($this->wc_check == false){
-           add_filter('user_contactmethods', array($this, 'user_phone'));
-       }
+        add_filter('user_contactmethods', array($this, 'user_phone'));
     }
 
     public function user_phone($user_contact)

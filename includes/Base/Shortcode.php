@@ -33,7 +33,7 @@ class Shortcode extends BaseController
             'company_name' => $this->options['company_name'],
             'baseline' => $this->options['baseline'],
             'phone' => $this->options['phone'],
-            'website' => $this->options['website'],
+            'website_url' => $this->options['website'],
             'address' => $this->options['address'],
 
             // Company social network links
@@ -106,6 +106,11 @@ class Shortcode extends BaseController
         // Call the function to get company data and extract the array into vars
         $this->get_company_data();
         extract($this->company_data);
+
+        //create website link name whithout https
+
+        $website = $website_url;
+        $website = preg_replace('#^https?://#', '',  $website);
 
         // Prepare the object, include the template and store in the $signature variable
         ob_start();
