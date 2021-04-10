@@ -19,6 +19,9 @@ class BaseController
 
     public $options;
 
+    public $section_managers = array();
+    public $field_managers = array();
+
 	public function __construct()
 	{
 		$this->plugin_path = plugin_dir_path(dirname(__FILE__, 2));
@@ -33,5 +36,25 @@ class BaseController
         }
 
         $this->options = get_option('esg_admin_settings');
+
+
+        // Manage settings sections - add / remove sections here
+        $this->section_managers = array(
+            'esg-settings-template' => 'Templates de signatures',
+            'esg-settings-general' => 'Informations générales',
+            'esg-settings-social' => 'Réseaux sociaux',
+            'esg-settings-branding' => 'Branding',
+            'esg-settings-additional' => 'Contenu additionnel',
+        );
+
+        // Manage settings fields - add / remove fields here
+        $this->field_managers = array(
+            'font-family' => 'Font family',
+            'company-name' => 'Nom de l\'entreprise',
+            'baseline' => 'Slogan',
+            'address' => 'Adresse',
+            'phone' => 'Numéro de téléphone',
+            'website' => 'Lien site internet (avec https://)',
+        );
 	}
 }
