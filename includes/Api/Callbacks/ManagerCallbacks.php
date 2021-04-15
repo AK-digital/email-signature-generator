@@ -2,195 +2,154 @@
 /**
  * @package  emailSignatureGenerator
  */
+
 namespace Includes\Api\Callbacks;
 
 use Includes\Base\BaseController;
 
+/**
+ * Class ManagerCallbacks
+ * @package Includes\Api\Callbacks
+ */
 class ManagerCallbacks extends BaseController
 {
-	public function checkboxSanitize( $input )
-	{
-		$output = array();
-
-		foreach ( $this->managers as $key => $value ) {
-			$output[$key] = isset( $input[$key] ) ? true : false;
-		}
-
-		return $output;
-	}
-
-    public function textSanitize( $input )
-    {
-        $output = get_option('esg_plugin');
-
-        if ( isset($_POST["remove"]) ) {
-            unset($output[$_POST["remove"]]);
-
-            return $output;
-        }
-
-        if ( count($output) == 0 ) {
-            $output[$input['post_type']] = $input;
-
-            return $output;
-        }
-
-        foreach ($output as $key => $value) {
-            if ($input['post_type'] === $key) {
-                $output[$key] = $input;
-            } else {
-                $output[$input['post_type']] = $input;
-            }
-        }
-
-        return $output;
-    }
-
-	public function adminSectionManager()
-	{
-		echo 'Manage the Sections and Features of this Plugin by activating the checkboxes from the following list.';
-	}
-
-	public function checkboxField( $args )
-	{
-		$name = $args['label_for'];
-		$classes = $args['class'];
-		$option_name = $args['option_name'];
-		$checkbox = get_option( $option_name );
-		$checked = isset($checkbox[$name]) ? ($checkbox[$name] ? true : false) : false;
-
-		echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="1" class="" ' . ( $checked ? 'checked' : '') . '><label for="' . $name . '"><div></div></label></div>';
-	}
-
-    public function textField( $args )
-    {
-        $name = $args['label_for'];
-        $option_name = $args['option_name'];
-        $value = '';
-
-        if ( isset($_POST["edit_post"]) ) {
-            $input = get_option( $option_name );
-            $value = $input[$_POST["edit_post"]][$name];
-        }
-
-        echo '<input type="text" class="regular-text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="' . $value . '" placeholder="' . $args['placeholder'] . '" required>';
-    }
 
     /**
      * Sanitize each setting field as needed
      *
      * @param array $args Contains all settings fields as array keys
+     * @return array
      */
 
-    public function sanitize($args)
+    public function sanitize(array $args): array
     {
-        $new_input = array();
+        $output = array();
 
-        if (isset($args['logo']))
-            $new_input['logo'] = $args['logo'];
+        foreach ($this->managers as $row) {
+            foreach ($row['fields'] as $key => $value) {
 
-        if (isset($args['banner']))
-            $new_input['banner'] = $args['banner'];
+                if (isset($args[$key])) {
+                    $output[$key] = ($args[$key]);
+                }
+            }
+        }
+        return $output;
+    }
 
-        if (isset($args['banner_link']))
-            $new_input['banner_link'] = sanitize_text_field($args['banner_link']);
+    /**
+     * @param $args
+     */
+    public function text_callback($args)
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
 
-        if (isset($args['company_name']))
-            $new_input['company_name'] = sanitize_text_field($args['company_name']);
+        printf(
+            '<input type="text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="regular-text ' . $classes . '" value="%s" />',
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
+        );
+    }
 
-        if (isset($args['font_family']))
-            $new_input['font_family'] = sanitize_text_field($args['font_family']);
+    /**
+     * @param $args
+     */
+    public function textarea_callback($args)
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
 
-        if (isset($args['baseline']))
-            $new_input['baseline'] = sanitize_text_field($args['baseline']);
+        printf(
+            '<textarea id="' . $name . '" name="' . $option_name . '[' . $name . ']">%s</textarea>',
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
+        );
+    }
 
-        if (isset($args['address']))
-            $new_input['address'] = sanitize_text_field($args['address']);
+    /**
+     * @param $args
+     */
+    public function image_callback($args)
+    {
 
-        if (isset($args['phone']))
-            $new_input['phone'] = sanitize_text_field($args['phone']);
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
 
-        if (isset($args['website']))
-            $new_input['website'] = sanitize_text_field($args['website']);
+        printf('<img id="' . $name . '_image" src="%s" %s />', esc_attr($this->options[$name]), empty($this->options[$name]) ? 'hidden' : '');
 
-        if (isset($args['facebook']))
-            $new_input['facebook'] = sanitize_text_field($args['facebook']);
+        printf(
+            '<input type="text" id="' . $name . '_input_url" name="' . $option_name . '[' . $name . ']" class="' . $classes . '" value="%s" />
+            <input id="remove_' . $name . '_button" type="button" class="button-secondary" value="Remove" %s />
+            <input id="upload_' . $name . '_button" type="button" class="button-primary" value="Choose ' . $name . '" />',
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : '', empty($this->options[$name]) ? 'hidden' : ''
+        );
+    }
 
-        if (isset($args['youtube']))
-            $new_input['youtube'] = sanitize_text_field($args['youtube']);
+    /**
+     * @param $args
+     */
+    public function color_picker_callback($args)
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
 
-        if (isset($args['linkedin']))
-            $new_input['linkedin'] = sanitize_text_field($args['linkedin']);
+        printf(
+            '<input type="text" name="' . $option_name . '[' . $name . ']" value="%s" class="color-picker ' . $classes . '" data-default-color="#000000" >',
+            (isset($this->options[$name])) ? $this->options[$name] : '');
+    }
 
-        if (isset($args['twitter']))
-            $new_input['twitter'] = sanitize_text_field($args['twitter']);
+    /**
+     * @param $args
+     */
+    public function font_family_callback($args)
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
 
-        if (isset($args['tiktok']))
-            $new_input['tiktok'] = sanitize_text_field($args['tiktok']);
+        $font = array('Arial', 'Calibri', 'Cambria', 'Comic Sans MS', 'Courier', 'Georgia', 'Garamond', 'Open Sans', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana');
 
-        if (isset($args['instagram']))
-            $new_input['instagram'] = sanitize_text_field($args['instagram']);
+        echo '<select name="' . $option_name . '[' . $name . ']" id="' . $name . '">';
 
-        if (isset($args['template']))
-            $new_input['template'] = $args['template'];
-
-        if (isset($args['additional_content']))
-            $new_input['additional_content'] =  $args['additional_content'];
-
-        // Validate text_color Color
-        $text_color = trim( $args['text_color'] );
-        $text_color = strip_tags( stripslashes( $text_color ) );
-
-        // Check if is a valid hex color
-        if( FALSE === $this->check_color( $text_color ) ) {
-
-            // Set the error message
-            add_settings_error( 'esg_admin_settings', 'text_color_error', 'Insert a valid color for text_color', 'error' ); // $setting, $code, $message, $type
-
-            // Get the previous valid value
-            $new_input['text_color'] = $this->options['text_color'];
-
-        } else {
-
-            $new_input['text_color'] = $text_color;
+        foreach ($font as $key => $value) {
+            $selected = (isset($this->options[$name]) && $this->options[$name] === $value) ? 'selected' : '';
+            echo "<option value='$value' style='font-family:$value' $selected >$value</option>";
         }
 
-        // Validate icon_color Color
-        $icon_color = trim( $args['icon_color'] );
-        $icon_color = strip_tags( stripslashes( $icon_color ) );
+        echo '</select>';
+    }
 
-        // Check if is a valid hex color
-        if( FALSE === $this->check_color( $icon_color ) ) {
+    /**
+     *
+     */
+    public function template_callback()
+    {
+//
+//        printf(
+//            '<label><input type="radio" id="' . $name . '" name="esg_admin_settings[template]" class="regular-text" value="' . $name . '" %s/><img src="%s" width="200px"/></label>',
+//            ($this->options['template'] == $name ) ? 'checked' : '', $this->plugin_url . '/assets/img/studio-krack-template.png'
+//        );
 
-            // Set the error message
-            add_settings_error( 'esg_admin_settings', 'icon_color_error', 'Insert a valid color for icon_color', 'error' ); // $setting, $code, $message, $type
+        printf(
+            '<label><input type="radio" id="studio-krack" name="esg_admin_settings[template]" class="regular-text" value="studio-krack" %s/><img src="%s" width="200px"/></label>',
+            ($this->options['template'] == 'studio-krack') ? 'checked' : '', $this->plugin_url . '/assets/img/studio-krack-template.png'
+        );
+    }
 
-            // Get the previous valid value
-            $new_input['icon_color'] = $this->options['icon_color'];
 
-        } else {
+    /**
+     * @param $value
+     * @return bool
+     */
+    public function check_color($value): bool // unused at the moment
+    {
 
-            $new_input['icon_color'] = $icon_color;
+        if (preg_match('/^#[a-f0-9]{6}$/i', $value)) { // if user insert a HEX color with #
+            return true;
         }
 
-        // Validate link_color Color
-        $link_color = trim( $args['link_color'] );
-        $link_color = strip_tags( stripslashes( $link_color ) );
-
-        // Check if is a valid hex color
-        if( FALSE === $this->check_color( $link_color ) ) {
-
-            // Set the error message
-            add_settings_error( 'esg_admin_settings', 'link_color_error', 'Insert a valid color for link_color', 'error' ); // $setting, $code, $message, $type
-
-            // Get the previous valid value
-            $new_input['link_color'] = $this->options['link_color'];
-
-        } else {
-
-            $new_input['link_color'] = $text_color;
-        }
-
-        return $new_input;
+        return false;
     }
 }

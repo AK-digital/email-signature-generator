@@ -6,15 +6,30 @@ namespace Includes\Api;
 
 class SettingsApi
 {
-	public $admin_pages = array();
+    /**
+     * @var array
+     */
+    public $admin_pages = array();
 
-	public $settings = array();
+    /**
+     * @var array
+     */
+    public $settings = array();
 
-	public $sections = array();
+    /**
+     * @var array
+     */
+    public $sections = array();
 
-	public $fields = array();
+    /**
+     * @var array
+     */
+    public $fields = array();
 
-	public function register()
+    /**
+     *
+     */
+    public function register()
 	{
 		if ( ! empty($this->admin_pages) || ! empty($this->admin_subpages) ) {
 			add_action( 'admin_menu', array( $this, 'addAdminMenu' ) );
@@ -25,42 +40,64 @@ class SettingsApi
 		}
 	}
 
-	public function addPages( array $pages )
+    /**
+     * @param array $pages
+     * @return $this
+     */
+    public function addPages(array $pages )
 	{
 		$this->admin_pages = $pages;
 
 		return $this;
 	}
 
-	public function addAdminMenu()
+    /**
+     *
+     */
+    public function addAdminMenu()
 	{
 		foreach ( $this->admin_pages as $page ) {
 			add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'], $page['icon_url'], $page['position'] );
 		}
 	}
 
-	public function setSettings( array $settings )
-	{
+    /**
+     * @param array $settings
+     * @return $this
+     */
+    public function setSettings(array $settings ): SettingsApi
+    {
 		$this->settings = $settings;
 
 		return $this;
 	}
 
-	public function setSections( array $sections )
-	{
+    /**
+     * @param array $sections
+     * @return $this
+     */
+    public function setSections(array $sections ): SettingsApi
+    {
 		$this->sections = $sections;
 
 		return $this;
 	}
 
-	public function setFields( array $fields )
-	{
+    /**
+     * @param array $fields
+     * @return $this
+     */
+    public function setFields(array $fields ): SettingsApi
+    {
 		$this->fields = $fields;
 
 		return $this;
 	}
 
-	public function registerCustomFields()
+    /**
+     *
+     */
+    public function registerCustomFields()
 	{
 		// register setting
 		foreach ( $this->settings as $setting ) {

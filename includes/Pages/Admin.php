@@ -10,6 +10,10 @@ use Includes\Base\BaseController;
 use Includes\Api\Callbacks\AdminCallbacks;
 use Includes\Api\Callbacks\ManagerCallbacks;
 
+/**
+ * Class Admin
+ * @package Includes\Pages
+ */
 class Admin extends BaseController
 {
     /**
@@ -18,12 +22,24 @@ class Admin extends BaseController
 
     public $fields = array();
 
+    /**
+     * @var
+     */
     public $settings;
 
+    /**
+     * @var
+     */
     public $callbacks;
 
+    /**
+     * @var
+     */
     public $callbacks_mngr;
 
+    /**
+     * @var array
+     */
     public $pages = array();
 
 
@@ -38,17 +54,19 @@ class Admin extends BaseController
 
         $this->callbacks_mngr = new ManagerCallbacks();
 
-
         $this->setPages();
 
         $this->setSettings();
         $this->setSections();
         $this->setFields();
 
-        $this->settings->addPages( $this->pages )->register();
+        $this->settings->addPages($this->pages)->register();
     }
 
 
+    /**
+     * Set wordpress admin page for the plugin
+     */
     public function setPages()
     {
         $this->pages = array(
@@ -57,89 +75,83 @@ class Admin extends BaseController
                 'menu_title' => 'Email Signature',
                 'capability' => 'manage_options',
                 'menu_slug' => 'esg-settings',
-                'callback' => array( $this->callbacks, 'adminDashboard' ),
+                'callback' => array($this->callbacks, 'adminDashboard'),
                 'icon_url' => 'dashicons-id',
                 'position' => 110
             )
         );
     }
 
+    /**
+     * Save the plugin settings on admin page update - see ManagerCallbacks.php to handle the sanitizer
+     */
     public function setSettings()
     {
         $args = array(
             array(
-                'esg_option_group', // Option group
-                'esg_admin_settings', // Option name
-                array($this->callbacks_mngr, 'sanitize') // Sanitize
+                'option_group' => 'esg_option_group',
+                'option_name' => 'esg_admin_settings',
+                'callback' => array($this->callbacks_mngr, 'sanitize')
             )
         );
 
-        $this->settings->setSettings( $args );
+        $this->settings->setSettings($args);
     }
 
-
-
+    /**
+     * Set wordpress admin page sections for the plugin
+     */
     public function setSections()
     {
         $args = array();
 
-        foreach ( $this->section_managers as $key => $value ) {
-            $args[] = array(
-                'id' => str_replace('-','_', $key),
-                'title' => $value,
-                'callback' => array( $this, 'print_section_info'),
-                'page' => $key,
+        foreach ($this->managers as $row) {
+
+            $args[] = array( // Set section from $managers
+                'id' => $this->toSlug($row['id']),
+                'title' => $row['title'],
+                'callback' => array($this, 'print_section_info'),
+                'page' => $row['id'],
             );
         }
-        $this->settings->setSections( $args );
+
+        $this->settings->setSections($args);
     }
 
+    /**
+     * et wordpress admin page fields for the plugin
+     */
     public function setFields()
     {
+
         $args = array();
+        foreach ($this->managers as $row) {
 
-        foreach ( $this->field_managers as $key => $value ) {
-            $args[] = array(
-                'id' => str_replace('-','_', $key),
-                'title' => $value,
-                'callback' => array( $this->callbacks, str_replace('-','_', $key) . '_callback' ),
-                'page' => 'esg-settings-general',
-                'section' => 'setting_section_general',
-                'args' => array(
-                    'option_name' => 'esg_admin_settings',
-                    'label_for' => $key,
-                    'class' => 'ui-toggle'
-                )
-            );
+            foreach ($row['fields'] as $key => $value) {  // Set fields from $managers['fields']
+                $args[] = [
+                    'id' => $this->toSlug($key),
+                    'title' => $value['title'],
+                    'callback' => array($this->callbacks_mngr, $value['input_type'] . '_callback'),
+                    'page' => $row['id'],
+                    'section' => $this->toSlug($row['id']),
+                    'args' => [
+                        'option_name' => 'esg_admin_settings',
+                        'label_for' => $key,
+                        'class' => $value['class'],
+                    ],
+                ];
+            }
         }
-
-        $this->settings->setFields( $args );
+        $this->settings->setFields($args);
     }
 
     /**
-     * Options page callback
+     * Print section subtitle infos
      */
-    public function create_admin_page()
-    {
-        return require_once( "$this->plugin_path/templates/admin.php" );
-    }
-
-    /**
-     * Print the Section text
-     */
-    public function print_section_info()
+    public
+    function print_section_info()
     {
         print '<p>Ces informations seront affichées dans chaque signature créée avec ce plugin</p>';
     }
 
-
-
-    public function check_color( $value ) {
-
-        if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) { // if user insert a HEX color with #
-            return true;
-        }
-
-        return false;
-    }
 }
