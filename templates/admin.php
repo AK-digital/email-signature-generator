@@ -1,5 +1,7 @@
+
 <div id="esg-settings" class="wrap">
     <h1 id="esg-title"><?= __('Options du générateur de signature email'); ?></h1>
+    <?php settings_errors(); ?>
     <form method="post" action="options.php">
 
         <div class="js-tabs" id="tabs">

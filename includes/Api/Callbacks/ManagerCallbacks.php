@@ -2,77 +2,154 @@
 /**
  * @package  emailSignatureGenerator
  */
+
 namespace Includes\Api\Callbacks;
 
 use Includes\Base\BaseController;
 
+/**
+ * Class ManagerCallbacks
+ * @package Includes\Api\Callbacks
+ */
 class ManagerCallbacks extends BaseController
 {
-	public function checkboxSanitize( $input )
-	{
-		$output = array();
 
-		foreach ( $this->managers as $key => $value ) {
-			$output[$key] = isset( $input[$key] ) ? true : false;
-		}
+    /**
+     * Sanitize each setting field as needed
+     *
+     * @param array $args Contains all settings fields as array keys
+     * @return array
+     */
 
-		return $output;
-	}
-
-    public function textSanitize( $input )
+    public function sanitize(array $args): array
     {
-        $output = get_option('esg_plugin');
+        $output = array();
 
-        if ( isset($_POST["remove"]) ) {
-            unset($output[$_POST["remove"]]);
+        foreach ($this->managers as $row) {
+            foreach ($row['fields'] as $key => $value) {
 
-            return $output;
-        }
-
-        if ( count($output) == 0 ) {
-            $output[$input['post_type']] = $input;
-
-            return $output;
-        }
-
-        foreach ($output as $key => $value) {
-            if ($input['post_type'] === $key) {
-                $output[$key] = $input;
-            } else {
-                $output[$input['post_type']] = $input;
+                if (isset($args[$key])) {
+                    $output[$key] = ($args[$key]);
+                }
             }
         }
-
         return $output;
     }
 
-	public function adminSectionManager()
-	{
-		echo 'Manage the Sections and Features of this Plugin by activating the checkboxes from the following list.';
-	}
-
-	public function checkboxField( $args )
-	{
-		$name = $args['label_for'];
-		$classes = $args['class'];
-		$option_name = $args['option_name'];
-		$checkbox = get_option( $option_name );
-		$checked = isset($checkbox[$name]) ? ($checkbox[$name] ? true : false) : false;
-
-		echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="1" class="" ' . ( $checked ? 'checked' : '') . '><label for="' . $name . '"><div></div></label></div>';
-	}
-
-    public function textField( $args )
+    /**
+     * @param $args
+     */
+    public function text_callback($args)
     {
         $name = $args['label_for'];
+        $classes = $args['class'];
         $option_name = $args['option_name'];
-        $value = '';
 
-        if ( isset($_POST["edit_post"]) ) {
-            $input = get_option( $option_name );
-            $value = $input[$_POST["edit_post"]][$name];
+        printf(
+            '<input type="text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="regular-text ' . $classes . '" value="%s" />',
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
+        );
+    }
+
+    /**
+     * @param $args
+     */
+    public function textarea_callback($args)
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
+
+        printf(
+            '<textarea id="' . $name . '" name="' . $option_name . '[' . $name . ']">%s</textarea>',
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
+        );
+    }
+
+    /**
+     * @param $args
+     */
+    public function image_callback($args)
+    {
+
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
+
+        printf('<img id="' . $name . '_image" src="%s" %s />', esc_attr($this->options[$name]), empty($this->options[$name]) ? 'hidden' : '');
+
+        printf(
+            '<input type="text" id="' . $name . '_input_url" name="' . $option_name . '[' . $name . ']" class="' . $classes . '" value="%s" />
+            <input id="remove_' . $name . '_button" type="button" class="button-secondary" value="Remove" %s />
+            <input id="upload_' . $name . '_button" type="button" class="button-primary" value="Choose ' . $name . '" />',
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : '', empty($this->options[$name]) ? 'hidden' : ''
+        );
+    }
+
+    /**
+     * @param $args
+     */
+    public function color_picker_callback($args)
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
+
+        printf(
+            '<input type="text" name="' . $option_name . '[' . $name . ']" value="%s" class="color-picker ' . $classes . '" data-default-color="#000000" >',
+            (isset($this->options[$name])) ? $this->options[$name] : '');
+    }
+
+    /**
+     * @param $args
+     */
+    public function font_family_callback($args)
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
+
+        $font = array('Arial', 'Calibri', 'Cambria', 'Comic Sans MS', 'Courier', 'Georgia', 'Garamond', 'Open Sans', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana');
+
+        echo '<select name="' . $option_name . '[' . $name . ']" id="' . $name . '">';
+
+        foreach ($font as $key => $value) {
+            $selected = (isset($this->options[$name]) && $this->options[$name] === $value) ? 'selected' : '';
+            echo "<option value='$value' style='font-family:$value' $selected >$value</option>";
         }
 
-        echo '<input type="text" class="regular-text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="' . $value . '" placeholder="' . $args['placeholder'] . '" required>';
+        echo '</select>';
+    }
+
+    /**
+     *
+     */
+    public function template_callback()
+    {
+//
+//        printf(
+//            '<label><input type="radio" id="' . $name . '" name="esg_admin_settings[template]" class="regular-text" value="' . $name . '" %s/><img src="%s" width="200px"/></label>',
+//            ($this->options['template'] == $name ) ? 'checked' : '', $this->plugin_url . '/assets/img/studio-krack-template.png'
+//        );
+
+        printf(
+            '<label><input type="radio" id="studio-krack" name="esg_admin_settings[template]" class="regular-text" value="studio-krack" %s/><img src="%s" width="200px"/></label>',
+            ($this->options['template'] == 'studio-krack') ? 'checked' : '', $this->plugin_url . '/assets/img/studio-krack-template.png'
+        );
+    }
+
+
+    /**
+     * @param $value
+     * @return bool
+     */
+    public function check_color($value): bool // unused at the moment
+    {
+
+        if (preg_match('/^#[a-f0-9]{6}$/i', $value)) { // if user insert a HEX color with #
+            return true;
+        }
+
+        return false;
     }
 }
