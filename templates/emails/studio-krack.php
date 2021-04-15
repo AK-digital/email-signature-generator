@@ -2,7 +2,7 @@
        style="vertical-align: middle; font-size: medium;font-family:<?= $font_family ?>; text-align:left; max-width: 500px;">
     <tbody>
     <tr>
-        <td style="vertical-align: middle;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;line-height:15px;padding-top: 16px;">
+        <td style="vertical-align: middle;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;line-height:17px;padding-top: 16px;">
             <span color="<?= $text_color; ?>"
                   style="vertical-align: middle;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;font-size:14px;font-weight:700;">
                 <?= $firstname ?></span>
@@ -11,7 +11,7 @@
                     <a href="<?= $user_linkedin ?>" style="margin-left:3px;text-decoration:none;"><img
                                 src="<?= $this->plugin_url; ?>assets/img/social-icons/linkedin.png"
                                 width="15px" height="15px"
-                                style="position: relative;top:1px;vertical-align: middle;"/></a>
+                                style="position: relative;vertical-align: middle;"/></a>
             <?php endif; ?>
             <br>
             <?php if ($title): ?>
@@ -29,27 +29,26 @@
     <tr style="display:block;margin-bottom:10px;"></tr>
 
     <tr>
-        <td style="vertical-align: middle;line-height:15px;text-align:left;font-size:12px;text-decoration: none;">
+        <td style="vertical-align: middle;line-height:16px;text-align:left;font-size:12px;text-decoration: none; color:<?= $text_color; ?>; font-family:<?= $font_family ?>">
           <span style="color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;font-weight:700;">Port: </span>
-            <a href="tel:<?= $mobile; ?>" style="text-decoration:none; color:<?= $text_color; ?>; font-size: 12px;font-family:<?= $font_family ?>;"><?= $mobile; ?></a>
+            <?= $mobile; ?>
         </td>
     </tr>
     <tr>
-        <td style="vertical-align: middle;line-height:15px;text-align:left;font-size:12px;text-decoration: none;">
+        <td style="vertical-align: middle;line-height:16px;text-align:left;font-size:12px;text-decoration: none; color:<?= $text_color; ?>; font-family:<?= $font_family ?>">
     <span style="color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;font-weight:700;">Tél: </span>
-            <a href="tel:<?= $phone; ?>" style="text-decoration:none; color:<?= $text_color; ?>; font-size: 12px;font-family:<?= $font_family ?>;"><?= $phone; ?></a>
-
+            <?= $phone; ?>
         </td>
     </tr>
-    <tr style="vertical-align:middle;line-height:15px;font-size:12px;">
-        <td style="vertical-align:middle;text-align:left;text-decoration: none;">
+    <tr>
+        <td style="vertical-align:middle;text-align:left;text-decoration: none;line-height:16px;font-size:12px;">
             <span style="color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;font-weight:700;">Web: </span>
             <a href="<?= $website_url; ?>" style="font-size: 12px;font-family:<?= $font_family ?>;"><?= $website; ?></a>
         </td>
     </tr>
     <?php if ($address): ?>
-        <tr style="vertical-align:middle;line-height:15px;font-size:12px;text-decoration: none;">
-            <td style="vertical-align:middle;text-align:left;">
+        <tr>
+            <td style="vertical-align:middle;text-align:left;line-height:16px;font-size:12px;text-decoration: none;">
                 <span style="color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;font-weight:700;text-decoration: none;">Adresse: </span><span style="color:<?= $text_color; ?>; font-size: 12px;text-align:left;font-family:<?= $font_family ?>;"><?= $address; ?></span>
             </td>
         </tr>
