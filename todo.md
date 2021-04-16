@@ -28,3 +28,4 @@
 //                        $new_input['text_color'] = $text_color;
 //                    }
 //                }
+kjjkhjkjkj
