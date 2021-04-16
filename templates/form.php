@@ -1,9 +1,9 @@
 <div id="esg-main">
 	<!-- lp:insertions start body:before -->
 	<!-- lp:insertions end body:before -->
-	<!--			<h1 style="text-align: center;">Generate your e-mail signature</h1>-->
-<!--	<h1 style="text-align: center;">Signature generator by Studio Krack</h1>
-	<p style="text-align: center;">A simple	tool made to automate email signature generation.</p>-->
+
+<h1 style="text-align: center;">Signature generator by Marconinio</h1>
+	<p style="text-align: center;">A simple	tool made to automate email signature generation.</p>
 	<form action="" method="POST" name="signatureForm" enctype="multipart/form-data" id="signature-form" class="signature-form">
 
         <label for="firstname"><?= __('Prénom'); ?></label>
