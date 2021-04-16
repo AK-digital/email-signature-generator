@@ -1,5 +1,4 @@
 <section>
-
     <div class="js-tabs" id="tabs">
         <ul class="js-tabs__header">
             <li class="js-tabs__title">
@@ -23,7 +22,6 @@
                         onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><img
                             src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><?= __('Copier ma signature'); ?>
                 </button>
-                <p>JE SUIS ICI</p>
                 <button class="esg_button downloadLink qbutton">
                     <img src="<?= $this->plugin_url; ?>assets/img/download-icon.png"/><?= __('Télécharger ma signature'); ?>
                 </button>

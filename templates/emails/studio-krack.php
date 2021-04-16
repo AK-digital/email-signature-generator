@@ -1,4 +1,3 @@
-<h1>Modif ALex branche</h1>
 <table class="studio-krack-template" cellpadding="0" cellspacing="0"
        style="vertical-align: middle; font-size: medium;font-family:<?= $font_family ?>; text-align:left; max-width: 500px;">
     <tbody>
