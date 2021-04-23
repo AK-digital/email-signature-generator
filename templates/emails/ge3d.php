@@ -144,7 +144,7 @@
         <td colspan="2" width="480px"
             style="text-align:left; padding-top: 10px;font-family:<?= $font_family ?>;font-style:italic; font-size:11px;line-height:14px;color:<?= $text_color; ?>;">
             <?php if ($banner): ?>
-            <a href="<?= $banner_url ?>" style="text-decoration: none !important;"><img src="<?= $banner; ?>" alt="banner" width="480px"/></a>
+            <a href="<?= $banner_link ?>" style="text-decoration: none !important;"><img src="<?= $banner; ?>" alt="banner" width="480px"/></a>
             <?php endif; ?>
             <?php if ($additional_content): ?>
                 <span style="text-align:left; font-family:<?= $font_family ?>;font-style:italic; font-size:11px;line-height:14px; color: #79808c;"><?php print($additional_content); ?></span>
