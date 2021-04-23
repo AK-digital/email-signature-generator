@@ -22,6 +22,7 @@ class Shortcode extends BaseController
     public function get_company_data()
     {
         // Get plugin option data from the db
+        $with_form = false;
 
         $this->company_data = [
 
@@ -59,22 +60,20 @@ class Shortcode extends BaseController
 
     public function esg_form_shortcode_content()
     {
-
         // If user form is empty, return the form
         if (!isset($_POST['submit'])) {
             require_once($this->templates_path . 'form.php');
         } //Display the landing signature page
         else {
-
             $this->user_data = [
-            // Get the user data from the form
-            'firstname' => $_REQUEST['firstname'],
-            'surname' => $_REQUEST['surname'],
-            'title' => $_REQUEST['title'],
-            'mobile' => $_REQUEST['mobile'],
-            'email' => $_REQUEST['email'],
-            'user_linkedin' => $_REQUEST['linkedin'],
-        ];
+                // Get the user data from the form
+                'firstname' => $_REQUEST['firstname'],
+                'surname' => $_REQUEST['surname'],
+                'title' => $_REQUEST['title'],
+                'mobile' => $_REQUEST['mobile'],
+                'email' => $_REQUEST['email'],
+                'user_linkedin' => $_REQUEST['linkedin'],
+            ];
 
             $this->generate_page();
         }
@@ -87,14 +86,14 @@ class Shortcode extends BaseController
 
         if (is_user_logged_in()) {
             $this->user_data = [
-            'firstname' => $current_user->display_name,
-            'email' => $current_user->user_email,
-            'mobile' => get_user_meta($current_user->ID, 'esg_phone', true),
-            'title' => get_user_meta($current_user->ID, 'esg_position', true),
+                'firstname' => $current_user->display_name,
+                'email' => $current_user->user_email,
+                'mobile' => get_user_meta($current_user->ID, 'esg_phone', true),
+                'title' => get_user_meta($current_user->ID, 'esg_position', true),
 
-            // Personal social network links
-            'user_linkedin' => get_user_meta($current_user->ID, 'esg_linkedin', true),
-        ];
+                // Personal social network links
+                'user_linkedin' => get_user_meta($current_user->ID, 'esg_linkedin', true),
+            ];
 
             $this->generate_page();
         }
@@ -112,7 +111,7 @@ class Shortcode extends BaseController
         //create website link name whithout https
 
         $website = $website_url;
-        $website = preg_replace('#^https?://#', '',  $website);
+        $website = preg_replace('#^https?://#', '', $website);
 
         // Prepare the object, include the template and store in the $signature variable
         ob_start();
