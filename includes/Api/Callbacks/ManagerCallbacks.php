@@ -109,7 +109,7 @@ class ManagerCallbacks extends BaseController
         $classes = $args['class'];
         $option_name = $args['option_name'];
 
-        $font = array('Arial', 'Calibri', 'Cambria', 'Comic Sans MS', 'Courier', 'Georgia', 'Garamond', 'Open Sans', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana');
+        $font = array('Arial', 'Calibri', 'Cambria', 'Comic Sans MS', 'Courier', 'Georgia', 'Garamond', 'Helvetica', 'Open Sans', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana');
 
         echo '<select name="' . $option_name . '[' . $name . ']" id="' . $name . '">';
 

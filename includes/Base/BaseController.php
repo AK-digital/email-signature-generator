@@ -111,6 +111,11 @@ class BaseController
                         'input_type' => 'text',
                         'class' => '',
                     ],
+                    'twitter' => [
+                        'title' => 'Url compte Twitter',
+                        'input_type' => 'text',
+                        'class' => '',
+                    ],
                 ],
             ],
             [
@@ -142,9 +147,9 @@ class BaseController
                         'input_type' => 'color_picker',
                         'class' => '',
                     ],
-                    'link_color' =>
+                    'highlight_color' =>
                         [
-                            'title' => 'Couleur des liens',
+                            'title' => 'Couleur de mise en avant',
                             'input_type' => 'color_picker',
                             'class' => '',
                         ],

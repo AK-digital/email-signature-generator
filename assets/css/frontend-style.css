@@ -83,10 +83,7 @@
 #sign-preview{
     margin-bottom: 38px;
     margin-top: 38px;
-}
-
-#sign-preview table{
-    margin-bottom: 30px;
+    padding-bottom:30px;
 }
 
 #sign-preview table td {

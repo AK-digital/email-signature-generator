@@ -50,6 +50,7 @@ class Shortcode extends BaseController
             'banner_link' => $this->options['banner_link'],
             'text_color' => $this->options['text_color'],
             'icon_color' => $this->options['icon_color'],
+            'highlight_color' => $this->options['highlight_color'],
 
             // More company variables
             'additional_content' => $this->options['additional_content'],

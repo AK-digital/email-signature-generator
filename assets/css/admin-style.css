@@ -99,9 +99,9 @@ p.submit {
 }
 
 #esg-settings [type=radio]:not(:checked) + img {
-    opacity: 0.5;
+    opacity: 0.55;
     filter: grayscale(.25);
-    transform: scale(.95);
+    transform: scale(.96);
     transition: transform 150ms;
 }
 
