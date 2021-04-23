@@ -26,12 +26,12 @@ var fileName =  'signature.html'; // You can use the .txt extension if you want
 
 jQuery(document).ready(function ($) {
     $('.esg_button-copy').click(function () {
-        $('.esg_button-copy').html('Copied to clipboard !');
+        $('.esg-copy-string').html('Copied to clipboard !');
 
         setTimeout(copyAgain, 1200);
 
         function copyAgain() {
-            $('.esg_button-copy').html('Copy to clipboard again');
+            $('.esg-copy-string').html('Copy to clipboard again');
         }
     });
 

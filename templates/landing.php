@@ -20,10 +20,13 @@
             <div class="esg_action-bar">
                 <button class="esg_button esg_button-copy qbutton"
                         onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><img
-                            src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><?= __('Copier ma signature'); ?>
+                            src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><span class="esg-copy-string"><?= __('Copier'); ?></span>
                 </button>
                 <button class="esg_button downloadLink qbutton">
-                    <img src="<?= $this->plugin_url; ?>assets/img/download-icon.png"/><?= __('Télécharger ma signature'); ?>
+                    <img src="<?= $this->plugin_url; ?>assets/img/download-icon.png"/><?= __('Télécharger'); ?>
+                </button>
+                <button class="esg_button qbutton" onclick="window.location.href=window.location.href">
+                    <img src="<?= $this->plugin_url; ?>assets/img/edit-icon.png"/><?= __('Modifier'); ?>
                 </button>
             </div>
         </div>
@@ -35,11 +38,15 @@
             <div class="esg_action-bar">
                 <button class="esg_button esg_button-copy qbutton default"
                         onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><img
-                            src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><?= __('Copier ma signature'); ?>
+                            src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><span class="esg-copy-string"><?= __('Copier'); ?></span>
                 </button>
                 <button class="esg_button downloadLink qbutton default"><img
-                            src="<?= $this->plugin_url; ?>assets/img/download-icon.png"/><?= __('Télécharger ma signature'); ?>
+                            src="<?= $this->plugin_url; ?>assets/img/download-icon.png"/><?= __('Télécharger'); ?>
                 </button>
+                <button class="esg_button qbutton" onclick="window.location.href=window.location.href">
+                    <img src="<?= $this->plugin_url; ?>assets/img/edit-icon.png"/><?= __('Modifier'); ?>
+                </button>
+
             </div>
         </div>
         <div id="tab-1" class="js-tabs__content">
@@ -140,17 +147,10 @@
                 <li> <?= __('Parcourez et sélectionnez votre fichier signature.html, puis cliquez sur "OK"') ?> </li>
             </ol>
         </div>
-        </div>
+    </div>
     </div>
 </section>
 <section>
-    <div id="esg-landing_footer">
-        <?php if (isset($_POST['submit'])): ?>
-            <form action="<?php unset($_POST['submit']) ?>">
-                <input type="submit" class="qbutton default" name="submit" value="<?= __('Modifier ma signature') ?>"/>
-            </form>
-        <?php endif; ?>
-    </div>
     <script type="text/javascript">
         var tabs = new Tabs({
             elem: "tabs",

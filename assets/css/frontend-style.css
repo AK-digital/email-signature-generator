@@ -35,7 +35,7 @@
 }
 
 .esg_action-bar button {
-    width: calc(50% - 6px);
+    width: calc(33% - 10px);
     display: flex;
     flex-direction: row;
     padding: 0;
