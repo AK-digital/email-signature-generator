@@ -44,7 +44,7 @@ class BaseController
                 'title' => 'Templates de signatures',
                 'fields' => [
                     'template' => [
-                        'title' => 'Studio Krack',
+                        'title' => 'Choix du template',
                         'input_type' => 'template',
                     ],
                 ],

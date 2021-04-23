@@ -126,18 +126,27 @@ class ManagerCallbacks extends BaseController
      */
     public function template_callback()
     {
-//
-//        printf(
-//            '<label><input type="radio" id="' . $name . '" name="esg_admin_settings[template]" class="regular-text" value="' . $name . '" %s/><img src="%s" width="200px"/></label>',
-//            ($this->options['template'] == $name ) ? 'checked' : '', $this->plugin_url . '/assets/img/studio-krack-template.png'
-//        );
 
-        printf(
-            '<label><input type="radio" id="studio-krack" name="esg_admin_settings[template]" class="regular-text" value="studio-krack" %s/><img src="%s" width="200px"/></label>',
-            ($this->options['template'] == 'studio-krack') ? 'checked' : '', $this->plugin_url . '/assets/img/studio-krack-template.png'
-        );
+        $emails_path = $this->templates_path . '/emails';
+
+       //check if path exist and not empty
+        if (is_dir($emails_path) && !empty($emails_path)) {
+
+            if ($handle = opendir($emails_path)) {
+
+                while (false !== ($entry = readdir($handle))) {
+                    if ($entry != "." && $entry != ".." && pathinfo($entry)["extension"] === "php") {
+
+                        $entry = str_replace('.php', '', $entry);
+                        printf(
+                            '<label><input type="radio" id="%s" name="esg_admin_settings[template]" class="regular-text" value="%s" %s/><img src="%s" width="150px"/></label>',
+                            $entry, $entry, ($this->options['template'] == $entry) ? 'checked' : '', $this->plugin_url . '/assets/img/' . $entry . '-template.png');
+                    }
+                }
+                closedir($handle);
+            }
+        }
     }
-
 
     /**
      * @param $value
