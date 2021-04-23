@@ -24,18 +24,18 @@ function downloadInnerHtml(filename, elId, mimeType) {
 
 var fileName =  'signature.html'; // You can use the .txt extension if you want
 
-jQuery(document).ready(function() {
-    jQuery('.esg_button-copy').click(function (e) {
-        jQuery('.esg_button-copy').html('Copied to clipboard !');
+jQuery(document).ready(function ($) {
+    $('.esg_button-copy').click(function () {
+        $('.esg_button-copy').html('Copied to clipboard !');
 
         setTimeout(copyAgain, 1200);
 
         function copyAgain() {
-            jQuery('.esg_button-copy').html('Copy to clipboard again');
+            $('.esg_button-copy').html('Copy to clipboard again');
         }
     });
 
-    jQuery('.downloadLink').click(function(){
+    $('.downloadLink').click(function(){
         downloadInnerHtml(fileName, 'sign-preview','text/html');
     });
 });

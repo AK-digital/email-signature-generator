@@ -1,8 +1,4 @@
 <div id="esg-main">
-    <p>Coucou Aurélien</p>
-	<!-- lp:insertions start body:before -->
-	<!-- lp:insertions end body:before -->
-
 	<p style="text-align: center;">A simple	tool made to automate email signature generation.</p>
 	<form action="" method="POST" name="signatureForm" enctype="multipart/form-data" id="signature-form" class="signature-form">
 
