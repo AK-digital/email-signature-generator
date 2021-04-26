@@ -1,6 +1,6 @@
 <style>
     a:-webkit-any-link {
-    text-decoration:none !important;
+        text-decoration: none !important;
     }
 </style>
 
@@ -16,38 +16,38 @@
             <table style="margin-left:10px;border-collapse: collapse;text-decoration:none !important;">
                 <?php endif; ?>
 
-                <?php if ($firstname || $surname | $title): ?><?php if ($user_linkedin): ?>
-
-                <?php endif; ?>
-                    <tr>
-
-                        <?php if ($firstname || $surname): ?>
-                            <td style="text-align:left;">
-                                <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;"><?= $firstname ?></span>
-                                <span> </span>
-                                <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;"><?= $surname ?></span>
-                                <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;"><a href="<?= $user_linkedin ?>"
-                                            style="margin-left:3px;text-decoration:none !important;"><img
-                                                src="<?= $this->plugin_url; ?>assets/img/social-icons/linkedin.png"
-                                                width="15px" height="15px"
-                                                style="position: relative;"/></a></span>
-                            </td>
+                <?php if ($firstname || $surname): ?>
+                <tr>
+                    <td style="text-align:left;">
+                        <?php if ($firstname): ?>
+                        <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;"><?= $firstname ?></span>
                         <?php endif; ?>
-                    </tr>
-                    <tr>
-                        <?php if ($title): ?>
-                            <td style="text-align:left;">
-                                <span style="text-align:left;text-decoration:none !important; color:<?= $text_color; ?>; font-size:14px;font-weight:600;font-family:<?= $font_family ?>;"><?= $title ?></span>
-                            </td>
+                        <?php if ($surname): ?>
+                        <span> </span>
+                        <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;"><?= $surname ?></span>
                         <?php endif; ?>
-
+                        <?php if ($user_linkedin): ?>
+                            <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;">
+                            <a href="<?= $user_linkedin ?>"
+                               style="margin-left:3px;text-decoration:none !important;"><img
+                                        src="<?= $this->plugin_url; ?>assets/img/social-icons/linkedin.png"
+                                        width="15px" height="15px"
+                                        style="position: relative;"/></a></span>
+                        <?php endif; ?>
+                    </td>
+                    <?php endif; ?>
+                </tr>
+                <?php if ($title): ?>
+                    <tr>
+                        <td style="text-align:left;">
+                            <span style="text-align:left;text-decoration:none !important; color:<?= $text_color; ?>; font-size:14px;font-weight:600;font-family:<?= $font_family ?>;"><?= $title ?></span>
+                        </td>
                     </tr>
                 <?php endif; ?>
 
                 <tr style="display:block;margin-bottom:7px;"></tr>
 
                 <?php if ($email): ?>
-
                     <tr>
                         <td style="vertical-align:top;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>">
                              <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle;">
@@ -144,7 +144,7 @@
         <td colspan="2" width="480px"
             style="text-align:left; padding-top: 10px;font-family:<?= $font_family ?>;font-style:italic; font-size:11px;line-height:14px;color:<?= $text_color; ?>;">
             <?php if ($banner): ?>
-            <a href="<?= $banner_link ?>" style="text-decoration: none !important;"><img src="<?= $banner; ?>" alt="banner" width="480px"/></a>
+                <a href="<?= $banner_link ?>" style="text-decoration: none !important;"><img src="<?= $banner; ?>" alt="banner" width="480px"/></a>
             <?php endif; ?>
             <?php if ($additional_content): ?>
                 <span style="text-align:left; font-family:<?= $font_family ?>;font-style:italic; font-size:11px;line-height:14px; color: #79808c;"><?php print($additional_content); ?></span>
