@@ -39,6 +39,28 @@ class ManagerCallbacks extends BaseController
     /**
      * @param $args
      */
+    public function number_callback($args)
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
+
+        printf(
+            '<input type="text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="regular-text ' . $classes . '" value="%s" />',
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
+        );
+
+        foreach (   $subsettings as $key => $input_type){
+            printf(
+                "<input type='$input_type' id='$key' name='$option_name[$key]' class='regular-text $classes' value='%s' />",
+                isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
+            );
+        }
+    }
+
+    /**
+     * @param $args
+     */
     public function text_callback($args)
     {
         $name = $args['label_for'];

@@ -60,6 +60,13 @@ class BaseController
                     'company-name' => [
                         'title' => 'Nom de l\'entreprise',
                         'input_type' => 'text',
+                        'sub_settings' => [
+                            'font-weight' => 'number',
+                            'font-style' => 'number',
+                            'font-size' => 'number',
+                            'line-height' => 'number',
+                            'text-align' => 'number',
+                        ]
                     ],
                     'baseline' => [
                         'title' => 'Slogan',

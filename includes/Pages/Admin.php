@@ -140,6 +140,21 @@ class Admin extends BaseController
                         'class' => $value['class'],
                     ],
                 ];
+                foreach ($value['sub_settings'] as $k => $v) {
+                    var_dump($k);
+                    var_dump($v);
+                    $args[] = [
+                        'id' => $this->toSlug($key),
+                        'title' => $k,
+                        'callback' => array($this->callbacks_mngr, $k . '_callback'),
+                        'page' => $row['id'],
+                        'section' => $this->toSlug($row['id']),
+                        'args' => [
+                            'option_name' => 'esg_admin_settings',
+                            'label_for' => $k,
+                        ],
+                    ];
+                }
             }
         }
         $this->settings->setFields($args);
