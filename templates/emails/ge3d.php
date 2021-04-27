@@ -27,12 +27,12 @@
                         <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;"><?= $surname ?></span>
                         <?php endif; ?>
                         <?php if ($user_linkedin): ?>
-                            <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;">
+                            <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;width:14px;height:14px;">
                             <a href="<?= $user_linkedin ?>"
                                style="margin-left:3px;text-decoration:none !important;"><img
                                         src="<?= $this->plugin_url; ?>assets/img/social-icons/linkedin.png"
-                                        width="15px" height="15px"
-                                        style="position: relative;"/></a></span>
+                                        width="14px" height="14px"
+                                        style="position: relative;width:14px;height:14px;"/></a></span>
                         <?php endif; ?>
                     </td>
                     <?php endif; ?>
@@ -50,9 +50,9 @@
                 <?php if ($email): ?>
                     <tr>
                         <td style="vertical-align:top;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>">
-                             <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle;">
-                                <img src="https://www.geometre-expert-paris.fr/wp-content/uploads/2021/04/Picto-mail-gris.png"
-                                     alt="picto mail" style="width:12px;margin-right:5px;color:<?= $icon_color ?>;">
+                             <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle;width:12px;height:10px;">
+                                <img width="12px" height="10px" src="https://www.geometre-expert-paris.fr/wp-content/uploads/2021/04/Picto-mail-gris.png"
+                                     alt="picto mail" style="width:12px;height:10px;margin-right:5px;color:<?= $icon_color ?>;">
                             </span>
                             <a href="mailto:<?= $email; ?>" style="color:<?= $text_color; ?>;text-decoration:none;">
                                 <span style="text-align:left;font-size:14px;font-weight:400;line-height:17px;font-family:<?= $font_family ?>;color:<?= $text_color ?>;text-decoration:none;"><?= $email; ?></span></a>
@@ -63,9 +63,9 @@
                 <?php if ($phone): ?>
                     <tr>
                         <td style="vertical-align:middle;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>">
-                             <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle;">
-                                <img src="https://www.geometre-expert-paris.fr/wp-content/uploads/2021/04/Picto-phone-gris.png"
-                                     alt="picto mobile" style="width:12px;margin-right:5px;color:<?= $icon_color ?>;">
+                             <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle; width:12px;height:12px;">
+                                <img width="12px" height="12px" src="https://www.geometre-expert-paris.fr/wp-content/uploads/2021/04/Picto-phone-gris.png"
+                                     alt="picto mobile" style="width:12px;height:12px;margin-right:5px;color:<?= $icon_color ?>;">
                             </span>
                             <span style="text-align:left;font-size:14px;font-weight:400;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;">
                                  <?= $phone; ?>
@@ -77,10 +77,10 @@
                 <?php if ($mobile): ?>
                     <tr>
                         <td style="vertical-align:middle;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;text-decoration:none !important;">
-                             <span style="text-align:left;line-height:17px;display:inline-block;vertical-align:middle;text-decoration:none !important;">
-                                <img src="https://www.geometre-expert-paris.fr/wp-content/plugins/email-signature-generator/assets/img/mobile-icon.png"
+                             <span style="text-align:left;line-height:17px;display:inline-block;vertical-align:middle;text-decoration:none !important;width:12px;height:12px;">
+                                <img width="12px" height="12px" src="https://www.geometre-expert-paris.fr/wp-content/plugins/email-signature-generator/assets/img/mobile-icon.png"
                                      alt="picto mobile"
-                                     style="width:12px;margin-right:5px;background-color:<?= $icon_color ?>;">
+                                     style="width:12px;height:12px;margin-right:5px;background-color:<?= $icon_color ?>;">
                             </span>
                             <span style="text-align:left;font-size:14px;font-weight:400;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;">
                                  <?= $mobile; ?>
@@ -92,9 +92,9 @@
                 <?php if ($address): ?>
                     <tr>
                         <td style="vertical-align:middle;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>">
-                           <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle;">
-                                <img src="https://www.geometre-expert-paris.fr/wp-content/uploads/2021/04/Picto-adresse-map.png"
-                                     alt="picto adress" style="width:11px;margin-right:7px;color:<?= $icon_color ?>;">
+                           <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle;width:12px;height:12px;">
+                                <img width="12px" height="12px" src="https://www.geometre-expert-paris.fr/wp-content/uploads/2021/04/Picto-adresse-map.png"
+                                     alt="picto adress" style="width:12px;height:12px;margin-right:7px;color:<?= $icon_color ?>;">
                             </span>
                             <span style="text-align:left;font-size:14px;font-weight:400;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;">
                                  <?= $address; ?>
@@ -129,8 +129,9 @@
                             if ($twitter_url): ?>
                                 <span style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;font-style:italic;text-decoration:none !important;">et </span>
                                 <a href="<?= $twitter_url; ?>" target="_blank"
-                                   style="text-decoration:none !important;<?= $highlight_color; ?>;"><span
-                                            style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $highlight_color; ?>;font-family:<?= $font_family ?>;font-style:italic;text-decoration:none !important;">Twitter</span></a>
+                                   style="text-decoration:none !important;"><span
+                                            style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $highlight_color; ?>;font-family:<?= $font_family ?>;font-style:italic;text-decoration:none !important;"><span
+                                                style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $highlight_color; ?>;font-family:<?= $font_family ?>;font-style:italic;text-decoration:none !important;">Twitter</span></a>
                             <?php endif; ?>
                         </td>
                     </tr>
