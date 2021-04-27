@@ -8,6 +8,7 @@
             <ul class="js-tabs__header">
                 <li class="js-tabs__title"><?= __('Templates'); ?></li>
                 <li class="js-tabs__title"><?= __('Infos générales'); ?></li>
+                <li class="js-tabs__title"><?= __('Infos utilisateur'); ?></li>
                 <li class="js-tabs__title"><?= __('Branding'); ?></li>
                 <li class="js-tabs__title"><?= __('Réseaux sociaux'); ?></li>
                 <li class="js-tabs__title"><?= __('Contenu additionnel'); ?></li>
@@ -25,6 +26,13 @@
                 <?php
                 settings_fields('esg_option_group');
                 do_settings_sections('esg-settings-general');
+                ?>
+            </div>
+
+            <div id="userinfos" class="js-tabs__content">
+                <?php
+                settings_fields('esg_option_group');
+                do_settings_sections('esg-settings-userinfos');
                 ?>
             </div>
 

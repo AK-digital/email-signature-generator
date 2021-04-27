@@ -14,48 +14,57 @@ use Includes\Base\BaseController;
 class ManagerCallbacks extends BaseController
 {
 
+//    /**
+//     * Sanitize each setting field as needed
+//     *
+//     * @param array $args Contains all settings fields as array keys
+//     * @return array
+//     */
+//
+//    public function sanitize(array $args): array
+//    {
+//        $output = array();
+//
+//        foreach ($this->managers as $row) {
+//
+//            foreach ($row['fields'] as $key => $value) {
+//
+//                if (!empty($args[$key])) {
+//                    $output[$key] = ($args[$key]);
+//                }
+//
+//                foreach ($value['sub_settings'] as $k => $v) {
+//                    if (!empty($args[$k])) {
+//                        $output[$key] = ($args[$key . '_' . $k]);
+//                    }
+//
+//                }
+//            }
+//        }
+//        return $output;
+//    }
+
     /**
-     * Sanitize each setting field as needed
-     *
-     * @param array $args Contains all settings fields as array keys
-     * @return array
+     * @param $args
      */
-
-    public function sanitize(array $args): array
+    public function hidden_callback($args)
     {
-        $output = array();
-
-        foreach ($this->managers as $row) {
-            foreach ($row['fields'] as $key => $value) {
-
-                if (isset($args[$key])) {
-                    $output[$key] = ($args[$key]);
-                }
-            }
-        }
-        return $output;
+      //nope nothing by security
     }
 
-    /**
+    /*
      * @param $args
      */
     public function number_callback($args)
     {
         $name = $args['label_for'];
-        $classes = $args['class'];
         $option_name = $args['option_name'];
+        $suffix = $args['suffix'];
 
         printf(
-            '<input type="text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="regular-text ' . $classes . '" value="%s" />',
+            '<input type="number" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="small-text" value="%s" /><span>' .  $suffix  .'</span>',
             isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
         );
-
-        foreach (   $subsettings as $key => $input_type){
-            printf(
-                "<input type='$input_type' id='$key' name='$option_name[$key]' class='regular-text $classes' value='%s' />",
-                isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
-            );
-        }
     }
 
     /**
@@ -64,11 +73,10 @@ class ManagerCallbacks extends BaseController
     public function text_callback($args)
     {
         $name = $args['label_for'];
-        $classes = $args['class'];
         $option_name = $args['option_name'];
 
         printf(
-            '<input type="text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="regular-text ' . $classes . '" value="%s" />',
+            '<input type="text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="regular-text" value="%s" />',
             isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
         );
     }
@@ -125,17 +133,16 @@ class ManagerCallbacks extends BaseController
     /**
      * @param $args
      */
-    public function font_family_callback($args)
+    public function select_callback($args)
     {
         $name = $args['label_for'];
         $classes = $args['class'];
         $option_name = $args['option_name'];
-
-        $font = array('Arial', 'Calibri', 'Cambria', 'Comic Sans MS', 'Courier', 'Georgia', 'Garamond', 'Helvetica', 'Open Sans', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana');
+        $options = $args['select_options'];
 
         echo '<select name="' . $option_name . '[' . $name . ']" id="' . $name . '">';
 
-        foreach ($font as $key => $value) {
+        foreach ($options as $key => $value) {
             $selected = (isset($this->options[$name]) && $this->options[$name] === $value) ? 'selected' : '';
             echo "<option value='$value' style='font-family:$value' $selected >$value</option>";
         }

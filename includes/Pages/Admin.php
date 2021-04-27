@@ -127,33 +127,46 @@ class Admin extends BaseController
         $args = array();
         foreach ($this->managers as $row) {
 
-            foreach ($row['fields'] as $key => $value) {  // Set fields from $managers['fields']
-                $args[] = [
-                    'id' => $this->toSlug($key),
-                    'title' => $value['title'],
-                    'callback' => array($this->callbacks_mngr, $value['input_type'] . '_callback'),
-                    'page' => $row['id'],
-                    'section' => $this->toSlug($row['id']),
-                    'args' => [
-                        'option_name' => 'esg_admin_settings',
-                        'label_for' => $key,
-                        'class' => $value['class'],
-                    ],
-                ];
-                foreach ($value['sub_settings'] as $k => $v) {
-                    var_dump($k);
-                    var_dump($v);
+            if ($row['fields']) {
+
+                foreach ($row['fields'] as $key => $value) {  // Set fields from $managers['fields']
+
+                    $parent_class = $value['sub_settings'] ? 'parent-' . $key : '';
+
                     $args[] = [
                         'id' => $this->toSlug($key),
-                        'title' => $k,
-                        'callback' => array($this->callbacks_mngr, $k . '_callback'),
+                        'title' => $value['title'],
+                        'callback' => array($this->callbacks_mngr, $value['input_type'] . '_callback'),
                         'page' => $row['id'],
                         'section' => $this->toSlug($row['id']),
                         'args' => [
                             'option_name' => 'esg_admin_settings',
-                            'label_for' => $k,
+                            'label_for' => $key,
+                            'class' => $parent_class,
+                            'select_options' => $value['select_options'],
                         ],
                     ];
+
+                    if ($value['sub_settings']) {
+
+                        foreach ($value['sub_settings'] as $k => $v) {
+
+                            $args[] = [
+                                'id' => $this->toSlug($key) . '_' . $this->toSlug($k),
+                                'title' => $v['title'],
+                                'callback' => array($this->callbacks_mngr, $v['input_type'] . '_callback'),
+                                'page' => $row['id'],
+                                'section' => $this->toSlug($row['id']),
+                                'args' => [
+                                    'option_name' => 'esg_admin_settings',
+                                    'label_for' => $key . '_' . $k,
+                                    'select_options' => $v['select_options'],
+                                    'suffix' => $v['suffix'],
+                                    'class' => 'subsetting-' . $key,
+                                ],
+                            ];
+                        }
+                    }
                 }
             }
         }

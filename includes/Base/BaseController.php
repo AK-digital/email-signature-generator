@@ -37,6 +37,14 @@ class BaseController
 
         $this->options = get_option('esg_admin_settings');
 
+        $subSettings = [
+            'font-weight' => ['title' => 'Font weight', 'input_type' => 'select', 'select_options' => ['300', '400', '500', '600', '700', '800', '900'],],
+            'font-style' => ['title' => 'Font style', 'input_type' => 'select', 'select_options' => ['normal', 'italic', 'oblique'],],
+            'font-size' => ['title' => 'Font size', 'input_type' => 'number', 'suffix' => 'px'],
+            'line-height' => ['title' => 'Line height', 'input_type' => 'number', 'suffix' => 'px'],
+            'text-align' => ['title' => 'Text align', 'input_type' => 'select', 'select_options' => ['left', 'center', 'right'],],
+        ];
+
         // Manage settings sections - add / remove sections here
         $this->managers = [
             [
@@ -55,34 +63,65 @@ class BaseController
                 'fields' => [
                     'font-family' => [
                         'title' => 'Font family',
-                        'input_type' => 'font_family',
+                        'input_type' => 'select',
+                        'select_options' => ['Arial', 'Calibri', 'Cambria', 'Comic Sans MS', 'Courier', 'Georgia', 'Garamond', 'Helvetica', 'Open Sans', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana'],
                     ],
                     'company-name' => [
                         'title' => 'Nom de l\'entreprise',
                         'input_type' => 'text',
-                        'sub_settings' => [
-                            'font-weight' => 'number',
-                            'font-style' => 'number',
-                            'font-size' => 'number',
-                            'line-height' => 'number',
-                            'text-align' => 'number',
-                        ]
+                        'sub_settings' => $subSettings,
                     ],
                     'baseline' => [
                         'title' => 'Slogan',
                         'input_type' => 'text',
+                        'sub_settings' => $subSettings,
                     ],
                     'address' => [
                         'title' => 'Adresse',
                         'input_type' => 'text',
+                        'sub_settings' => $subSettings,
                     ],
                     'phone' => [
                         'title' => 'Numéro de téléphone',
                         'input_type' => 'text',
+                        'sub_settings' => $subSettings,
                     ],
                     'website' => [
                         'title' => 'Lien site internet (avec https://)',
                         'input_type' => 'text',
+                        'sub_settings' => $subSettings,
+                    ],
+                ],
+            ],
+
+            [
+                'id' => 'esg-settings-userinfos',
+                'title' => 'Infos utilisateur',
+                'fields' => [
+                    'user_firstname' => [
+                        'title' => 'Prénom',
+                        'input_type' => 'hidden',
+                        'sub_settings' => $subSettings,
+                    ],
+                    'user_surname' => [
+                        'title' => 'Nom',
+                        'input_type' => 'hidden',
+                        'sub_settings' => $subSettings,
+                    ],
+                    'user_position' => [
+                        'title' => 'Fonction',
+                        'input_type' => 'hidden',
+                        'sub_settings' => $subSettings,
+                    ],
+                    'user_email' => [
+                        'title' => 'Email',
+                        'input_type' => 'hidden',
+                        'sub_settings' => $subSettings,
+                    ],
+                    'user_mobile' => [
+                        'title' => 'Mobile',
+                        'input_type' => 'hidden',
+                        'sub_settings' => $subSettings,
                     ],
                 ],
             ],

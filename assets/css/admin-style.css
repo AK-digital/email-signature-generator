@@ -125,6 +125,23 @@ p.submit {
 }
 
 
+.group-subsetting{
+    display:none;
+    position: relative;
+    left: 226px;
+    background-color: rgb(239, 239, 239);
+    padding: 2px 30px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#esg-settings .ml-5{
+    margin-left:5px;
+}
+
+#esg-settings button .dashicons{
+    vertical-align: middle;
+}
 
 
 
