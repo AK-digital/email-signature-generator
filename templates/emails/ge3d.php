@@ -1,159 +1,167 @@
-<style>
-    a:-webkit-any-link {
-        text-decoration: none !important;
-    }
-</style>
-
-<table class="ge3d-template" cellpadding="0" cellspacing="0"
-       style="border-collapse: collapse; vertical-align:middle;font-family:<?= $font_family ?>;text-align:left; padding:0;border-collapse: collapse;text-decoration:none !important;">
-
-    <?php if ($logo): ?>
+<table style=" font-size: 10pt; font-family:<?= $font_family ?>;border-collapse: collapse;text-align:left; padding:0;border-collapse: collapse;text-decoration:none !important;" cellpadding="0" cellspacing="0"
+       border="0">
+    <tbody>
     <tr>
-        <td style="vertical-align:middle; padding:0;line-height:0;">
-            <a href="<?= $website_url ?>"><img src="<?= $logo; ?>" alt="logo" width="160px"/></a>
+        <td width=150 style="font-size: 10pt; font-family:<?= $font_family ?>; width:150px; vertical-align: top;" valign="top">
+            <a href="<?= $website_url ?>">
+                <img ng-src="<?= $logo; ?>" alt="photograph" width=150 border="0"
+                                               style="border:0; height:auto; width:150px" src="<?= $logo; ?>"></a>
         </td>
-        <td style="vertical-align:middle; padding: 0;">
-            <table style="margin-left:10px;border-collapse: collapse;text-decoration:none !important;">
-                <?php endif; ?>
+        <td width=300 style="color:<?= $text_color; ?>;font-family:<?= $font_family ?>; padding-bottom: 5px;  padding-left: 10px; vertical-align: top; line-height:1.3;width:300px;"
+            valign="top">
+                      <span style="line-height:<?= $user_firstname_line_height ?>px;
+                              font-size:<?= $user_firstname_font_size ?>px;
+                              font-weight:<?= $user_firstname_font_weight ?>;
+                              font-style:<?= $user_firstname_font_style ?>;
+                              text-align:<?= $user_firstname_text_align ?>;
+                              font-family:<?= $font_family ?>;
+                              color:<?= $highlight_color ?>;"
+                      ><?= $firstname ?></span>
+            <span
+                    style=" font-family:<?= $font_family ?>;
+                            color:<?= $highlight_color ?>;
+                            line-height:<?= $user_surname_line_height ?>px;
+                            font-size:<?= $user_surname_font_size ?>px;
+                            font-weight:<?= $user_surname_font_weight ?>;
+                            font-style:<?= $user_surname_font_style ?>;
+                            text-align:<?= $user_surname_text_align ?>;
+                            "
+            >
+                <?= $surname ?></span>
 
-                <?php if ($firstname || $surname): ?>
-                <tr>
-                    <td style="text-align:left;">
-                        <?php if ($firstname): ?>
-                        <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;"><?= $firstname ?></span>
-                        <?php endif; ?>
-                        <?php if ($surname): ?>
-                        <span> </span>
-                        <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;"><?= $surname ?></span>
-                        <?php endif; ?>
-                        <?php if ($user_linkedin): ?>
-                            <span style="text-align:left;font-family:<?= $font_family ?>;line-height:17px;font-size:16px;font-weight:800;color:<?= $highlight_color ?>;width:14px;height:14px;">
+            <span
+                    style="text-align:left;
+                            line-height:14px;font-size:13px;
+                            color:<?= $highlight_color ?>;
+                            width:14px;height:14px;">
                             <a href="<?= $user_linkedin ?>"
                                style="margin-left:3px;text-decoration:none !important;"><img
                                         src="<?= $this->plugin_url; ?>assets/img/social-icons/linkedin.png"
-                                        width="14px" height="14px"
+                                        width=14 height=14
                                         style="position: relative;width:14px;height:14px;"/></a></span>
-                        <?php endif; ?>
-                    </td>
-                    <?php endif; ?>
-                </tr>
-                <?php if ($title): ?>
-                    <tr>
-                        <td style="text-align:left;">
-                            <span style="text-align:left;text-decoration:none !important; color:<?= $text_color; ?>; font-size:14px;font-weight:600;font-family:<?= $font_family ?>;"><?= $title ?></span>
-                        </td>
-                    </tr>
-                <?php endif; ?>
+            <br>
+            <span
+                    style="vertical-align:top;
+                            font-family:<?= $font_family ?>;
+                            color:<?= $text_color; ?>;
+                            font-size:<?= $user_title_font_size ?>px;
+                            line-height:<?= $user_title_line_height ?>px;
+                            font-weight:<?= $user_title_font_weight ?>;
+                            text-align:<?= $user_title_text_align ?>;
+                            font-style:<?= $user_title_font_style ?>;
+                            "
+            ><?= $title; ?><br><br></span>
 
-                <tr style="display:block;margin-bottom:7px;"></tr>
-
-                <?php if ($email): ?>
-                    <tr>
-                        <td style="vertical-align:top;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>">
-                             <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle;width:12px;height:10px;">
-                                <img width="12px" height="10px" src="https://www.geometre-expert-paris.fr/wp-content/uploads/2021/04/Picto-mail-gris.png"
-                                     alt="picto mail" style="width:12px;height:10px;margin-right:5px;color:<?= $icon_color ?>;">
+            <span style="text-align:left;line-height:14px;display:inline-block;vertical-align: middle;">
+                                <img height=12 class="icons" bgcolor="<?= $icon_color ?>" color="<?= $icon_color ?>"
+                                     src="<?= $this->plugin_url ?>assets/img/email-icon-red.png"
+                                     alt="picto mail" style="height:12px;">
                             </span>
-                            <a href="mailto:<?= $email; ?>" style="color:<?= $text_color; ?>;text-decoration:none;">
-                                <span style="text-align:left;font-size:14px;font-weight:400;line-height:17px;font-family:<?= $font_family ?>;color:<?= $text_color ?>;text-decoration:none;"><?= $email; ?></span></a>
-                        </td>
-                    </tr>
-                <?php endif; ?>
+            <a href="mailto:<?= $email; ?>" target="_blank" rel="noopener"
+               style="text-decoration:none;">
+                <span
+                    style=" font-size: <?= $user_email_font_size ?>px;
+                            line-height:<?= $user_email_line_height ?>px;
+                            font-weight:<?= $user_email_font_weight ?>;
+                            text-align:<?= $user_email_text_align ?>;
+                            font-style:<?= $user_email_font_style ?>;
+                            font-family:<?= $font_family ?>;
+                            color:<?= $text_color; ?>;text-decoration:none;">
+                    <?= $email; ?></span></a>
+                <br>
 
-                <?php if ($phone): ?>
-                    <tr>
-                        <td style="vertical-align:middle;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>">
-                             <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle; width:12px;height:12px;">
-                                <img width="12px" height="12px" src="https://www.geometre-expert-paris.fr/wp-content/uploads/2021/04/Picto-phone-gris.png"
-                                     alt="picto mobile" style="width:12px;height:12px;margin-right:5px;color:<?= $icon_color ?>;">
+            <span style="text-align:left;line-height:<?= $user_mobile_line_height ?>px;display:inline-block;vertical-align: middle;">
+                                <img height=12 class="icons"
+                                     src="<?= $this->plugin_url ?>assets/img/phone-icon-red.png"
+                                     alt="picto mail" style="height:12px;background:<?= $icon_color ?>;">
                             </span>
-                            <span style="text-align:left;font-size:14px;font-weight:400;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;">
-                                 <?= $phone; ?>
+            <span
+                    style=" line-height:<?= $user_mobile_line_height ?>px;
+                            font-size:<?= $user_mobile_font_size ?>px;
+                            font-weight:<?= $user_mobile_font_weight ?>;
+                            text-align:<?= $user_mobile_text_align ?>;
+                            font-style:<?= $user_mobile_font_style ?>;
+                            font-family:<?= $font_family ?>;
+                            color:<?= $text_color; ?>;"
+            ><?= $mobile; ?><br></span>
+
+            <span style="text-align:left;line-height:<?= $user_phone_line_height ?>px;display:inline-block;vertical-align: middle;">
+                                <img height=12 class="icons"
+                                     src="<?= $this->plugin_url ?>assets/img/phone-icon-red.png"
+                                     alt="picto mail" style="height:12px;background:<?= $icon_color ?>;">
                             </span>
-                        </td>
-                    </tr>
-                <?php endif; ?>
+            <span
+                    style=" line-height:<?= $phone_line_height ?>px;
+                            font-size:<?= $phone_font_size ?>px;
+                            font-weight:<?= $phone_font_weight ?>;
+                            text-align:<?= $phone_text_align ?>;
+                            font-style:<?= $phone_font_style ?>;
+                            font-family:<?= $font_family ?>;
+                            color:<?= $text_color; ?>;"
+            ><?= $phone; ?><br></span>
 
-                <?php if ($mobile): ?>
-                    <tr>
-                        <td style="vertical-align:middle;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;text-decoration:none !important;">
-                             <span style="text-align:left;line-height:17px;display:inline-block;vertical-align:middle;text-decoration:none !important;width:12px;height:12px;">
-                                <img width="12px" height="12px" src="https://www.geometre-expert-paris.fr/wp-content/plugins/email-signature-generator/assets/img/mobile-icon.png"
-                                     alt="picto mobile"
-                                     style="width:12px;height:12px;margin-right:5px;background-color:<?= $icon_color ?>;">
+            <span style="text-align:left;display:inline-block;vertical-align: middle;">
+                                <img height=12 class="icons"
+                                     src="<?= $this->plugin_url ?>assets/img/address-icon-red.png"
+                                     alt="picto address" style="height:12px;background:<?= $icon_color ?>;">
                             </span>
-                            <span style="text-align:left;font-size:14px;font-weight:400;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;">
-                                 <?= $mobile; ?>
-                            </span>
-                        </td>
-                    </tr>
-                <?php endif; ?>
+            <span
+                    style=" font-family:<?= $font_family ?>;
+                            line-height:<?= $address_line_height ?>px;
+                            font-weight:<?= $address_font_weight ?>;
+                            font-style:<?= $address_font_style ?>;
+                            font-size:<?= $address_font_size ?>px;
+                            text-align:<?= $address_text_align ?>;
+                            vertical-align:top;
+                            color:<?= $text_color; ?>"><?= $address; ?></span>
+            <br>
+            <span
+                    style=" margin-left: 17px;
+                            font-family:<?= $font_family ?>;
+                            line-height:<?= $city_line_height ?>px;
+                            font-weight:<?= $city_font_weight ?>;
+                            font-style:<?= $city_font_style ?>;
+                            font-size:<?= $city_font_size ?>px;
+                            text-align:<?= $city_text_align ?>;
+                            vertical-align:top;
+                            color:<?= $text_color; ?>"><?= $city; ?></span>
+            <br>
 
-                <?php if ($address): ?>
-                    <tr>
-                        <td style="vertical-align:middle;text-align:left;color:<?= $text_color; ?>;font-family:<?= $font_family ?>">
-                           <span style="text-align:left;line-height:17px;display:inline-block;vertical-align: middle;width:12px;height:12px;">
-                                <img width="12px" height="12px" src="https://www.geometre-expert-paris.fr/wp-content/uploads/2021/04/Picto-adresse-map.png"
-                                     alt="picto adress" style="width:12px;height:12px;margin-right:7px;color:<?= $icon_color ?>;">
-                            </span>
-                            <span style="text-align:left;font-size:14px;font-weight:400;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;">
-                                 <?= $address; ?>
-                            </span>
-                        </td>
-                    </tr>
-                <?php endif; ?>
 
-                <tr style="display:block;margin-bottom:8px;"></tr>
-
-                <?php if ($website_url): ?>
-                    <tr>
-                        <td style="vertical-align:middle;text-align:left;text-decoration:none !important;">
-                           <span style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;font-style:italic;">
-                          Visitez notre site web </span>
-                            <a href="<?= $website_url; ?>" style="text-decoration:none !important;"><span
-                                        style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $highlight_color; ?>;font-family:<?= $font_family ?>;font-style:italic;text-decoration:none !important;"><?= $website; ?></span></a>
-                        </td>
-                    </tr>
-                <?php endif; ?>
-
-                <?php if ($linkedin_url || $twitter_url): ?>
-                    <tr>
-                        <td style="vertical-align:middle;text-align:left;text-decoration:none !important;"
-                            style="text-decoration:none !important;">
-                            <span style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;font-style:italic;">Suivez GE3D sur </span>
-                            <?php if ($linkedin_url): ?>
-                                <a href="<?= $linkedin_url; ?>" target="_blank"
-                                   style="text-decoration:none !important;"><span
-                                            style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $highlight_color; ?>;font-family:<?= $font_family ?>;font-style:italic;text-decoration:none !important;">Linkedin</span></a>
-                            <?php endif;
-                            if ($twitter_url): ?>
-                                <span style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;font-style:italic;text-decoration:none !important;">et </span>
-                                <a href="<?= $twitter_url; ?>" target="_blank"
-                                   style="text-decoration:none !important;"><span
-                                            style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $highlight_color; ?>;font-family:<?= $font_family ?>;font-style:italic;text-decoration:none !important;"><span
-                                                style="text-align:left;font-size:14px;font-weight:500;line-height:17px;color:<?= $highlight_color; ?>;font-family:<?= $font_family ?>;font-style:italic;text-decoration:none !important;">Twitter</span></a>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endif; ?>
-
-                <?php if ($logo): ?>
-            </table>
-
-            <?php if ($banner || $additional_content): ?>
-    <tr>
-        <td colspan="2" width="480px"
-            style="text-align:left; padding-top: 10px;font-family:<?= $font_family ?>;font-style:italic; font-size:11px;line-height:14px;color:<?= $text_color; ?>;">
-            <?php if ($banner): ?>
-                <a href="<?= $banner_link ?>" style="text-decoration: none !important;"><img src="<?= $banner; ?>" alt="banner" width="480px"/></a>
-            <?php endif; ?>
-            <?php if ($additional_content): ?>
-                <span style="text-align:left; font-family:<?= $font_family ?>;font-style:italic; font-size:11px;line-height:14px; color: #79808c;"><?php print($additional_content); ?></span>
-            <?php endif; ?>
         </td>
     </tr>
-<?php endif; ?>
-    </td>
+
+    <tr ng-if="showField('banner')">
+        <td colspan="2" style="padding-top:5px">
+            <a ng-if="showField('bannerURL')" href="<?= $banner_link ?>" target="_blank" rel="noopener"><img border="0"
+                                                                                                             ng-src="<?= $banner; ?>"
+                                                                                                             alt="Banner"
+                                                                                                             style="max-width:450px; height:auto; border:0;"
+                                                                                                             src="<?= $banner; ?>"></a>
+
+            <span style="font-size: 13px; font-family:<?= $font_family ?>; color: <?= $text_color; ?>;font-style:italic;"> Visitez notre site web </span>
+
+            <a href="<?= $website_url; ?>" target="_blank" rel="noopener"
+               style="text-decoration:none;"><span
+                        style="font-size: 13px; font-family:<?= $font_family ?>; color: <?= $highlight_color; ?>;font-style:italic;text-decoration:none;"
+                ><?= $website; ?></span></a>
+            <br>
+            <span
+                    style="text-align:left;line-height:13px;font-size:13px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;font-style:italic;">
+                          Suivez GE3D sur </span>
+            <a href="<?= $linkedin_url; ?>" target="_blank" rel="noopener"
+               style="text-decoration:none;color:<?= $highlight_color; ?>;"><span
+                        style="font-size: 13px; font-family:<?= $font_family ?>; color: <?= $highlight_color; ?>;font-style:italic;"
+                >Linkedin</span><span
+                        style="text-align:left;font-size:13px;line-height:13px;color:<?= $text_color; ?>;font-family:<?= $font_family ?>;font-style:italic;">
+                          et </span>
+                <a href="<?= $twitter_url; ?>" target="_blank" rel="noopener"
+                   style="text-decoration:none;color:<?= $highlight_color; ?>;">
+                    <span
+                            style="font-size: 13px;line-height:13px;font-family:<?= $font_family ?>; color: <?= $highlight_color; ?>;font-style:italic;"
+                    >Twitter<br></span></a>
+        </td>
     </tr>
-<?php endif; ?>
+
+    </tbody>
 </table>

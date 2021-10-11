@@ -40,9 +40,9 @@ class BaseController
         $subSettings = [
             'font-weight' => ['title' => 'Font weight', 'input_type' => 'select', 'select_options' => ['300', '400', '500', '600', '700', '800', '900'],],
             'font-style' => ['title' => 'Font style', 'input_type' => 'select', 'select_options' => ['normal', 'italic', 'oblique'],],
-            'font-size' => ['title' => 'Font size', 'input_type' => 'number', 'suffix' => 'px'],
-            'line-height' => ['title' => 'Line height', 'input_type' => 'number', 'suffix' => 'px'],
-            'text-align' => ['title' => 'Text align', 'input_type' => 'select', 'select_options' => ['left', 'center', 'right'],],
+            'font-size' => ['title' => 'Font size', 'input_type' => 'number', 'suffix' => 'px', 'default_val' => '13'],
+            'line-height' => ['title' => 'Line height', 'input_type' => 'number', 'suffix' => 'px', 'default_val' => '22'],
+            'text-align' => ['title' => 'Text align', 'input_type' => 'select', 'select_options' => ['left', 'center', 'right'], 'default_val' => 'left',],
         ];
 
         // Manage settings sections - add / remove sections here
@@ -61,12 +61,12 @@ class BaseController
                 'id' => 'esg-settings-general',
                 'title' => 'Informations générales',
                 'fields' => [
-                    'font-family' => [
+                    'font_family' => [
                         'title' => 'Font family',
                         'input_type' => 'select',
                         'select_options' => ['Arial', 'Calibri', 'Cambria', 'Comic Sans MS', 'Courier', 'Georgia', 'Garamond', 'Helvetica', 'Open Sans', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana'],
                     ],
-                    'company-name' => [
+                    'company_name' => [
                         'title' => 'Nom de l\'entreprise',
                         'input_type' => 'text',
                         'sub_settings' => $subSettings,
@@ -78,6 +78,11 @@ class BaseController
                     ],
                     'address' => [
                         'title' => 'Adresse',
+                        'input_type' => 'text',
+                        'sub_settings' => $subSettings,
+                    ],
+                    'city' => [
+                        'title' => 'Ville, pays',
                         'input_type' => 'text',
                         'sub_settings' => $subSettings,
                     ],
@@ -108,7 +113,7 @@ class BaseController
                         'input_type' => 'hidden',
                         'sub_settings' => $subSettings,
                     ],
-                    'user_position' => [
+                    'user_title' => [
                         'title' => 'Fonction',
                         'input_type' => 'hidden',
                         'sub_settings' => $subSettings,

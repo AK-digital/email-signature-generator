@@ -60,10 +60,11 @@ class ManagerCallbacks extends BaseController
         $name = $args['label_for'];
         $option_name = $args['option_name'];
         $suffix = $args['suffix'];
+        $default_val = $args['default_val'];
 
         printf(
             '<input type="number" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="small-text" value="%s" /><span>' .  $suffix  .'</span>',
-            isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : $default_val
         );
     }
 
@@ -139,11 +140,12 @@ class ManagerCallbacks extends BaseController
         $classes = $args['class'];
         $option_name = $args['option_name'];
         $options = $args['select_options'];
+        $default_val = $args['default_val'];
 
         echo '<select name="' . $option_name . '[' . $name . ']" id="' . $name . '">';
 
         foreach ($options as $key => $value) {
-            $selected = (isset($this->options[$name]) && $this->options[$name] === $value) ? 'selected' : '';
+            $selected = (isset($this->options[$name]) && $this->options[$name] === $value) ? 'selected' : $default_val;
             echo "<option value='$value' style='font-family:$value' $selected >$value</option>";
         }
 

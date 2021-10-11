@@ -18,7 +18,7 @@ class UserProfile extends BaseController
      */
     public function register()
     {
-        add_filter('user_contactmethods', array($this, 'user_position'));
+        add_filter('user_contactmethods', array($this, 'user_title'));
         add_filter('user_contactmethods', array($this, 'user_linkedin'));
         add_filter('user_contactmethods', array($this, 'user_phone'));
     }
@@ -30,9 +30,9 @@ class UserProfile extends BaseController
         return $user_contact;
     }
 
-    public function user_position($user_contact)
+    public function user_title($user_contact)
     {
-        $user_contact['esg_position'] = __('Your position');
+        $user_contact['esg_title'] = __('Your title');
 
         return $user_contact;
     }

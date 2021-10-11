@@ -19,50 +19,11 @@ class Shortcode extends BaseController
         add_shortcode('esg_user_data', array($this, 'esg_user_data_shortcode_content'));
     }
 
-    public function get_company_data()
-    {
-        // Get plugin option data from the db
-        $with_form = false;
-
-        $this->company_data = [
-
-            // Layout
-            'template' => $this->options['template'] ? $this->options['template'] : 'studio-krack',
-
-            // Company details
-            'font_family' => "'" . $this->options['font_family'] . "', Sans-Serif",
-            'company_name' => $this->options['company_name'],
-            'baseline' => $this->options['baseline'],
-            'phone' => $this->options['phone'],
-            'website_url' => $this->options['website'],
-            'address' => $this->options['address'],
-
-            // Company social network links
-            'facebook_url' => $this->options['facebook'],
-            'youtube_url' => $this->options['youtube'],
-            'twitter_url' => $this->options['twitter'],
-            'tiktok_url' => $this->options['tiktok'],
-            'instagram_url' => $this->options['instagram'],
-            'linkedin_url' => $this->options['linkedin'],
-
-            // Branding variables
-            'logo' => $this->options['logo'],
-            'banner' => $this->options['banner'],
-            'banner_link' => $this->options['banner_link'],
-            'text_color' => $this->options['text_color'],
-            'icon_color' => $this->options['icon_color'],
-            'highlight_color' => $this->options['highlight_color'],
-
-            // More company variables
-            'additional_content' => $this->options['additional_content'],
-        ];
-    }
-
     public function esg_form_shortcode_content()
     {
         // If user form is empty, return the form
         if (!isset($_POST['submit'])) {
-            require_once($this->templates_path . 'form.php');
+          require_once($this->templates_path . 'form.php');
         } //Display the landing signature page
         else {
             $this->user_data = [
@@ -75,7 +36,7 @@ class Shortcode extends BaseController
                 'user_linkedin' => $_REQUEST['linkedin'],
             ];
 
-            $this->generate_page();
+           $this->generate_page();
         }
     }
 
@@ -89,7 +50,7 @@ class Shortcode extends BaseController
                 'firstname' => $current_user->display_name,
                 'email' => $current_user->user_email,
                 'mobile' => get_user_meta($current_user->ID, 'esg_phone', true),
-                'title' => get_user_meta($current_user->ID, 'esg_position', true),
+                'title' => get_user_meta($current_user->ID, 'esg_title', true),
 
                 // Personal social network links
                 'user_linkedin' => get_user_meta($current_user->ID, 'esg_linkedin', true),
@@ -102,15 +63,16 @@ class Shortcode extends BaseController
     public function generate_page()
     {
         // Extract the array into vars
-        extract($this->user_data);
+        if($this->user_data) {
+            extract($this->user_data);
+        }
 
         // Call the function to get company data and extract the array into vars
-        $this->get_company_data();
-        extract($this->company_data);
+        extract($this->options);
 
         //create website link name whithout https
 
-        $website = $website_url;
+        $website_url = $website;
         $website = preg_replace('#^https?://#', '', $website);
 
         // Prepare the object, include the template and store in the $signature variable

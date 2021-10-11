@@ -62,7 +62,7 @@
                         style="text-decoration: none; color: <?= $text_color; ?>; font-size: 12px;text-align:left;font-family: <?= $font_family ?>"><span><?= $website; ?></span></a>
             </p>
             <?php endif; ?>
-            <?php if ($adress): ?>
+            <?php if ($address): ?>
             <p color="<?= $text_color; ?>" font-size="medium"
                style="margin:0px; color:<?= $text_color; ?>;font-size: 14px;line-height:20px;font-family: <?= $font_family ?>">
             <span color="<?= $icon_color; ?>" style="vertical-align:middle;"

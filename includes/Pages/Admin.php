@@ -159,9 +159,10 @@ class Admin extends BaseController
                                 'section' => $this->toSlug($row['id']),
                                 'args' => [
                                     'option_name' => 'esg_admin_settings',
-                                    'label_for' => $key . '_' . $k,
+                                    'label_for' => $this->toSlug($key) . '_' . $this->toSlug($k),
                                     'select_options' => $v['select_options'],
                                     'suffix' => $v['suffix'],
+                                    'default_val' => $v['default_val'],
                                     'class' => 'subsetting-' . $key,
                                 ],
                             ];
