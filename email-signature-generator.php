@@ -67,6 +67,7 @@ register_deactivation_hook(__FILE__, 'deactivate_esg_plugin');
 if (class_exists('Includes\\Init')) {
     Includes\Init::register_services();
 }
+
 include_once('updater/updater.php');
 if (is_admin()) { // note the use of is_admin() to double check that this is happening in the admin
     $config = array(
@@ -79,7 +80,7 @@ if (is_admin()) { // note the use of is_admin() to double check that this is hap
         'sslverify' => true, // whether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
         'requires' => '1.1', // which version of WordPress does your plugin require?
         'tested' => '1.1', // which version of WordPress is your plugin tested up to?
-        'readme' => 'email-signature-generator.php', // which file to use as the readme for the version number
+        'readme' => 'README.md', // which file to use as the readme for the version number
         'access_token' => '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', // Access private repositories by authorizing under Plugins > GitHub Updates when this example plugin is installed
     );
     new WP_GitHub_Updater($config);
