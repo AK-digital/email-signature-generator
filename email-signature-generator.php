@@ -75,7 +75,7 @@ if( ! class_exists( 'GithubUpdater' ) ){
     include_once( plugin_dir_path( __FILE__ ) . 'updater.php' );
 }
 
-$updater = new Smashing_Updater( __FILE__ );
+$updater = new GithubUpdater( __FILE__ );
 $updater->set_username( 'AK-digital' );
 $updater->set_repository( 'email-signature-generator' );
 $updater->authorize( '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' ); // Your auth code goes here for private repos
