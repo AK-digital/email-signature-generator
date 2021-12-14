@@ -78,6 +78,6 @@ if( ! class_exists( 'GithubUpdater' ) ){
 $updater = new GithubUpdater( __FILE__ );
 $updater->set_username( 'AK-digital' );
 $updater->set_repository( 'email-signature-generator' );
-$updater->authorize( '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' ); // Your auth code goes here for private repos
+$updater->authorize( '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' ); // Your auth code goes here for private repos
 
 $updater->initialize();
