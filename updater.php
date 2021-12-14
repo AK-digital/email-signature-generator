@@ -1,6 +1,6 @@
 <?php
 /**
- * @package  PackmerCustomPlugin
+ * @package  emailSignatureGenerator
  */
 
 
