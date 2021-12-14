@@ -56,7 +56,6 @@ class GithubUpdater
     public function authorize($token)
     {
         $this->authorize_token = $token;
-        var_dump($this->authorize_token);
     }
 
     private function get_repository_info()
