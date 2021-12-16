@@ -14,6 +14,7 @@ final class Init
 	public static function get_services()
 	{
 		return [
+		    Api\DynamicRouting::class,
 			Base\Enqueue::class,
 			Base\SettingsLinks::class,
             Base\Shortcode::class,
