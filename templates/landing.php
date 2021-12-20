@@ -18,9 +18,8 @@
         <div id="preview-tab" class="js-tabs__content">
             <div id="sign-preview"><?= $signature; ?></div>
             <div class="esg_action-bar">
-                <button class="esg_button esg_button-copy qbutton"
-                        onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><img
-                            src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><span
+                <button class="esg_button esg_button-copy-sign-sign qbutton">
+                    <img src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><span
                             class="esg-copy-string"><?= __('Copier'); ?></span>
                 </button>
                 <button class="esg_button downloadLink qbutton">
@@ -39,8 +38,8 @@
 <?php echo $signature; ?>
         </textarea>
             <div class="esg_action-bar">
-                <button class="esg_button esg_button-copy qbutton default"
-                        onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><img
+                <button class="esg_button esg_button-copy-sign qbutton default"
+                        ><img
                             src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><span
                             class="esg-copy-string"><?= __('Copier'); ?></span>
                 </button>
@@ -59,8 +58,7 @@
             <h4><?= __('Intégration Outlook client'); ?></h4>
             <ol>
                 <li>
-                    <button class="esg_button esg_button-copy qbutton"
-                            onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><?= __('Copier ma signature'); ?>
+                    <button class="esg_button esg_button-copy-sign qbutton"><?= __('Copier ma signature'); ?>
                     </button>
                 </li>
                 <li> <?= __('Dans Outlook, cliquez sur Outils et Options, puis accédez à l\'onglet "Format du courrier"'); ?></li>
@@ -83,8 +81,8 @@
             <h4><?= __('Intégration Outlook.com'); ?></h4>
             <ol>
                 <li>
-                    <button class="esg_button esg_button-copy qbutton"
-                            onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><?= __('Copier ma signature'); ?>
+                    <button class="esg_button esg_button-copy-sign qbutton"
+                            ><?= __('Copier ma signature'); ?>
                     </button>
                 </li>
                 <li> <?= __('Connectez-vous à outlook.com ou live.com et cliquez sur l\'icône d\'engrenage Paramètres.'); ?></li>
@@ -100,8 +98,8 @@
             <h4><?= __('Intégration Gmail'); ?></h4>
             <ol>
                 <li>
-                    <button class="esg_button esg_button-copy qbutton"
-                            onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><?= __('Copier ma signature'); ?>
+                    <button class="esg_button esg_button-copy-sign qbutton"
+                            ><?= __('Copier ma signature'); ?>
                     </button>
                 </li>
                 <li>  <?= __('Connectez vous à Gmail et cliquez sur l\'icône d\'engrenage en haut à droite pour atteindre les Paramètres'); ?></li>
@@ -116,8 +114,8 @@
             <h4><?= __('Intégration Yahoo'); ?></h4>
             <ol>
                 <li>
-                    <button class="esg_button esg_button-copy qbutton"
-                            onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><?= __('Copier ma signature'); ?>
+                    <button class="esg_button esg_button-copy-sign qbutton"
+                            ><?= __('Copier ma signature'); ?>
                     </button>
                 </li>
                 <li> <?= __('Une fois connecté à Yahoo Mail, sélectionnez "Options de messagerie"'); ?> </li>
@@ -132,8 +130,8 @@
             <h4><?= __('Intégration Apple mail'); ?></h4>
             <ol>
                 <li>
-                    <button class="esg_button esg_button-copy qbutton"
-                            onclick="copyToClip(document.getElementById('sign-preview').innerHTML)"><?= __('Copier ma signature'); ?>
+                    <button class="esg_button esg_button-copy-sign qbutton"
+                            ><?= __('Copier ma signature'); ?>
                     </button>
                 </li>
                 <li> <?= __('Accédez à "Mail et Préférences" et cliquez sur l\'onglet "Signatures"'); ?> </li>

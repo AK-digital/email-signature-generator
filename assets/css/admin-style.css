@@ -65,6 +65,9 @@ p.submit {
     float: left;
     margin-right: 15px;
 }
+#esg-settings .tab-content .form-table th{
+    width: 160px;
+}
 
 .shortcode {
     display: inline;
@@ -124,9 +127,8 @@ p.submit {
     box-shadow: 0 0 7px 2px rgba(133, 133, 133, 0.34);
 }
 
-
-.group-subsetting{
-    display:none;
+.group-subsetting {
+    display: none;
     position: relative;
     left: 226px;
     background-color: rgb(239, 239, 239);
@@ -135,13 +137,83 @@ p.submit {
     border-radius: 5px;
 }
 
-#esg-settings .ml-5{
-    margin-left:5px;
+#esg-settings .ml-5 {
+    margin-left: 5px;
 }
 
-#esg-settings button .dashicons{
+#esg-settings button .dashicons {
     vertical-align: middle;
 }
 
+#esg-settings .upload-image {
+    max-width: 300px;
+}
 
+#esg-settings .tab-content {
+    width:100%;
+    line-height: 1.5;
+    margin-top: -1px;
+    padding: 0 2em 3em;
+    background-color:white;
+    border-radius:0 0 7px 7px;
+    min-height: 300px;
+    text-align: left;
+}
 
+#esg-settings table td > * {
+    vertical-align: middle;
+}
+
+#esg-settings table td .upload-input-url {
+    display: none;
+}
+
+#esg-settings .js-tabs__header {
+    display: flex;
+    flex-direction: column;
+}
+
+#esg-settings .flex {
+    display: flex;
+}
+#esg-settings a {
+    cursor:pointer;
+}
+#sign-preview {
+    padding: 40px;
+}
+
+#sign-preview > table {
+    margin: auto;
+}
+
+#esg-options {
+    width: 65%;
+}
+
+#esg-preview {
+    width: 35%;
+}
+
+#sign-preview {
+    padding-top:0;
+}
+#sign-preview-wrapper {
+    background-color: #fff;
+}
+
+.js-tabs{
+    margin-right: 25px;
+}
+
+.js-tabs__header li {
+    margin-bottom:1px;
+}
+#esg-settings .esg-action-icon{
+    width: 40px;
+}
+
+#esg-settings .esg-action-button {
+    float:right;
+    margin:8px;
+}

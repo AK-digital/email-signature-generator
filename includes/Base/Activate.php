@@ -22,8 +22,8 @@ class Activate
 
         $default = array();
 
-        if ( ! get_option( 'esg_admin_settings' ) ) {
+//        if ( ! get_option( 'esg_admin_settings' ) ) {
             update_option( 'esg_admin_settings', $default );
-        }
+//        }
     }
 }

@@ -110,7 +110,6 @@ class Admin extends BaseController
             $args[] = array( // Set section from $managers
                 'id' => $this->toSlug($row['id']),
                 'title' => $row['title'],
-                'callback' => array($this, 'print_section_info'),
                 'page' => $row['id'],
             );
         }
@@ -125,13 +124,14 @@ class Admin extends BaseController
     {
 
         $args = array();
+
         foreach ($this->managers as $row) {
 
             if ($row['fields']) {
 
                 foreach ($row['fields'] as $key => $value) {  // Set fields from $managers['fields']
 
-                    $parent_class = $value['sub_settings'] ? 'parent-' . $key : '';
+                    $parent_class = $value['style'] ? 'parent-' . $key : '';
 
                     $args[] = [
                         'id' => $this->toSlug($key),
@@ -143,13 +143,17 @@ class Admin extends BaseController
                             'option_name' => 'esg_admin_settings',
                             'label_for' => $key,
                             'class' => $parent_class,
+                            'suffix' => $value['suffix'],
+                            'default_val' => $value['default_val'],
+                            'min' => $value['min'],
+                            'max' => $value['max'],
                             'select_options' => $value['select_options'],
                         ],
                     ];
 
-                    if ($value['sub_settings']) {
+                    if ($value['style']) {
 
-                        foreach ($value['sub_settings'] as $k => $v) {
+                        foreach ($value['style'] as $k => $v) {
 
                             $args[] = [
                                 'id' => $this->toSlug($key) . '_' . $this->toSlug($k),
@@ -168,19 +172,29 @@ class Admin extends BaseController
                             ];
                         }
                     }
+
+                    if ($value['required']) {
+
+                        foreach ($value['required'] as $l => $m) {
+
+                            $args[] = [
+                                'id' => $this->toSlug($key) . '_' . $this->toSlug($l),
+                                'title' => $m['title'],
+                                'callback' => array($this->callbacks_mngr, $m['input_type'] . '_callback'),
+                                'page' => $row['id'],
+                                'section' => $this->toSlug($row['id']),
+                                'args' => [
+                                    'option_name' => 'esg_admin_settings',
+                                    'label_for' => $this->toSlug($key) . '_' . $this->toSlug($l),
+                                    'default_val' => $m['default_val'],
+                                    'class' => 'required',
+                                ],
+                            ];
+                        }
+                    }
                 }
             }
         }
         $this->settings->setFields($args);
     }
-
-    /**
-     * Print section subtitle infos
-     */
-    public
-    function print_section_info()
-    {
-        print '<p>Ces informations seront affichées dans chaque signature créée avec ce plugin</p>';
-    }
-
 }

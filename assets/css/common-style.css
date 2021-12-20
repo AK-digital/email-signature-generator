@@ -1,7 +1,6 @@
 /* Tab pane with vanilla JS */
 
 .js-tabs {
-    margin: 2em;
     max-width: 100%;
 }
 
@@ -15,8 +14,12 @@
 .js-tabs__header li {
     display: inline-block;
     float: left;
-    margin-bottom:0;
-    border-radius: 7px 7px 0 0;
+    border-radius: 7px 0px 0px 7px;
+    padding: 20px 9px 20px 9px;
+    margin: 0;
+    border: 0;
+    font-size: 15px;
+
 }
 
 .js-tabs__header li.float-right{
@@ -27,7 +30,6 @@
 
 
 .js-tabs__title {
-    background: #f5f5f5;
     cursor: pointer;
     display: block;
     margin-right: 2px;
@@ -37,24 +39,15 @@
     font-weight: 600;
 }
 
-.js-tabs__title:hover {
+.js-tabs__title:not(.js-tabs__title-active):hover {
     text-decoration: none;
+    background-color: #ffffff;
 }
 
 .js-tabs__title-active {
     background: #fff;
     border-bottom-color: #fff;
     border-top-left-radius: .75em;
-}
-
-.js-tabs__content {
-    line-height: 1.5;
-    margin-top: -1px;
-    padding: 1em 2em 3em;
-    background-color:white;
-    border-radius:0 0 7px 7px;
-    min-height: 300px;
-    text-align: left;
 }
 
 /* End tab pane */
@@ -73,3 +66,20 @@
     animation-name: fadeIn;
     animation-duration: 300ms;
 }
+
+
+#sign-preview{
+    padding-bottom: 40px;
+    padding-top: 40px;
+    background-color: #fff;
+}
+
+#sign-preview table td {
+    padding: 0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+
+

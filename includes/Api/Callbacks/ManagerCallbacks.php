@@ -33,7 +33,7 @@ class ManagerCallbacks extends BaseController
 //                    $output[$key] = ($args[$key]);
 //                }
 //
-//                foreach ($value['sub_settings'] as $k => $v) {
+//                foreach ($value['style'] as $k => $v) {
 //                    if (!empty($args[$k])) {
 //                        $output[$key] = ($args[$key . '_' . $k]);
 //                    }
@@ -61,9 +61,11 @@ class ManagerCallbacks extends BaseController
         $option_name = $args['option_name'];
         $suffix = $args['suffix'];
         $default_val = $args['default_val'];
+        $min = $args['min'];
+        $max = $args['max'];
 
         printf(
-            '<input type="number" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="small-text" value="%s" /><span>' .  $suffix  .'</span>',
+            '<input type="number" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="small-text"  min="' . $min . '" max="'. $max . '" value="%s" /><span>' .  $suffix  .'</span>',
             isset($this->options[$name]) ? esc_attr($this->options[$name]) : $default_val
         );
     }
@@ -107,13 +109,13 @@ class ManagerCallbacks extends BaseController
         $classes = $args['class'];
         $option_name = $args['option_name'];
 
-        printf('<img id="' . $name . '_image" src="%s" %s />', esc_attr($this->options[$name]), empty($this->options[$name]) ? 'hidden' : '');
+        printf('<img class="upload-image" src="%s" %s/>', esc_attr($this->options[$name]), empty($this->options[$name]) ? 'style="display:none;"' : '');
 
         printf(
-            '<input type="text" id="' . $name . '_input_url" name="' . $option_name . '[' . $name . ']" class="' . $classes . '" value="%s" />
-            <input id="remove_' . $name . '_button" type="button" class="button-secondary" value="Remove" %s />
-            <input id="upload_' . $name . '_button" type="button" class="button-primary" value="Choose ' . $name . '" />',
-            isset($this->options[$name]) ? esc_attr($this->options[$name]) : '', empty($this->options[$name]) ? 'hidden' : ''
+            '<input type="text" class="upload-input-url" name="' . $option_name . '[' . $name . ']" class="' . $classes . '" value="%s" />
+            <input type="button" class="button-secondary esg-button-remove" value="Remove" %s />
+            <input type="button" class="button-primary esg-button-upload" value="Choose ' . $name . '" />',
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : '', empty($this->options[$name]) ? 'style="display:none;"' : ''
         );
     }
 
@@ -152,6 +154,17 @@ class ManagerCallbacks extends BaseController
         echo '</select>';
     }
 
+    public function checkbox_callback( $args )
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
+        $checkbox = get_option( $option_name );
+        $checked = isset($checkbox[$name]) ? ($checkbox[$name] ? true : false) : false;
+
+        echo '<input type="checkbox" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="1" class="" ' . ( $checked ? 'checked' : '') . '><label for="' . $name . '">';
+    }
+
     /**
      *
      */
@@ -170,8 +183,8 @@ class ManagerCallbacks extends BaseController
 
                         $entry = str_replace('.php', '', $entry);
                         printf(
-                            '<label><input type="radio" id="%s" name="esg_admin_settings[template]" class="regular-text" value="%s" %s/><img src="%s" width="150px"/></label>',
-                            $entry, $entry, ($this->options['template'] == $entry) ? 'checked' : '', $this->plugin_url . '/assets/img/' . $entry . '-template.png');
+                            '<label><input type="radio" id="%s" name="esg_admin_settings[template]" class="regular-text" value="%s" %s/><img src="%s" width="250px"/></label>',
+                            $entry, $entry ? $entry : 'one', ($this->options['template'] == $entry) ? 'checked' : '', $this->plugin_url . '/assets/img/' . $entry . '-template.png');
                     }
                 }
                 closedir($handle);

@@ -1,8 +1,12 @@
 jQuery(document).ready(function ($) {
 
-    //use wordpress media uploader to set logo
+    //use wordpress media uploader to set image url as input value
     var mediaUploader;
-    $('#upload_logo_button').click(function (e) {
+
+    //using this class will alway trigger wordpress uploader
+    $('.esg-button-upload').click(function (e) {
+        var parentNode = $(this).parent();
+
         e.preventDefault();
         if (mediaUploader) {
             mediaUploader.open();
@@ -14,54 +18,32 @@ jQuery(document).ready(function ($) {
                 text: 'Choose Image'
             }, multiple: false
         });
+
         mediaUploader.on('select', function () {
+            //We get the media url in attachement var through JSON response
             var attachment = mediaUploader.state().get('selection').first().toJSON();
-            $('#logo_input_url').val(attachment.url);
-            $('#upload_logo_button').val('Change logo');
-            $('#logo_image').attr('src', attachment.url).removeAttr('hidden');
-            $('#remove_logo_button').css("display", "inline-block");
+
+            // Call the actions on elems
+            $(this).val('Change logo');
+            parentNode.children('.upload-input-url').val(attachment.url);
+            parentNode.children('.upload-image').attr('src', attachment.url).css('display', '');
+            parentNode.children('.esg-button-remove').css('display', '');
+            mediaUploader = undefined; //destroy store data in the var
         });
-        mediaUploader.open();
-    });
-    $('#remove_logo_button').click(function (e) {
-        $('#logo_image').attr("hidden", true);
-        $('#logo_input_url').val('');
-        $('#remove_logo_button').css("display", "none");
-        $('#upload_logo_button').val('Choose logo');
+        mediaUploader.open(); //close the uploader
     });
 
-    //same for banner
-    $('#upload_banner_button').click(function (e) {
-        e.preventDefault();
-        if (mediaUploader) {
-            mediaUploader.open();
-            return;
-        }
-        mediaUploader = wp.media.frames.file_frame = wp.media({
-            title: 'Choose Image',
-            button: {
-                text: 'Choose Image'
-            }, multiple: false
-        });
-        mediaUploader.on('select', function () {
-            var attachment = mediaUploader.state().get('selection').first().toJSON();
-            $('#banner_input_url').val(attachment.url);
-            $('#upload_banner_button').val('Change banner');
-            $('#banner_image').attr('src', attachment.url).removeAttr('hidden');
-            $('#remove_banner_button').css("display", "inline-block");
-        });
-        mediaUploader.open();
+    $('.esg-button-remove').click(function () {
+        var parentNode = $(this).parent();
+        $(this).attr("hidden", true).css("display", "none");
+        parentNode.children('.upload-image').attr('src', '').css('display','none');
+        parentNode.children('.upload-input-url').val('');
+        parentNode.children('.esg-button-upload').val('Choose logo');
     });
-    $('#remove_banner_button').click(function (e) {
-        $('#banner_image').attr("hidden", true);
-        $('#banner_input_url').val('');
-        $('#remove_banner_button').css("display", "none");
-        $('#upload_banner_button').val('Choose banner');
-    });
+
 
     //required for color picker
     $('.color-picker').wpColorPicker();
-
 
     $('#esg-settings')
     {
@@ -90,7 +72,7 @@ jQuery(document).ready(function ($) {
                 e.preventDefault();
                 $('.group-subsetting-' + pc).toggle();
                 console.log($(this));
-                $(this).find('.dashicons').toggleClass(['dashicons-minus', 'dashicons-plus']);
+                $(this).children('.dashicons').toggleClass(['dashicons-minus', 'dashicons-plus']);
             });
         });
     }
