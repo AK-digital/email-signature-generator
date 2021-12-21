@@ -38,8 +38,8 @@ class BaseController
         $this->options = get_option('esg_admin_settings');
 
         $style = [
-            'font-weight' => ['title' => 'Font weight', 'input_type' => 'select', 'select_options' => ['300', '400', '500', '600', '700', '800', '900'],'default_val' => '400'],
-            'font-style' => ['title' => 'Font style', 'input_type' => 'select', 'select_options' => ['normal', 'italic', 'oblique'],'default_val' => 'normal'],
+            'font-weight' => ['title' => 'Font weight', 'input_type' => 'select', 'select_options' => ['300', '400', '500', '600', '700', '800', '900'], 'default_val' => '400'],
+            'font-style' => ['title' => 'Font style', 'input_type' => 'select', 'select_options' => ['normal', 'italic', 'oblique'], 'default_val' => 'normal'],
             'font-size' => ['title' => 'Font size', 'input_type' => 'number', 'suffix' => 'px', 'default_val' => '13'],
             'line-height' => ['title' => 'Line height', 'input_type' => 'number', 'suffix' => 'px', 'default_val' => '22'],
             'text-align' => ['title' => 'Text align', 'input_type' => 'select', 'select_options' => ['left', 'center', 'right'], 'default_val' => 'left',],
@@ -58,7 +58,7 @@ class BaseController
                     'template' => [
                         'title' => 'Choix du layout',
                         'input_type' => 'template',
-                        'default_val' => 'one',
+                        'default_val' => '_one',
                     ],
                 ],
             ],
@@ -70,6 +70,7 @@ class BaseController
                         'title' => 'Logo',
                         'input_type' => 'image',
                         'class' => 'logo-image',
+                        'default_val' => $this->plugin_url . 'assets/img/default-logo.png',
                     ],
                     'logo_margin' => [
                         'title' => 'Marges verticales logo',
@@ -83,6 +84,7 @@ class BaseController
                         'title' => 'Bannière',
                         'input_type' => 'image',
                         'class' => 'banner-image',
+                        'default_val' => $this->plugin_url . 'assets/img/default-banner.png',
                     ],
                     'banner_margin' => [
                         'title' => 'Marges verticales bannière',
@@ -96,6 +98,7 @@ class BaseController
                         'title' => 'Lien bannière',
                         'input_type' => 'text',
                         'class' => 'regular-text',
+                        'placeholder' => 'https://studiokrack.fr',
                     ],
 //                    'text_color' => [
 //                        'title' => 'Couleur du texte',
@@ -113,13 +116,15 @@ class BaseController
                         'input_type' => 'number',
                         'class' => '',
                         'suffix' => 'px',
-                        'min' => '14',
+                        'default_val' => '20',
+                        'min' => '12',
                         'max' => '40',
                     ],
                     'icon_color' => [
                         'title' => 'Couleur des icones',
                         'input_type' => 'color_picker',
                         'class' => '',
+                        'default_val' => '#1e73be',
                     ],
 
                 ],
@@ -137,6 +142,7 @@ class BaseController
                         'title' => 'Nom de l\'entreprise',
                         'input_type' => 'text',
                         'style' => $style,
+                        'default_val' => 'Ma Super Boite',
                     ],
 //                    'company_baseline' => [
 //                        'title' => 'Slogan',
@@ -147,6 +153,7 @@ class BaseController
                         'title' => 'Adresse',
                         'input_type' => 'text',
                         'style' => $style,
+                        'default_val' => '1801 rue de la victoire',
                     ],
 //                    'city' => [
 //                        'title' => 'Ville, pays',
@@ -157,11 +164,13 @@ class BaseController
                         'title' => 'Numéro de téléphone',
                         'input_type' => 'text',
                         'style' => $style,
+                        'default_val' => '01 02 03 04 05 06',
                     ],
                     'company_website' => [
                         'title' => 'Lien site internet (avec https://)',
                         'input_type' => 'text',
                         'style' => $style,
+                        'default_val' => 'https://www.masuperboite.fr',
                     ],
                 ],
             ],
@@ -212,40 +221,46 @@ class BaseController
                         'input_type' => 'text',
                         'class' => '',
                         'style' => $style,
+                        'default_val' => __('Suivez-nous sur les réseaux sociaux', 'emailSignatureGenerator'),
                     ],
                     'social_section_margin' => [
                         'title' => 'Marges verticales',
                         'input_type' => 'number',
                         'class' => '',
                         'suffix' => 'px',
-                        'default_val' => '0',
-                        'min' => '14',
+                        'default_val' => '10',
+                        'min' => '0',
                         'max' => '40',
                     ],
                     'facebook_link' => [
                         'title' => 'Url page Facebook',
                         'input_type' => 'text',
                         'class' => '',
+                        'default_val' => '#',
                     ],
                     'youtube_link' => [
                         'title' => 'Url chaîne Youtube',
                         'input_type' => 'text',
                         'class' => '',
+                        'default_val' => '#',
                     ],
                     'linkedin_link' => [
                         'title' => 'Url page Linkedin',
                         'input_type' => 'text',
                         'class' => '',
+                        'default_val' => '#',
                     ],
                     'instagram_link' => [
                         'title' => 'Url compte Instagram',
                         'input_type' => 'text',
                         'class' => '',
+                        'default_val' => '#',
                     ],
                     'twitter_link' => [
                         'title' => 'Url compte Twitter',
                         'input_type' => 'text',
                         'class' => '',
+                        'default_val' => '#',
                     ],
                 ],
             ],
@@ -255,7 +270,7 @@ class BaseController
                 'fields' => [
                     'additional_content' =>
                         [
-                            'title' => 'Disclaimer',
+                            'title' => 'Mentions légales ou autre texte personnalisé',
                             'input_type' => 'textarea',
                             'class' => '',
                             'style' => $style,
@@ -265,7 +280,6 @@ class BaseController
 
         ];
     }
-
 
     /*
      * return signature object
@@ -303,7 +317,7 @@ class BaseController
 
         $company_website = '';
         if($option['company_website']) {
-            $company_website = '<a href="' . $option['company_website'] . '"><img src="' . $this->plugin_url . 'assets/img/website-icon.png" width="' . $option['icon_size'] . 'px" style="vertical-align: middle;margin-right:5px;background-color:' . $option['icon_color'] . '"/><span class="company-website" style="font-weight:' . $option['company_website_font_weight'] . ';font-style:' . $option['company_website_font_style'] . ';font-size:' . $option['company_website_font_size'] . 'px; line-height:' . $option['company_website_line_height'] . 'px;text-align:' . $option['company_website_text_align'] . ';color:' . $option['company_website_color'] . ';">' . preg_replace('#^https?://#', '', $option['company_website']) . '</span></a>';
+            $company_website = '<a href="' . $option['company_website'] . '" style="text-decoration:none!important;"><img src="' . $this->plugin_url . 'assets/img/website-icon.png" width="' . $option['icon_size'] . 'px" style="vertical-align: middle;margin-right:5px;background-color:' . $option['icon_color'] . '"/><span class="company-website" style="font-weight:' . $option['company_website_font_weight'] . ';font-style:' . $option['company_website_font_style'] . ';font-size:' . $option['company_website_font_size'] . 'px; line-height:' . $option['company_website_line_height'] . 'px;text-align:' . $option['company_website_text_align'] . ';color:' . $option['company_website_color'] . ';">' . preg_replace('#^https?://#', '', $option['company_website']) . '</span></a>';
         }
 
         /* User Infos */
@@ -335,7 +349,7 @@ class BaseController
 
         $user_linkedin = '';
         if($user_data['user_linkedin']) {
-            $user_linkedin = '<a href="' . $user_data['user_linkedin'] . '"><img class="linkedin-logo" src="' . $this->plugin_url . 'assets/img/user-linkedin.png" width="' .  $option['user_surname_font_size']  . '"/></a>';
+            $user_linkedin = '<a href="' . $user_data['user_linkedin'] . '"><img class="linkedin-logo" src="' . $this->plugin_url . 'assets/img/user-linkedin.png" width="' .  $option['user_surname_font_size']  . 'px"/></a>';
         }
 
         /* Additionnal content */
@@ -349,7 +363,7 @@ class BaseController
 
         $before_social_text = '';
         if($option['before_social_text']) {
-            $before_social_text = '<span class="before_social-text" style="font-weight:' . $option['before_social_text_font_weight'] . ';font-style:' . $option['before_social_text_font_style'] . ';font-size:' . $option['before_social_text_font_size'] . 'px; line-height:' . $option['before_social_text_line_height'] . 'px;text-align:' . $option['before_social_text_text_align'] . ';color:' . $option['before_social_text_color'] . ';">' . $option['before_social_text'] . '</span>';
+            $before_social_text = '<span class="before_social-text" style="vertical-align: middle;font-weight:' . $option['before_social_text_font_weight'] . ';font-style:' . $option['before_social_text_font_style'] . ';font-size:' . $option['before_social_text_font_size'] . 'px; line-height:' . $option['before_social_text_line_height'] . 'px;text-align:' . $option['before_social_text_text_align'] . ';color:' . $option['before_social_text_color'] . ';">' . $option['before_social_text'] . '</span>';
         }
 
         $facebook_icon = '';
@@ -377,10 +391,12 @@ class BaseController
             $twitter_icon = '<a href="' . $option['twitter_link'] . '"><img class="twitter-icon" width="' . $option['icon_size'] . 'px" style="vertical-align:middle;background-color:' . $option['icon_color'] . '" src="' . $this->plugin_url . 'assets/img/twitter-icon.png" alt="twitter icon"/></a>';
         }
 
-        // Prepare the object, include the template and store in the $signature variable
-        ob_start();
-        include $this->templates_path . 'emails/' . $option['template'] . '.php';
-        return ob_get_clean();
+        if(isset($option['template'])) {
+            // Prepare the object, include the template and store in the $signature variable
+            ob_start();
+            include $this->templates_path . 'emails/' . $option['template'] . '.php';
+            return ob_get_clean();
+        }
     }
 
     public function toSlug($id)

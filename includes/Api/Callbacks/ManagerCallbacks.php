@@ -77,10 +77,13 @@ class ManagerCallbacks extends BaseController
     {
         $name = $args['label_for'];
         $option_name = $args['option_name'];
+        $placeholder = $args['placeholder'];
+        $default_val = $args['default_val'];
 
         printf(
-            '<input type="text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="regular-text" value="%s" />',
-            isset($this->options[$name]) ? esc_attr($this->options[$name]) : ''
+
+            '<input type="text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="regular-text" value="%s" placeholder="%s"/>',
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : $default_val, $placeholder
         );
     }
 
@@ -108,14 +111,15 @@ class ManagerCallbacks extends BaseController
         $name = $args['label_for'];
         $classes = $args['class'];
         $option_name = $args['option_name'];
+        $default_val = $args['default_val'];
 
-        printf('<img class="upload-image" src="%s" %s/>', esc_attr($this->options[$name]), empty($this->options[$name]) ? 'style="display:none;"' : '');
+        printf('<img class="upload-image" src="%s" %s/>', isset($this->options[$name]) ? esc_attr($this->options[$name]) : $default_val, empty($this->options[$name]) ? 'style="display:none;"' : '');
 
         printf(
             '<input type="text" class="upload-input-url" name="' . $option_name . '[' . $name . ']" class="' . $classes . '" value="%s" />
             <input type="button" class="button-secondary esg-button-remove" value="Remove" %s />
             <input type="button" class="button-primary esg-button-upload" value="Choose ' . $name . '" />',
-            isset($this->options[$name]) ? esc_attr($this->options[$name]) : '', empty($this->options[$name]) ? 'style="display:none;"' : ''
+            isset($this->options[$name]) ? esc_attr($this->options[$name]) : $default_val , empty($this->options[$name]) ? 'style="display:none;"' : ''
         );
     }
 
@@ -127,10 +131,11 @@ class ManagerCallbacks extends BaseController
         $name = $args['label_for'];
         $classes = $args['class'];
         $option_name = $args['option_name'];
+        $default_val = $args['default_val'];
 
         printf(
-            '<input type="text" name="' . $option_name . '[' . $name . ']" value="%s" class="color-picker ' . $classes . '" data-default-color="#000000" >',
-            (isset($this->options[$name])) ? $this->options[$name] : '');
+            '<input type="text" name="' . $option_name . '[' . $name . ']" value="%s" class="color-picker ' . $classes . '">',
+            (isset($this->options[$name])) ? $this->options[$name] : $default_val);
     }
 
     /**
@@ -147,8 +152,13 @@ class ManagerCallbacks extends BaseController
         echo '<select name="' . $option_name . '[' . $name . ']" id="' . $name . '">';
 
         foreach ($options as $key => $value) {
-            $selected = (isset($this->options[$name]) && $this->options[$name] === $value) ? 'selected' : $default_val;
-            echo "<option value='$value' style='font-family:$value' $selected >$value</option>";
+            $selected = (isset($this->options[$name]) && $this->options[$name] === $value)  ? 'selected' : '';
+
+            if($this->options[$name] === '' && $value == $default_val){
+                $selected = 'selected';
+            }
+
+            echo "<option value='$value' style='font-weight:$value; font-style:$value;font-family:$value;' $selected >$value</option>";
         }
 
         echo '</select>';
@@ -168,8 +178,12 @@ class ManagerCallbacks extends BaseController
     /**
      *
      */
-    public function template_callback()
+    public function template_callback($args)
     {
+
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
 
         $emails_path = $this->templates_path . '/emails';
 
@@ -182,9 +196,15 @@ class ManagerCallbacks extends BaseController
                     if ($entry != "." && $entry != ".." && pathinfo($entry)["extension"] === "php") {
 
                         $entry = str_replace('.php', '', $entry);
+
+                        $default_val = '';
+                        if(!isset($this->options[$name]) || $this->options[$name] == '' && $entry == $default_val){
+                            $default_val = 'checked';
+                        }
+
                         printf(
-                            '<label><input type="radio" id="%s" name="esg_admin_settings[template]" class="regular-text" value="%s" %s/><img src="%s" width="250px"/></label>',
-                            $entry, $entry ? $entry : 'one', ($this->options['template'] == $entry) ? 'checked' : '', $this->plugin_url . '/assets/img/' . $entry . '-template.png');
+                            '<label><input type="radio" id="%s" name="'. $option_name . '[' . $name . ']" class="regular-text" value="%s" %s/><img src="%s" width="250px"/></label>',
+                            $entry, $entry , ($this->options[$name] == $entry) ? 'checked' : $default_val, $this->plugin_url . '/assets/img/' . $entry . '-template.png');
                     }
                 }
                 closedir($handle);

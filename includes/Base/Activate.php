@@ -6,24 +6,23 @@
 
 namespace Includes\Base;
 
+use Includes\Base\BaseController;
+
 /**
  * Class Activate
  * @package Includes\Base
  */
-class Activate
+class Activate extends BaseController
 {
 
-	/**
-	 * Automatically triggered on plugin activation
-	 */
-	public static function activate()
+    /**
+     * Automatically triggered on plugin activation
+     */
+    public static function activate()
     {
         flush_rewrite_rules();
 
-        $default = array();
-
-//        if ( ! get_option( 'esg_admin_settings' ) ) {
-            update_option( 'esg_admin_settings', $default );
-//        }
+        $storeData = new StoreData();
+        $storeData->store(false);
     }
 }

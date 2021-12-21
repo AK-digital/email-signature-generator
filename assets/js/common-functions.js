@@ -16,9 +16,7 @@ jQuery(document).ready(function ($) {
 
     $('.esg_button-copy-sign').click(function() {
 
-        // setTimeout(function() {
-        //     $(this).html('Copied to clipboard !');
-        // }, 2000);
+        $('.esg-copy-string', this).html('Signature copiée !');
 
         var str = $('#sign-preview').html();
 

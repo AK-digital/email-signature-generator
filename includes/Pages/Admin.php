@@ -148,8 +148,29 @@ class Admin extends BaseController
                             'min' => $value['min'],
                             'max' => $value['max'],
                             'select_options' => $value['select_options'],
+                            'placeholder' => $value['placeholder'],
                         ],
                     ];
+
+                    if ($value['required']) {
+
+                        foreach ($value['required'] as $l => $m) {
+
+                            $args[] = [
+                                'id' => $this->toSlug($key) . '_' . $this->toSlug($l),
+                                'title' => $m['title'],
+                                'callback' => array($this->callbacks_mngr, $m['input_type'] . '_callback'),
+                                'page' => $row['id'],
+                                'section' => $this->toSlug($row['id']),
+                                'args' => [
+                                    'option_name' => 'esg_admin_settings',
+                                    'label_for' => $this->toSlug($key) . '_' . $this->toSlug($l),
+                                    'default_val' => $m['default_val'],
+                                    'class' => 'required',
+                                ],
+                            ];
+                        }
+                    }
 
                     if ($value['style']) {
 
@@ -168,26 +189,6 @@ class Admin extends BaseController
                                     'suffix' => $v['suffix'],
                                     'default_val' => $v['default_val'],
                                     'class' => 'subsetting-' . $key,
-                                ],
-                            ];
-                        }
-                    }
-
-                    if ($value['required']) {
-
-                        foreach ($value['required'] as $l => $m) {
-
-                            $args[] = [
-                                'id' => $this->toSlug($key) . '_' . $this->toSlug($l),
-                                'title' => $m['title'],
-                                'callback' => array($this->callbacks_mngr, $m['input_type'] . '_callback'),
-                                'page' => $row['id'],
-                                'section' => $this->toSlug($row['id']),
-                                'args' => [
-                                    'option_name' => 'esg_admin_settings',
-                                    'label_for' => $this->toSlug($key) . '_' . $this->toSlug($l),
-                                    'default_val' => $m['default_val'],
-                                    'class' => 'required',
                                 ],
                             ];
                         }

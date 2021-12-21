@@ -18,7 +18,7 @@
         <div id="preview-tab" class="js-tabs__content">
             <div id="sign-preview"><?= $signature; ?></div>
             <div class="esg_action-bar">
-                <button class="esg_button esg_button-copy-sign-sign qbutton">
+                <button class="esg_button esg_button-copy-sign qbutton">
                     <img src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><span
                             class="esg-copy-string"><?= __('Copier'); ?></span>
                 </button>

@@ -14,11 +14,11 @@ class Shortcode extends BaseController
 
     function register()
     {
-        add_shortcode('esg_form', array($this, 'esg_form_shortcode_content'));
-        add_shortcode('esg_user_data', array($this, 'esg_user_data_shortcode_content'));
+        add_shortcode('esg_form', array($this, 'form_shortcode_content'));
+        add_shortcode('esg_user_data', array($this, 'user_data_shortcode_content'));
     }
 
-    public function esg_form_shortcode_content()
+    public function form_shortcode_content()
     {
         // If user form is empty, return the form
         if (!isset($_POST['submit'])) {
@@ -43,7 +43,7 @@ class Shortcode extends BaseController
         }
     }
 
-    public function esg_user_data_shortcode_content()
+    public function user_data_shortcode_content()
     {
         global $current_user;
         wp_get_current_user();

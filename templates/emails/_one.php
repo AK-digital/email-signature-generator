@@ -39,7 +39,7 @@
         </td>
     </tr>
     <tr>
-        <td width="1%">
+        <td width="1%" style="padding-top:10px;">
             <!-- Logo -->
             <?= $logo ?>
         </td>

@@ -14,8 +14,6 @@
 .js-tabs__header li {
     display: inline-block;
     float: left;
-    border-radius: 7px 0px 0px 7px;
-    padding: 20px 9px 20px 9px;
     margin: 0;
     border: 0;
     font-size: 15px;
@@ -47,7 +45,6 @@
 .js-tabs__title-active {
     background: #fff;
     border-bottom-color: #fff;
-    border-top-left-radius: .75em;
 }
 
 /* End tab pane */
@@ -65,13 +62,6 @@
 .fadeIn {
     animation-name: fadeIn;
     animation-duration: 300ms;
-}
-
-
-#sign-preview{
-    padding-bottom: 40px;
-    padding-top: 40px;
-    background-color: #fff;
 }
 
 #sign-preview table td {

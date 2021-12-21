@@ -61,18 +61,24 @@ jQuery(document).ready(function ($) {
 
         // Now group them
         $(uniqueSubClasses).each(function (i, v) {
-          $('.' + v).wrapAll('<div class ="group-subsetting group-' + v + '"></div>');
+          $('.' + v).wrapAll('<tr class="group-subsetting-row"><td colspan="100%" class="group-subsetting group-' + v + '"></td></tr>');
         });
 
 
         $(uniqueParClasses).each(function (i, p) {
             let pc = p.replace('parent-', '');
 
-            $('.' + p + ' td').append('<button class="button-' + pc + ' button button-primary ml-5"><span class="dashicons dashicons-plus"></span> style</button>').click(function (e) {
+            $('.' + p + ' td').append('<button class="button-' + pc + ' button button-primary subsetting-button"><span class="dashicons dashicons-plus"></span> style</button>').click(function (e) {
                 e.preventDefault();
-                $('.group-subsetting-' + pc).toggle();
-                console.log($(this));
-                $(this).children('.dashicons').toggleClass(['dashicons-minus', 'dashicons-plus']);
+                if ($('.group-subsetting-' + pc).hasClass("open")) {
+                    $('.group-subsetting-' + pc).removeClass('open');
+                }
+                else{
+                    $('.group-subsetting').removeClass('open');
+                    $('.dashicons').removeClass('dashicons-minus').addClass('dashicons-plus');
+                    $('.group-subsetting-' + pc).addClass('open');
+                }
+                $(this).find('.dashicons').toggleClass('dashicons-minus dashicons-plus');
             });
         });
     }

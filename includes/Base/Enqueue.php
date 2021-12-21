@@ -48,6 +48,6 @@ class Enqueue extends BaseController
         wp_enqueue_script('esg-js-tabs-script', $this->plugin_url . 'assets/js/js-tabs.js');
 
         wp_enqueue_style('esg-front-style', $this->plugin_url . 'assets/css/frontend-style.css');
-        wp_enqueue_script('esg-front-script', $this->plugin_url . 'assets/js/front-functions.js', array(), '1.0.0', true);
+//        wp_enqueue_script('esg-front-script', $this->plugin_url . 'assets/js/front-functions.js', array(), '1.0.0', true);
     }
 }

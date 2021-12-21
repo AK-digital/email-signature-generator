@@ -9,6 +9,7 @@
 
 .js-tabs__content{
     padding:30px;
+    background-color: #fff;
 }
 
 .js-tabs__content#preview-tab{
@@ -27,6 +28,10 @@
 
 .js-tabs__title {
     text-transform: uppercase;
+}
+
+.js-tabs__title-active {
+    border-radius: 7px 7px 0 0;
 }
 
 .esg_action-bar{
@@ -94,6 +99,10 @@ border-radius: 7px;
 #signature-form{
     max-width: 450px;
     margin:auto;
+}
+
+#sign-preview {
+    padding: 30px 20px 40px 30px;
 }
 
 .fl-form input.fl-input, .fl-form select.fl-select, .fl-form textarea.fl-textarea{
