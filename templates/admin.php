@@ -1,12 +1,8 @@
 <div id="esg-settings" class="wrap">
     <h1 id="esg-title"><?= __('Générateur de signature d\'email'); ?></h1>
-    <form id="restore-settings-form" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir restaurer les paramètres par défaut ?');" action="<?php $storeData->store(true); ?>">
-        <input type="submit" id="restore-default-button" class="button-secondary" value="Paramètres par défaut" name="submit"> <!-- assign a name for the button -->
-    </form>
+
     <?php settings_errors(); ?>
-
     <form method="post" action="options.php">
-
         <div id="esg-main-wrapper" class="container flex">
             <div id="esg-options" class="container ">
                 <h3>Options de personnalisation</h3>
@@ -115,5 +111,8 @@
             </div>
         </div>
     </form>
+    <form id="restore-settings-form" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir restaurer les paramètres par défaut ?');" action="<?php $storeData->store(true); ?>">
+        <input type="submit" id="restore-default-button" class="button-secondary" value="Paramètres par défaut" name="submit"> <!-- assign a name for the button -->
+    </form>
 </div>
-<p id="donate-link">Vous aimez ce plugin ? Soutenez son créateur en <a href="https://developpeur-wordpress.fr/don">faisant un don</a></p>
+<!--<p id="donate-link">Vous aimez ce plugin ? Soutenez son créateur en <a href="https://developpeur-wordpress.fr/don">faisant un don</a></p>-->

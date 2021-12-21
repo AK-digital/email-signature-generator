@@ -1,6 +1,7 @@
 /* reset */
 
 #esg-settings{
+    position:relative;
     z-index:99;
 }
 
@@ -61,9 +62,9 @@
 }
 
 #restore-settings-form{
-    position: relative;
-    top: 50px;
-    float: right;
+    position: absolute;
+    right: 0;
+    bottom: 24px;
 }
 
 /* CHECKED STYLES */

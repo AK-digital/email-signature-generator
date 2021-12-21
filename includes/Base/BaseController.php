@@ -303,48 +303,48 @@ class BaseController
         /* Infos générales */
         $company_name = '';
         if($option['company_name']) {
-            $company_name = '<span class="company-name" style="font-weight:' .  $option['company_name_font_weight']  . ';font-style:' .  $option['company_name_font_style']  . ';font-size:' .  $option['company_name_font_size']  . 'px; line-height:' .  $option['company_name_line_height']  . 'px;text-align:' .  $option['company_name_text_align']  . ';color:' .  $option['company_name_color']  . ';">' . $option['company_name'] . '</span>';
+            $company_name = '<span class="company-name" style="font-family:' .  $option['font_family']  . ';font-weight:' .  $option['company_name_font_weight']  . ';font-style:' .  $option['company_name_font_style']  . ';font-size:' .  $option['company_name_font_size']  . 'px; line-height:' .  $option['company_name_line_height']  . 'px;text-align:' .  $option['company_name_text_align']  . ';color:' .  $option['company_name_color']  . ';">' . $option['company_name'] . '</span>';
         }
         $company_phone = '';
         if($option['company_phone']) {
-            $company_phone = '<span class="company-phone" style="font-weight:' . $option['company_phone_font_weight'] . ';font-style:' . $option['company_phone_font_style'] . ';font-size:' . $option['company_phone_font_size'] . 'px; line-height:' . $option['company_phone_line_height'] . 'px;text-align:' . $option['company_phone_text_align'] . ';color:' . $option['company_phone_color'] . ';">' . $option['company_phone'] . '</span>';
+            $company_phone = '<span class="company-phone" style="font-family:' .  $option['font_family']  . ';font-weight:' . $option['company_phone_font_weight'] . ';font-style:' . $option['company_phone_font_style'] . ';font-size:' . $option['company_phone_font_size'] . 'px; line-height:' . $option['company_phone_line_height'] . 'px;text-align:' . $option['company_phone_text_align'] . ';color:' . $option['company_phone_color'] . ';">' . $option['company_phone'] . '</span>';
         }
 
         $company_address = '';
         if($option['company_address']) {
-            $company_address = '<img src="' . $this->plugin_url . 'assets/img/address-icon.png" width="' . $option['icon_size'] . 'px" style="vertical-align: middle;margin-right:5px;background-color:' . $option['icon_color'] . '"/><span class="company-address" style="font-weight:' .  $option['company_address_font_weight']  . ';font-style:' .  $option['company_address_font_style']  . ';font-size:' .  $option['company_address_font_size']  . 'px; line-height:' .  $option['company_address_line_height']  . 'px;text-align:' .  $option['company_address_text_align']  . ';color:' .  $option['company_address_color']  . ';">' . $option['company_address'] . '</span>';
+            $company_address = '<img src="' . $this->plugin_url . 'assets/img/address-icon.png" width="' . $option['icon_size'] . 'px" style="vertical-align: middle;margin-right:5px;background-color:' . $option['icon_color'] . '"/><span class="company-address" style="font-family:' .  $option['font_family']  . ';font-weight:' .  $option['company_address_font_weight']  . ';font-style:' .  $option['company_address_font_style']  . ';font-size:' .  $option['company_address_font_size']  . 'px; line-height:' .  $option['company_address_line_height']  . 'px;text-align:' .  $option['company_address_text_align']  . ';color:' .  $option['company_address_color']  . ';">' . $option['company_address'] . '</span>';
         }
 
         $company_website = '';
         if($option['company_website']) {
-            $company_website = '<a href="' . $option['company_website'] . '" style="text-decoration:none!important;"><img src="' . $this->plugin_url . 'assets/img/website-icon.png" width="' . $option['icon_size'] . 'px" style="vertical-align: middle;margin-right:5px;background-color:' . $option['icon_color'] . '"/><span class="company-website" style="font-weight:' . $option['company_website_font_weight'] . ';font-style:' . $option['company_website_font_style'] . ';font-size:' . $option['company_website_font_size'] . 'px; line-height:' . $option['company_website_line_height'] . 'px;text-align:' . $option['company_website_text_align'] . ';color:' . $option['company_website_color'] . ';">' . preg_replace('#^https?://#', '', $option['company_website']) . '</span></a>';
+            $company_website = '<a href="' . $option['company_website'] . '" style="text-decoration:none!important;"><img src="' . $this->plugin_url . 'assets/img/website-icon.png" width="' . $option['icon_size'] . 'px" style="vertical-align: middle;margin-right:5px;background-color:' . $option['icon_color'] . '"/><span class="company-website" style="font-family:' .  $option['font_family']  . ';font-weight:' . $option['company_website_font_weight'] . ';font-style:' . $option['company_website_font_style'] . ';font-size:' . $option['company_website_font_size'] . 'px; line-height:' . $option['company_website_line_height'] . 'px;text-align:' . $option['company_website_text_align'] . ';color:' . $option['company_website_color'] . ';">' . preg_replace('#^https?://#', '', $option['company_website']) . '</span></a>';
         }
 
         /* User Infos */
 
         $user_firstname = '';
         if($user_data['firstname']) {
-            $user_firstname = '<span class="user-firstname" style="font-weight:' .  $option['user_firstname_font_weight']  . ';font-style:' .  $option['user_firstname_font_style']  . ';font-size:' .  $option['user_firstname_font_size']  . 'px; line-height:' .  $option['user_firstname_line_height']  . 'px;text-align:' .  $option['user_firstname_text_align']  . ';color:' .  $option['user_firstname_color']  . ';">' . $user_data['firstname'] . '</span>';
+            $user_firstname = '<span class="user-firstname" style="font-family:' .  $option['font_family']  . ';font-weight:' .  $option['user_firstname_font_weight']  . ';font-style:' .  $option['user_firstname_font_style']  . ';font-size:' .  $option['user_firstname_font_size']  . 'px; line-height:' .  $option['user_firstname_line_height']  . 'px;text-align:' .  $option['user_firstname_text_align']  . ';color:' .  $option['user_firstname_color']  . ';">' . $user_data['firstname'] . '</span>';
         }
 
         $user_surname = '';
         if($user_data['surname']) {
-            $user_surname = '<span class="user-surname" style="font-weight:' .  $option['user_surname_font_weight']  . ';font-style:' .  $option['user_surname_font_style']  . ';font-size:' .  $option['user_surname_font_size']  . 'px; line-height:' .  $option['user_surname_line_height']  . 'px;text-align:' .  $option['user_surname_text_align']  . ';color:' .  $option['user_surname_color']  . ';">' . $user_data['surname'] . '</span>';
+            $user_surname = '<span class="user-surname" style="font-family:' .  $option['font_family']  . ';font-weight:' .  $option['user_surname_font_weight']  . ';font-style:' .  $option['user_surname_font_style']  . ';font-size:' .  $option['user_surname_font_size']  . 'px; line-height:' .  $option['user_surname_line_height']  . 'px;text-align:' .  $option['user_surname_text_align']  . ';color:' .  $option['user_surname_color']  . ';">' . $user_data['surname'] . '</span>';
         }
 
         $user_title = '';
         if($user_data['title']) {
-            $user_title = '<span class="user-title" style="font-weight:' .  $option['user_title_font_weight']  . ';font-style:' .  $option['user_title_font_style']  . ';font-size:' .  $option['user_title_font_size']  . 'px; line-height:' .  $option['user_title_line_height']  . 'px;text-align:' .  $option['user_title_text_align']  . ';color:' .  $option['user_title_color']  . ';">' . $user_data['title'] . '</span>';
+            $user_title = '<span class="user-title" style="font-family:' .  $option['font_family']  . ';font-weight:' .  $option['user_title_font_weight']  . ';font-style:' .  $option['user_title_font_style']  . ';font-size:' .  $option['user_title_font_size']  . 'px; line-height:' .  $option['user_title_line_height']  . 'px;text-align:' .  $option['user_title_text_align']  . ';color:' .  $option['user_title_color']  . ';">' . $user_data['title'] . '</span>';
         }
 
         $user_email = '';
         if($user_data['email']) {
-            $user_email = '<img src="' . $this->plugin_url . 'assets/img/email-icon.png" width="' . $option['icon_size'] . 'px" style="margin-right:5px;vertical-align: middle;background-color:' . $option['icon_color'] . '"/><span class="user-email" style="font-weight:' .  $option['user_email_font_weight']  . ';font-style:' .  $option['user_email_font_style']  . ';font-size:' .  $option['user_email_font_size']  . 'px; line-height:' .  $option['user_email_line_height']  . 'px;text-align:' .  $option['user_email_text_align']  . ';color:' .  $option['user_email_color']  . ';">' . $user_data['email'] . '</span>';
+            $user_email = '<img src="' . $this->plugin_url . 'assets/img/email-icon.png" width="' . $option['icon_size'] . 'px" style="margin-right:5px;vertical-align: middle;background-color:' . $option['icon_color'] . '"/><span class="user-email" style="font-family:' .  $option['font_family']  . ';font-weight:' .  $option['user_email_font_weight']  . ';font-style:' .  $option['user_email_font_style']  . ';font-size:' .  $option['user_email_font_size']  . 'px; line-height:' .  $option['user_email_line_height']  . 'px;text-align:' .  $option['user_email_text_align']  . ';color:' .  $option['user_email_color']  . ';">' . $user_data['email'] . '</span>';
         }
 
         $user_mobile = '';
         if($user_data['mobile']) {
-            $user_mobile = '<img src="' . $this->plugin_url . 'assets/img/telephone-icon.png" width="' . $option['icon_size'] . 'px" style="margin-right:5px;vertical-align: middle;background-color:' . $option['icon_color'] . '; line-height:' .  $option['user_mobile_line_height']  . 'px;"/><span class="user-mobile" style="font-weight:' .  $option['user_mobile_font_weight']  . ';font-style:' .  $option['user_mobile_font_style']  . ';font-size:' .  $option['user_mobile_font_size']  . 'px; line-height:' .  $option['user_mobile_line_height']  . 'px;text-align:' .  $option['user_mobile_text_align']  . ';color:' .  $option['user_mobile_color']  . ';">' . $user_data['mobile'] . '</span>';
+            $user_mobile = '<img src="' . $this->plugin_url . 'assets/img/telephone-icon.png" width="' . $option['icon_size'] . 'px" style="margin-right:5px;vertical-align: middle;background-color:' . $option['icon_color'] . '; line-height:' .  $option['user_mobile_line_height']  . 'px;"/><span class="user-mobile" style="font-family:' .  $option['font_family']  . ';font-weight:' .  $option['user_mobile_font_weight']  . ';font-style:' .  $option['user_mobile_font_style']  . ';font-size:' .  $option['user_mobile_font_size']  . 'px; line-height:' .  $option['user_mobile_line_height']  . 'px;text-align:' .  $option['user_mobile_text_align']  . ';color:' .  $option['user_mobile_color']  . ';">' . $user_data['mobile'] . '</span>';
         }
 
         $user_linkedin = '';
@@ -356,14 +356,14 @@ class BaseController
 
         $additional_content = '';
         if($option['additional_content']) {
-            $additional_content = '<span class="additional-content" style="font-weight:' . $option['additional_content_font_weight'] . ';font-style:' . $option['additional_content_font_style'] . ';font-size:' . $option['additional_content_font_size'] . 'px; line-height:' . $option['additional_content_line_height'] . 'px;text-align:' . $option['additional_content_text_align'] . ';color:' . $option['additional_content_color'] . ';">' . $option['additional_content'] . '</span>';
+            $additional_content = '<span class="additional-content" style="font-family:' .  $option['font_family']  . ';font-weight:' . $option['additional_content_font_weight'] . ';font-style:' . $option['additional_content_font_style'] . ';font-size:' . $option['additional_content_font_size'] . 'px; line-height:' . $option['additional_content_line_height'] . 'px;text-align:' . $option['additional_content_text_align'] . ';color:' . $option['additional_content_color'] . ';">' . $option['additional_content'] . '</span>';
         }
 
         /* Social icons */
 
         $before_social_text = '';
         if($option['before_social_text']) {
-            $before_social_text = '<span class="before_social-text" style="vertical-align: middle;font-weight:' . $option['before_social_text_font_weight'] . ';font-style:' . $option['before_social_text_font_style'] . ';font-size:' . $option['before_social_text_font_size'] . 'px; line-height:' . $option['before_social_text_line_height'] . 'px;text-align:' . $option['before_social_text_text_align'] . ';color:' . $option['before_social_text_color'] . ';">' . $option['before_social_text'] . '</span>';
+            $before_social_text = '<span class="before_social-text" style="font-family:' .  $option['font_family']  . ';vertical-align: middle;font-weight:' . $option['before_social_text_font_weight'] . ';font-style:' . $option['before_social_text_font_style'] . ';font-size:' . $option['before_social_text_font_size'] . 'px; line-height:' . $option['before_social_text_line_height'] . 'px;text-align:' . $option['before_social_text_text_align'] . ';color:' . $option['before_social_text_color'] . ';">' . $option['before_social_text'] . '</span>';
         }
 
         $facebook_icon = '';
