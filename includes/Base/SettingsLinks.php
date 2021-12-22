@@ -15,7 +15,7 @@ class SettingsLinks extends BaseController
 
 	public function settings_link( $links )
 	{
-		$settings_link = '<a href="?page=esg-settings">Settings</a>';
+		$settings_link = '<a href="/wp-admin/admin.php?page=esg-settings">Settings</a>';
 		array_push( $links, $settings_link );
 		return $links;
 	}
