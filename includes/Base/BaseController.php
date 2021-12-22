@@ -40,7 +40,7 @@ class BaseController
         $style = [
             'font-weight' => ['title' => 'Font weight', 'input_type' => 'select', 'select_options' => ['300', '400', '500', '600', '700', '800', '900'], 'default_val' => '400'],
             'font-style' => ['title' => 'Font style', 'input_type' => 'select', 'select_options' => ['normal', 'italic', 'oblique'], 'default_val' => 'normal'],
-            'font-size' => ['title' => 'Font size', 'input_type' => 'number', 'suffix' => 'px', 'default_val' => '13'],
+            'font-size' => ['title' => 'Font size', 'input_type' => 'number', 'suffix' => 'px', 'default_val' => '14'],
             'line-height' => ['title' => 'Line height', 'input_type' => 'number', 'suffix' => 'px', 'default_val' => '22'],
             'text-align' => ['title' => 'Text align', 'input_type' => 'select', 'select_options' => ['left', 'center', 'right'], 'default_val' => 'left',],
             'color' => ['title' => 'Couleur du texte', 'input_type' => 'color_picker', 'class' => '','default_val' => '#000000'],
