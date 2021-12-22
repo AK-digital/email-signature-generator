@@ -9,7 +9,7 @@ use Includes\Base\BaseController;
 
 class StoreData extends Basecontroller
 {
-    public function store($override = false)
+    public function restore_default($override = false)
     {
         $default_options = [];
 
@@ -30,13 +30,8 @@ class StoreData extends Basecontroller
             }
         }
 
-        if (isset($_POST['submit'])) {
-
-            if (!get_option('esg_admin_settings') || $override === true) {
-                update_option('esg_admin_settings', $default_options);
-            }
-
-            unset($_POST['submit']);
+        if ($override === true) {
+            update_option('esg_admin_settings', $default_options);
         }
     }
 }

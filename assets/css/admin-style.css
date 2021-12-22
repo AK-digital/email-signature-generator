@@ -64,7 +64,7 @@
 #restore-settings-form{
     position: absolute;
     right: 0;
-    bottom: 24px;
+    bottom: 0;
 }
 
 /* CHECKED STYLES */
@@ -221,6 +221,12 @@
     bottom: 30px;
     right: 30px;
     z-index: 1;
+}
+
+#delete-settings-form{
+    position: absolute;
+    right: 0;
+    bottom: -16px;
 }
 
 @media only screen and (max-width: 1300px){

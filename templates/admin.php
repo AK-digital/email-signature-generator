@@ -111,8 +111,10 @@
             </div>
         </div>
     </form>
-    <form id="restore-settings-form" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir restaurer les paramètres par défaut ?');" action="<?php $storeData->store(true); ?>">
-        <input type="submit" id="restore-default-button" class="button-secondary" value="Paramètres par défaut" name="submit"> <!-- assign a name for the button -->
+    <form id="restore-settings-form" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir restaurer les paramètres par défaut ?');" action="<?php $storeData->restore_default(true); ?>">
+       <input type="hidden" name="action" action="options.php" />
+
+        <?php submit_button('Paramètres par défaut', 'secondary button-secondary', 'restore-default-button', true); ?>
     </form>
 </div>
 <!--<p id="donate-link">Vous aimez ce plugin ? Soutenez son créateur en <a href="https://developpeur-wordpress.fr/don">faisant un don</a></p>-->
