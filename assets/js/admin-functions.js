@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
             mediaUploader.open();
             return;
         }
-        mediaUploader = wp.media.frames.file_frame = wp.media({
+        mediaUploader = wp.media({
             title: 'Choose Image',
             button: {
                 text: 'Choose Image'
