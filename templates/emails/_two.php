@@ -64,9 +64,13 @@
     </tr>
     <tr>
         <td colspan="100%">
-            <?= $company_name ?> - <!-- Website -->
+            <!-- Nom de l'entreprise -->
+            <?= $company_name ?>
             <!-- Téléphone fixe -->
-            <?= $company_phone ?> - <!-- Nom de l'entreprise -->
+            <?= $company_phone ? ' - ' : ' '; ?>
+            <?= $company_phone ?>
+            <!-- Website -->
+            <?= $company_website ? ' - ' : ' '; ?>
             <?= $company_website ?>
         </td>
     </tr>

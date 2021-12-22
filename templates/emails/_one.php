@@ -11,13 +11,13 @@
     <tr>
         <td>
             <!-- Fonction --> <!-- Nom de l'entreprise -->
-            <?= $user_title ?>&nbsp;-&nbsp;<?= $company_name ?>
+            <?= $user_title ?> <?= $company_name ? ' - ' : ''; ?> <?= $company_name ?>
         </td>
     </tr>
     <tr>
         <td>
             <!-- Téléphone portable -->  <!-- Téléphone fixe -->
-            <?= $user_mobile ?>&nbsp;-&nbsp;<?= $company_phone ?>
+            <?= $user_mobile ?><?= $company_phone ? ' - ' : ''; ?><?= $company_phone ?>
         </td>
     </tr>
     <tr>
