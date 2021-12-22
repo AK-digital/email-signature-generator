@@ -30,7 +30,7 @@ class StoreData extends Basecontroller
             }
         }
 
-        if ($override === true) {
+        if (!get_option('esg_admin_settings') || $override == true) {
             update_option('esg_admin_settings', $default_options);
         }
     }

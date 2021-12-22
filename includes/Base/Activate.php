@@ -23,6 +23,6 @@ class Activate extends BaseController
         flush_rewrite_rules();
 
         $storeData = new StoreData();
-        $storeData->store(false);
+        $storeData->restore_default();
     }
 }
