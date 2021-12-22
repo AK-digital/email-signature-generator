@@ -24,7 +24,7 @@
     <tr>
         <td>
             <!-- Téléphone portable -->  <!-- Téléphone fixe -->
-            <?= $user_mobile ?><?= $company_phone ? ' - ' : ''; ?><?= $company_phone ?>
+            <?= $user_mobile ?><?= ($user_mobile && $company_phone) ? ' - ' : ''; ?><?= $company_phone ?>
         </td>
     </tr>
     <?php endif; ?>
