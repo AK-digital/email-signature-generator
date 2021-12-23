@@ -42,6 +42,10 @@ class Enqueue extends BaseController
 
     function front_enqueue()
     {
+        if ( ! wp_script_is( 'jquery', 'enqueued' )) {
+            wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.6.0.slim.min.js' );
+        }
+
         wp_enqueue_style('float-label-style', $this->plugin_url . 'assets/css/float-labels.min.css');
         wp_enqueue_script('float-label-script', $this->plugin_url . 'assets/js/float-labels.min.js', array(), '1.0.0', false);
 
