@@ -339,7 +339,7 @@ class BaseController
 
         $user_email = '';
         if($user_data['email']) {
-            $user_email = '<img src="' . $this->plugin_url . 'assets/img/email-icon.png" width="' . $option['icon_size'] . 'px" style="margin-right:5px;vertical-align: middle;background-color:' . $option['icon_color'] . '"/><span class="user-email" style="font-family:' .  $option['font_family']  . ';font-weight:' .  $option['user_email_font_weight']  . ';font-style:' .  $option['user_email_font_style']  . ';font-size:' .  $option['user_email_font_size']  . 'px; line-height:' .  $option['user_email_line_height']  . 'px;text-align:' .  $option['user_email_text_align']  . ';color:' .  $option['user_email_color']  . ';">' . $user_data['email'] . '</span>';
+            $user_email = '<img src="' . $this->plugin_url . 'assets/img/email-icon.png" width="' . $option['icon_size'] . 'px" style="margin-right:5px;vertical-align: middle;background-color:' . $option['icon_color'] . '"/><span class="user-email" style="font-family:' .  $option['font_family']  . ';font-weight:' .  $option['user_email_font_weight']  . ';font-style:' .  $option['user_email_font_style']  . ';font-size:' .  $option['user_email_font_size']  . 'px; line-height:' .  $option['user_email_line_height']  . 'px;text-align:' .  $option['user_email_text_align']  . ';color:' .  $option['user_email_color']  . '!important;text-decoration:none!important;"><a style="color:' .  $option['user_email_color']  . '!important;text-decoration:none!important;">' . $user_data['email'] . '</a></span>';
         }
 
         $user_mobile = '';
@@ -349,7 +349,7 @@ class BaseController
 
         $user_linkedin = '';
         if($user_data['user_linkedin']) {
-            $user_linkedin = '<a href="' . $user_data['user_linkedin'] . '"><img class="linkedin-logo" src="' . $this->plugin_url . 'assets/img/user-linkedin.png" width="' .  $option['user_surname_font_size']  . 'px"/></a>';
+            $user_linkedin = '<a href="' . $user_data['user_linkedin'] . '"><img class="linkedin-logo" style="vertical-align: baseline;" src="' . $this->plugin_url . 'assets/img/user-linkedin.png" width="' .  $option['user_surname_font_size']  . 'px"/></a>';
         }
 
         /* Additionnal content */
