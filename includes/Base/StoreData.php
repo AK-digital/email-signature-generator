@@ -9,9 +9,14 @@ use Includes\Base\BaseController;
 
 class StoreData extends Basecontroller
 {
-    public function restore_default($override = false)
+
+    public function restore_default()
     {
-        $default_options = [];
+        if (empty($_POST['restore_submit'])) {
+            return;
+        }
+
+         $default_options = [];
 
         foreach ($this->managers as $row) {
 
@@ -29,9 +34,7 @@ class StoreData extends Basecontroller
                 }
             }
         }
+        update_option('esg_admin_settings', $default_options);
 
-        if (!get_option('esg_admin_settings') || $override == true) {
-            update_option('esg_admin_settings', $default_options);
-        }
     }
 }
