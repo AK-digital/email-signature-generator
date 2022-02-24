@@ -21,6 +21,8 @@
         <label for="linkedin"><?= __('Url Linkedin perso'); ?></label>
         <input  type="text" id="linkedin" name="linkedin" />
 
+        <?php wp_nonce_field('esg-form', 'nonce-esg-form'); ?>
+
 		<input type="submit" name="submit" id="submit" value="<?= __('Générer ma signature'); ?>" class="esg_button qbutton" />
 	</form>
 </div>

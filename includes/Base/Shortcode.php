@@ -21,25 +21,28 @@ class Shortcode extends BaseController
     public function form_shortcode_content()
     {
         // If user form is empty, return the form
-        if (!isset($_POST['submit'])) {
-            require_once($this->templates_path . 'form.php');
+        if (isset($_POST['submit']) && isset($_POST['nonce-esg-form']))  {
+
+            if (wp_verify_nonce($_POST['nonce-esg-form'], 'esg-form')) {
+                $user_data = [
+                    // Get the user data from the form
+                    'firstname' => esc_html($_REQUEST['firstname']),
+                    'surname' => esc_html($_REQUEST['surname']),
+                    'title' => esc_html($_REQUEST['title']),
+                    'mobile' => esc_html($_REQUEST['mobile']),
+                    'email' => esc_html($_REQUEST['email']),
+                    'user_linkedin' => esc_html($_REQUEST['linkedin']),
+                ];
+
+                $signature = $this->generate_signature($user_data);
+
+                require_once($this->templates_path . 'landing.php');
+            }
         }
 
         //Display the landing signature page
         else {
-            $user_data = [
-                // Get the user data from the form
-                'firstname' => $_REQUEST['firstname'],
-                'surname' => $_REQUEST['surname'],
-                'title' => $_REQUEST['title'],
-                'mobile' => $_REQUEST['mobile'],
-                'email' => $_REQUEST['email'],
-                'user_linkedin' => $_REQUEST['linkedin'],
-            ];
-
-            $signature = $this->generate_signature($user_data);
-
-            require_once($this->templates_path . 'landing.php');
+            require_once($this->templates_path . 'form.php');
         }
     }
 
