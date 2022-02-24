@@ -7,7 +7,7 @@
 Plugin Name: Email signature generator (ESG)
 Plugin URI: https://studiokrack.fr
 Description: Automate html email signature generation for users
-Version: 1.4.3
+Version: 1.4.4
 Author: aurelien@studiokrack.fr
 Author URI: https://studiokrack.fr/
 License: GPLv2 or later
