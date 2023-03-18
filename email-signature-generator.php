@@ -7,7 +7,7 @@
 Plugin Name: Email signature generator (ESG)
 Plugin URI: https://studiokrack.fr
 Description: Automate html email signature generation for users
-Version: 1.4.4
+Version: 1.5.0
 Author: aurelien@studiokrack.fr
 Author URI: https://studiokrack.fr/
 License: GPLv2 or later
@@ -34,50 +34,41 @@ Copyright 2005-2015 Automattic, Inc.
 */
 
 // If this file is called firectly, abort!!!
-defined('ABSPATH') or die('Hey, what are you doing here? You silly human!');
+defined( 'ABSPATH' ) || die( 'Hey, what are you doing here? You silly human!' );
 
 // Require once the Composer Autoload
-if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
-    require_once dirname(__FILE__) . '/vendor/autoload.php';
+if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
+    require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 }
+
+define( 'ESG_PLUGIN_FILE', __FILE__ );
+define( 'ESG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'ESG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'ESG_PLUGIN_TEMPLATES', dirname( __FILE__ ) . '/templates/' );
+define( 'ESG_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'ESG_PLUGIN_SETTINGS', 'esg_admin_settings' );
 
 /**
  * The code that runs during plugin activation
  */
-function activate_esg_plugin()
-{
-    Includes\Base\Activate::activate();
+function activate_esg_plugin() {
+     Includes\Base\Activate::activate();
 }
 
-register_activation_hook(__FILE__, 'activate_esg_plugin');
+register_activation_hook( __FILE__, 'activate_esg_plugin' );
 
 /**
  * The code that runs during plugin deactivation
  */
-function deactivate_esg_plugin()
-{
-    Includes\Base\Deactivate::deactivate();
+function deactivate_esg_plugin() {
+     Includes\Base\Deactivate::deactivate();
 }
 
-register_deactivation_hook(__FILE__, 'deactivate_esg_plugin');
+register_deactivation_hook( __FILE__, 'deactivate_esg_plugin' );
 
 /**
  * Initialize all the core classes of the plugin
  */
-if (class_exists('Includes\\Init')) {
+if ( class_exists( 'Includes\\Init' ) ) {
     Includes\Init::register_services();
 }
-
-/**
- * Initialize updater class
- */
-if( ! class_exists( 'GithubUpdater' ) ){
-    include_once( plugin_dir_path( __FILE__ ) . 'updater.php' );
-}
-
-$updater = new GithubUpdater( __FILE__ );
-$updater->set_username( 'AK-digital' );
-$updater->set_repository( 'email-signature-generator' );
-$updater->authorize( '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' ); // Your auth code goes here for private repos
-
-$updater->initialize();
