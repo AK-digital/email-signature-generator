@@ -105,7 +105,7 @@ class Admin extends BaseController {
         foreach ( $this->managers as $row ) {
 
             $args[] = array( // Set section from $managers
-                'id'    => $this->toSlug( $row['id'] ),
+                'id'    => $this->slugify( $row['id'] ),
                 'title' => $row['title'],
                 'page'  => $row['id'],
             );
@@ -129,14 +129,14 @@ class Admin extends BaseController {
             foreach ( $manager['fields'] as $field_id => $field ) {
 
                 $arg = array(
-                    'id'       => $this->toSlug( $field_id ),
+                    'id'       => $this->slugify( $field_id ),
                     'title'    => $field['title'],
                     'callback' => array( $this->callbacks_mngr, $field['input_type'] . '_field' ),
                     'page'     => $manager['id'],
-                    'section'  => $this->toSlug( $manager['id'] ),
+                    'section'  => $this->slugify( $manager['id'] ),
                     'args'     => array(
                         'option_name' => ESG_PLUGIN_SETTINGS,
-                        'label_for'   => $this->toSlug( $manager['id'] ) . '_' . $field_id,
+                        'label_for'   => $field_id,
                     ),
                 );
 
@@ -144,49 +144,57 @@ class Admin extends BaseController {
                     $arg['args'] += $field['options'];
                 }
 
+               isset( $field['style'] ) && !empty( $field['style'] ) ? $arg['args']['class'] = 'parent-' . $field_id : '';
+
                 $args[] = $arg;
 
-                // if ( $field['options']['required'] ) {
+                // Set required checkbox if required is set to true
+                if ( isset( $field['required'] ) && $field['required'] === true ) {
 
-                //     foreach ( $value['required'] as $l => $m ) {
+                    $required = array(
+                        'id'       => $this->slugify( $field_id ) . '_required',
+                        'title'    => 'Requis',
+                        'callback' => array( $this->callbacks_mngr, 'checkbox_field' ),
+                        'page'     => $manager['id'],
+                        'section'  => $this->slugify( $manager['id'] ),
+                        'args'     => array(
+                            'option_name' => ESG_PLUGIN_SETTINGS,
+                            'label_for'   => $this->slugify( $field_id ) . '_required',
+                            'class'       => 'required',
+                        ),
+                    );
 
-                //         $args[] = array(
-                //             'id'       => $this->toSlug( $key ) . '_' . $this->toSlug( $l ),
-                //             'title'    => $m['title'],
-                //             'callback' => array( $this->callbacks_mngr, $m['input_type'] . '_callback' ),
-                //             'page'     => $row['id'],
-                //             'section'  => $this->toSlug( $row['id'] ),
-                //             'args'     => array(
-                //                 'option_name' => ESG_PLUGIN_SETTINGS,
-                //                 'label_for'   => $this->toSlug( $key ) . '_' . $this->toSlug( $l ),
-                //                 'default_val' => $m['default_val'],
-                //                 'class'       => 'required',
-                //             ),
-                //         );
-                //     }
-                // }
+                    if ( isset( $field['options'] ) && !empty( $field['options'] ) ) {
+                        $required['args'] += $field['options'];
+                    }
+                    $args[] = $required;
+                }
 
-                if ( isset( $field['options']['style'] ) ) {
+                if ( isset( $field['style'] ) && !empty( $field['style'] ) ) {
 
-                    foreach ( $field['options']['style'] as $k => $v ) {
+                    foreach ( $field['style'] as $style_id => $style_value ) {
 
-                        $args[] = array(
-                            'id'       => $this->toSlug( $field_id ) . '_' . $this->toSlug( $k ),
-                            'title'    => $v['title'],
-                            'callback' => array( $this->callbacks_mngr, $v['input_type'] . '_field' ),
+                        $style = array(
+                            'id'       => $this->slugify( $field_id ) . '_' . $this->slugify( $style_id ),
+                            'title'    => $style_value['title'],
+                            'callback' => array( $this->callbacks_mngr, $style_value['input_type'] . '_field' ),
                             'page'     => $manager['id'],
-                            'section'  => $this->toSlug( $manager['id'] ),
+                            'section'  => $this->slugify( $manager['id'] ),
                             'args'     => array(
-                                'option_name'    => ESG_PLUGIN_SETTINGS,
-                                'label_for'      => $this->toSlug( $field_id ) . '_' . $this->toSlug( $k ),
-                                'select_options' => $v['select_options'],
-                                'suffix'         => $v['suffix'],
-                                'default_val'    => $v['default_val'],
-                                'class'          => 'subsetting-' . $field_id,
+                                'option_name' => ESG_PLUGIN_SETTINGS,
+                                'label_for'   => $this->slugify( $field_id ) . '_' . $this->slugify( $style_id ),
+                                'class'       => 'subsetting-' . $field_id,
                             ),
                         );
+
+                        if ( isset( $style_value['options'] ) && !empty( $style_value['options'] ) ) {
+                            $style['args'] += $style_value['options'];
+                        }
+                        $args[] = $style;
                     }
                 }
+
+                // echo '<h3>$args</h3><pre>' . var_export( $args, true ) . '</pre>';
             }
         }
         $this->settings->setFields( $args );

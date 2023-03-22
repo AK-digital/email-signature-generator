@@ -76,7 +76,8 @@
 
 #esg-settings [type=radio]:not(:checked) + img {
     opacity: 0.55;
-    filter: grayscale(.25);
+    -webkit-filter: grayscale(.25);
+            filter: grayscale(.25);
     transform: scale(.96);
     transition: transform 150ms;
 }

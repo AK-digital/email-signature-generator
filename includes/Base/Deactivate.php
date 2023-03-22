@@ -1,12 +1,12 @@
 <?php
 /**
- * @package  emailSignatureGenerator
+ * @package emailSignatureGenerator
  */
 namespace Includes\Base;
 
-class Deactivate
-{
+class Deactivate {
+
     public static function deactivate() {
-		flush_rewrite_rules();
-	}
+        flush_rewrite_rules();
+    }
 }

@@ -1,17 +1,14 @@
 <?php
-
 /**
  *
  * @package emailSignatureGenerator
  */
 namespace Includes\Base;
 
-use Includes\Base\BaseController;
-
 /**
  * GHUpdater class
  */
-class GhUpdater extends BaseController {
+class GhUpdater {
 
     /**
      * Active plugin
@@ -19,19 +16,27 @@ class GhUpdater extends BaseController {
      * @var string
      */
     public $active;
+
+    /**
+     *
+     * Options
+     *
+     * @var array
+     */
+    public $options;
     /**
      * Plugin file
      *
      * @var string
      */
-    public $plugin;
+    public $plugin_data;
 
     /**
-     * Plugin basename
+     * Plugin file
      *
      * @var string
      */
-    public $plugin_basename;
+    public $basename;
 
     /**
      * Github response
@@ -40,25 +45,22 @@ class GhUpdater extends BaseController {
      */
     private $github_response;
 
-    /**
-     * Register function
-     *
-     * @return void
-     */
     public function register() {
 
         if ( !function_exists( 'get_plugin_data' ) ) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
 
-        $this->plugin_data          = get_plugin_data( ESG_PLUGIN_FILE  );
-        $this->plugin_basename = plugin_basename( ESG_PLUGIN_FILE );
-        $this->active          = is_plugin_active( $this->plugin_basename );
+        $this->options     = get_option( ESG_PLUGIN_SETTINGS );
+        $this->plugin_data = get_plugin_data( ESG_PLUGIN_FILE );
+        $this->basename    = plugin_basename( ESG_PLUGIN_FILE );
+        $this->active      = is_plugin_active( $this->basename );
         $this->initialize();
     }
 
     private function get_repository_info() {
         if ( is_null( $this->github_response ) ) { // Do we have a response?
+
             $args        = array();
             $request_uri = sprintf( 'https://api.github.com/repos/%s/%s/releases', $this->options['gh_options_username'], $this->options['gh_options_repo'] ); // Build URI
 
@@ -79,6 +81,7 @@ class GhUpdater extends BaseController {
         }
     }
 
+
     public function initialize() {
         add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'modify_transient' ), 10, 1 );
         add_filter( 'plugins_api', array( $this, 'plugin_popup' ), 10, 3 );
@@ -98,25 +101,20 @@ class GhUpdater extends BaseController {
 
         if ( property_exists( $transient, 'checked' ) ) { // Check if transient has a checked property
 
-            // Did WordPress check for updates?
-            $checked = $transient->checked;
+            if ( $checked = $transient->checked ) { // Did WordPress check for updates?
 
-            if ( is_array( $this->github_response )
-            && is_array( $checked )
-            && isset( $checked[ $this->plugin_basename ] )
-            && isset( $this->github_response['tag_name'] )
-            && isset( $this->github_response['zipball_url'] )
-            && isset( $this->github_response['tag_name'] )
-            ) {
+                $out_of_date = false;
                 $this->get_repository_info(); // Get the repo info
 
-                $out_of_date = version_compare( $this->github_response['tag_name'], $checked[ $this->plugin_basename ], 'gt' ); // Check if we're out of date
+                if ( isset( $this->github_response['tag_name'] ) && isset( $checked[ $this->basename ] ) ) {
+                    $out_of_date = version_compare( $this->github_response['tag_name'], $checked[ $this->basename ], 'gt' ); // Check if we're out of date
+                }
 
                 if ( $out_of_date ) {
 
                     $new_files = $this->github_response['zipball_url']; // Get the ZIP
 
-                    $slug = current( explode( '/', $this->plugin_basename ) ); // Create valid slug
+                    $slug = current( explode( '/', $this->basename ) ); // Create valid slug
 
                     $plugin = array( // setup our plugin info
                         'url'         => $this->plugin_data['PluginURI'],
@@ -125,7 +123,7 @@ class GhUpdater extends BaseController {
                         'new_version' => $this->github_response['tag_name'],
                     );
 
-                    $transient->response[ $this->plugin_basename ] = (object) $plugin; // Return it in response
+                    $transient->response[ $this->basename ] = (object) $plugin; // Return it in response
                 }
             }
         }
@@ -137,20 +135,20 @@ class GhUpdater extends BaseController {
 
         if ( !empty( $args->slug ) ) { // If there is a slug
 
-            if ( $args->slug === current( explode( '/', $this->plugin_basename ) ) ) { // And it's our slug
+            if ( $args->slug === current( explode( '/', $this->basename ) ) ) { // And it's our slug
 
                 $this->get_repository_info(); // Get our repo info
 
                 // Set it to an array
                 $plugin = array(
                     'name'              => $this->plugin_data['Name'],
-                    'slug'              => $this->plugin_basename,
+                    'slug'              => $this->basename,
                     'requires'          => '5.0',
                     'tested'            => '6.1.1',
                     'rating'            => '',
                     'num_ratings'       => '',
                     'downloaded'        => '999',
-                    'added'             => '2023-02-21',
+                    'added'             => '2021-09-21',
                     'version'           => $this->github_response['tag_name'],
                     'author'            => $this->plugin_data['AuthorName'],
                     'author_profile'    => $this->plugin_data['AuthorURI'],
@@ -186,12 +184,12 @@ class GhUpdater extends BaseController {
     public function after_install( $response, $hook_extra, $result ) {
         global $wp_filesystem; // Get global FS object
 
-        $install_directory = ESG_PLUGIN_PATH; // Our plugin directory
+        $install_directory = SJ_PLUGIN_PATH; // Our plugin directory
         $wp_filesystem->move( $result['destination'], $install_directory ); // Move files to the plugin dir
         $result['destination'] = $install_directory; // Set the destination for the rest of the stack
 
         if ( $this->active ) { // If it was active
-            activate_plugin( $this->plugin_basename ); // Reactivate
+            activate_plugin( $this->basename ); // Reactivate
         }
 
         return $result;

@@ -27,7 +27,7 @@ class StoreData extends Basecontroller {
                     if ( $value['style'] ) {
 
                         foreach ( $value['style'] as $k => $v ) {
-                            $default_options[ $this->toSlug( $key ) . '_' . $this->toSlug( $k ) ] = $v['default_val'];
+                            $default_options[ $this->slugify( $key ) . '_' . $this->slugify( $k ) ] = $v['default_val'];
                         }
                     }
                 }

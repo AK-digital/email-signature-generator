@@ -43,7 +43,6 @@ class ManagerCallbacks extends BaseController {
         $placeholder = isset( $args['placeholder'] ) && !empty( $args['placeholder'] ) ? $args['placeholder'] : '';
         $disabled    = isset( $args['disabled'] ) && $args['disabled'] === true ? 'disabled' : '';
         $suffix      = isset( $args['suffix'] ) && !empty( $args['suffix'] ) ? $args['suffix'] : '';
-        $default_val = isset( $args['default_val'] ) && !empty( $args['default_val'] ) ? $args['default_val'] : '';
         $min         = isset( $args['min'] ) && !empty( $args['min'] ) ? $args['min'] : '';
         $max         = isset( $args['max'] ) && !empty( $args['max'] ) ?$args['max'] : '';
 
@@ -55,8 +54,9 @@ class ManagerCallbacks extends BaseController {
             $classes,
             $min,
             $max,
-            isset( $this->options[ $name ] ) ? esc_attr( $this->options[ $name ] ) : '',
+            isset( $this->options[ $name ] ) && !empty( $this->options[ $name ] ) ? esc_attr( $this->options[ $name ] ) : '',
             $placeholder,
+            $disabled,
             $suffix,
         );
     }
@@ -133,7 +133,7 @@ class ManagerCallbacks extends BaseController {
     public function select_field( $args ) {
         $name        = isset( $args['label_for'] ) && !empty( $args['label_for'] ) ? $args['label_for'] : '';
         $option_name = isset( $args['option_name'] ) && !empty( $args['option_name'] ) ? $args['option_name'] : '';
-        $options     = isset( $args['options'] ) && !empty( $args['options'] ) ? $args['options'] : '';
+        $options     = isset( $args['select_options'] ) && !empty( $args['select_options'] ) ? $args['select_options'] : '';
         $classes     = isset( $args['class'] ) && !empty( $args['class'] ) ? $args['class'] : '';
         $disabled    = isset( $args['disabled'] ) && $args['disabled'] === true ? 'disabled' : '';
 

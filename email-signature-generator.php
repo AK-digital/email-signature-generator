@@ -1,13 +1,10 @@
 <?php
-/**
- * @package  emailSignatureGenerator
- */
 
 /*
 Plugin Name: Email signature generator (ESG)
 Plugin URI: https://studiokrack.fr
 Description: Automate html email signature generation for users
-Version: 1.5.0
+Version: 1.4.5
 Author: aurelien@studiokrack.fr
 Author URI: https://studiokrack.fr/
 License: GPLv2 or later
@@ -42,9 +39,9 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
 }
 
 define( 'ESG_PLUGIN_FILE', __FILE__ );
-define( 'ESG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ESG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'ESG_PLUGIN_TEMPLATES', dirname( __FILE__ ) . '/templates/' );
+define( 'ESG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'ESG_PLUGIN_TEMPLATES', plugin_dir_path( __FILE__ ) . '/templates/' );
 define( 'ESG_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'ESG_PLUGIN_SETTINGS', 'esg_admin_settings' );
 
