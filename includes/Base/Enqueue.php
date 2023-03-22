@@ -31,12 +31,12 @@ class Enqueue extends BaseController
         wp_enqueue_style('wp-color-picker');
         wp_enqueue_script('wp-color-picker');
 
-        wp_enqueue_style('esg-common-style', $this->plugin_url . 'assets/css/common-style.css');
-        wp_enqueue_script('esg-common-script', $this->plugin_url . 'assets/js/common-functions.js');
-        wp_enqueue_script('esg-js-tabs-script', $this->plugin_url . 'assets/js/js-tabs.js');
+        wp_enqueue_style('esg-common-style', ESG_PLUGIN_URL . 'assets/css/common-style.css');
+        wp_enqueue_script('esg-common-script', ESG_PLUGIN_URL . 'assets/js/common-functions.js');
+        wp_enqueue_script('esg-js-tabs-script', ESG_PLUGIN_URL . 'assets/js/js-tabs.js');
 
-        wp_enqueue_style('esg-admin-style', $this->plugin_url . 'assets/css/admin-style.css');
-        wp_enqueue_script('esg-admin-script', $this->plugin_url . 'assets/js/admin-functions.js');
+        wp_enqueue_style('esg-admin-style', ESG_PLUGIN_URL . 'assets/css/admin-style.css');
+        wp_enqueue_script('esg-admin-script', ESG_PLUGIN_URL . 'assets/js/admin-functions.js');
 
     }
 
@@ -46,14 +46,14 @@ class Enqueue extends BaseController
             wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.6.0.slim.min.js' );
         }
 
-        wp_enqueue_style('float-label-style', $this->plugin_url . 'assets/css/float-labels.min.css');
-        wp_enqueue_script('float-label-script', $this->plugin_url . 'assets/js/float-labels.min.js', array(), '1.0.0', false);
+        wp_enqueue_style('float-label-style', ESG_PLUGIN_URL . 'assets/css/float-labels.min.css');
+        wp_enqueue_script('float-label-script', ESG_PLUGIN_URL . 'assets/js/float-labels.min.js', array(), '1.0.0', false);
 
-        wp_enqueue_script('esg-common-script', $this->plugin_url . 'assets/js/common-functions.js');
-        wp_enqueue_style('esg-common-style', $this->plugin_url . 'assets/css/common-style.css');
-        wp_enqueue_script('esg-js-tabs-script', $this->plugin_url . 'assets/js/js-tabs.js');
+        wp_enqueue_script('esg-common-script', ESG_PLUGIN_URL . 'assets/js/common-functions.js');
+        wp_enqueue_style('esg-common-style', ESG_PLUGIN_URL . 'assets/css/common-style.css');
+        wp_enqueue_script('esg-js-tabs-script', ESG_PLUGIN_URL . 'assets/js/js-tabs.js');
 
-        wp_enqueue_style('esg-front-style', $this->plugin_url . 'assets/css/frontend-style.css');
-//        wp_enqueue_script('esg-front-script', $this->plugin_url . 'assets/js/front-functions.js', array(), '1.0.0', true);
+        wp_enqueue_style('esg-front-style', ESG_PLUGIN_URL . 'assets/css/frontend-style.css');
+//        wp_enqueue_script('esg-front-script', ESG_PLUGIN_URL . 'assets/js/front-functions.js', array(), '1.0.0', true);
     }
 }

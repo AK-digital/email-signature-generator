@@ -1,6 +1,6 @@
 <div id="esg-main">
 
-    <?php $esg_admin_settings = get_option( 'esg_admin_settings' ); ?>
+    <?php $esg_admin_settings = get_option( ESG_PLUGIN_SETTINGS ); ?>
 
 	<form action="" method="POST" name="signatureForm" enctype="multipart/form-data" id="signature-form" class="signature-form">
         <label for="firstname"><?= __('Prénom'); ?></label>

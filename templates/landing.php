@@ -19,15 +19,15 @@
             <div id="sign-preview"><?= $signature; ?></div>
             <div class="esg_action-bar">
                 <button class="esg_button esg_button-copy-sign qbutton">
-                    <img src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><span
+                    <img src="<?= ESG_PLUGIN_URL; ?>assets/img/copy-icon.png"/><span
                             class="esg-copy-string"><?= __('Copier'); ?></span>
                 </button>
                 <button class="esg_button downloadLink qbutton">
-                    <img src="<?= $this->plugin_url; ?>assets/img/download-icon.png"/><?= __('Télécharger'); ?>
+                    <img src="<?= ESG_PLUGIN_URL; ?>assets/img/download-icon.png"/><?= __('Télécharger'); ?>
                 </button>
                 <?php if (isset($_POST['submit'])): ?>
                     <button class="esg_button qbutton" onclick="window.location.href=window.location.href">
-                        <img src="<?= $this->plugin_url; ?>assets/img/edit-icon.png"/><?= __('Modifier'); ?>
+                        <img src="<?= ESG_PLUGIN_URL; ?>assets/img/edit-icon.png"/><?= __('Modifier'); ?>
                     </button>
                 <?php endif; ?>
             </div>
@@ -40,15 +40,15 @@
             <div class="esg_action-bar">
                 <button class="esg_button esg_button-copy-sign qbutton default"
                         ><img
-                            src="<?= $this->plugin_url; ?>assets/img/copy-icon.png"/><span
+                            src="<?= ESG_PLUGIN_URL; ?>assets/img/copy-icon.png"/><span
                             class="esg-copy-string"><?= __('Copier'); ?></span>
                 </button>
                 <button class="esg_button downloadLink qbutton default"><img
-                            src="<?= $this->plugin_url; ?>assets/img/download-icon.png"/><?= __('Télécharger'); ?>
+                            src="<?= ESG_PLUGIN_URL; ?>assets/img/download-icon.png"/><?= __('Télécharger'); ?>
                 </button>
                 <?php if (isset($_POST['submit'])): ?>
                     <button class="esg_button qbutton" onclick="window.location.href=window.location.href">
-                        <img src="<?= $this->plugin_url; ?>assets/img/edit-icon.png"/><?= __('Modifier'); ?>
+                        <img src="<?= ESG_PLUGIN_URL; ?>assets/img/edit-icon.png"/><?= __('Modifier'); ?>
                     </button>
 
                 <?php endif; ?>
