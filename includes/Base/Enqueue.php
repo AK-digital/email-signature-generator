@@ -14,7 +14,7 @@ use Includes\Base\BaseController;
 class Enqueue extends BaseController {
 
     public function register() {
-         global $pagenow;
+        global $pagenow;
         // We only load admin style and scripts if we are on the esg-settings page
         if ( $pagenow == 'admin.php' && $_GET['page'] == 'esg-settings' ) {
             add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ) );
@@ -44,13 +44,14 @@ class Enqueue extends BaseController {
             wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.6.0.slim.min.js' );
         }
 
-        wp_enqueue_style( 'float-label-style', ESG_PLUGIN_URL . 'assets/css/float-labels.min.css' );
-        wp_enqueue_script( 'float-label-script', ESG_PLUGIN_URL . 'assets/js/float-labels.min.js', array(), '1.0.0', false );
+        wp_register_script( 'esg-js-tabs-script', ESG_PLUGIN_URL . 'assets/js/js-tabs.js' );
+
+        wp_register_style( 'float-label-style', ESG_PLUGIN_URL . 'assets/css/float-labels.min.css' );
+        wp_register_script( 'float-label-script', ESG_PLUGIN_URL . 'assets/js/float-labels.min.js', array(), '1.0.0', false );
 
         wp_enqueue_script( 'esg-common-script', ESG_PLUGIN_URL . 'assets/js/common-functions.js' );
         wp_enqueue_style( 'esg-common-style', ESG_PLUGIN_URL . 'assets/css/common-style.css' );
-        wp_enqueue_script( 'esg-js-tabs-script', ESG_PLUGIN_URL . 'assets/js/js-tabs.js' );
-
+      
         wp_enqueue_style( 'esg-front-style', ESG_PLUGIN_URL . 'assets/css/frontend-style.css' );
         //        wp_enqueue_script('esg-front-script', ESG_PLUGIN_URL . 'assets/js/front-functions.js', array(), '1.0.0', true);
     }

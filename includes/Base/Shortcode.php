@@ -13,13 +13,18 @@ class Shortcode extends BaseController {
     public $company_data = array();
 
     function register() {
-         add_shortcode( 'esg_form', array( $this, 'form_shortcode_content' ) );
+        add_shortcode( 'esg_form', array( $this, 'form_shortcode_content' ) );
         add_shortcode( 'esg_user_data', array( $this, 'user_data_shortcode_content' ) );
     }
 
     public function form_shortcode_content() {
+        wp_enqueue_style( 'float-label-style', array(), false, false );
+        wp_enqueue_script( 'float-label-script', array(), false, false );
+        wp_enqueue_script( 'esg-js-tabs-script', array(), false, false );
+
          // If user form is empty, return the form
         if ( isset( $_POST['submit'] ) && isset( $_POST['nonce-esg-form'] ) ) {
+
 
             if ( wp_verify_nonce( $_POST['nonce-esg-form'], 'esg-form' ) ) {
                 $user_data = array(
@@ -40,6 +45,7 @@ class Shortcode extends BaseController {
 
         //Display the landing signature page
         else {
+
             require_once ESG_PLUGIN_TEMPLATES . 'form.php';
         }
     }

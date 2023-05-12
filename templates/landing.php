@@ -174,11 +174,3 @@
     </div>
     </div>
 </section>
-<section>
-    <script type="text/javascript">
-        var tabs = new Tabs({
-            elem: "tabs",
-            open: 0
-        });
-    </script>
-</section>
