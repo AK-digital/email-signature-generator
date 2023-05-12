@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
     $('.esg-button-remove').click(function () {
         var parentNode = $(this).parent();
         $(this).attr("hidden", true).css("display", "none");
-        parentNode.children('.upload-image').attr('src', '').css('display','none');
+        parentNode.children('.upload-image').attr('src', '').css('display', 'none');
         parentNode.children('.upload-input-url').val('');
         parentNode.children('.esg-button-upload').val('Choose logo');
     });
@@ -61,7 +61,7 @@ jQuery(document).ready(function ($) {
 
         // Now group them
         $(uniqueSubClasses).each(function (i, v) {
-          $('.' + v).wrapAll('<tr class="group-subsetting-row"><td colspan="100%" class="group-subsetting group-' + v + '"></td></tr>');
+            $('.' + v).wrapAll('<tr class="group-subsetting-row"><td colspan="100%" class="group-subsetting group-' + v + '"></td></tr>');
         });
 
 
@@ -73,7 +73,7 @@ jQuery(document).ready(function ($) {
                 if ($('.group-subsetting-' + pc).hasClass("open")) {
                     $('.group-subsetting-' + pc).removeClass('open');
                 }
-                else{
+                else {
                     $('.group-subsetting').removeClass('open');
                     $('.dashicons').removeClass('dashicons-minus').addClass('dashicons-plus');
                     $('.group-subsetting-' + pc).addClass('open');
@@ -83,3 +83,4 @@ jQuery(document).ready(function ($) {
         });
     }
 });
+

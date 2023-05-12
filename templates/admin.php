@@ -102,15 +102,14 @@
                     <a class="esg-action-button esg_button-copy-sign"><img
                                 class="esg-action-icon" src="<?php echo ESG_PLUGIN_URL; ?>assets/img/copy-icon.png" alt=""/>
                     </a>
-                    <a class="esg-action-button downloadLink"><img class="esg-action-icon"
-                                                                   src="<?php echo ESG_PLUGIN_URL; ?>assets/img/download-icon.png"/>
+                    <a class="esg-action-button downloadLink"><img class="esg-action-icon" src="<?php echo ESG_PLUGIN_URL; ?>assets/img/download-icon.png"/>
                     </a>
                     <div id="sign-preview">
                         <?php
                         $user_data = array(
                             'firstname'     => 'John',
-                            'surname'       => 'Carpenter',
-                            'email'         => 'john@carpenter.org',
+                            'surname'       => 'Doe',
+                            'email'         => 'john@doe.com',
                             'mobile'        => '41 75 65 94 12',
                             'title'         => 'Lead developer',
 
@@ -124,15 +123,6 @@
             </div>
         </div>
     </form>
-    <form id="restore-settings-form" method="POST"
-          onsubmit="return confirm('Êtes-vous sûr de vouloir restaurer les paramètres par défaut ?');"
-          action="<?php $storeData->restore_default(); ?>">
-
-
-
-        <input type="submit" id="restore-default-button" class="button-secondary" value="Paramètres par défaut"
-               name="restore_submit"> <!-- assign a name for the button -->
-    </form>
-
+    <button type="submit" id="reset_default" class="button-secondary">Restaurer les données par défaut</button>
 </div>
 <!--<p id="donate-link">Vous aimez ce plugin ? Soutenez son créateur en <a href="https://developpeur-wordpress.fr/don">faisant un don</a></p>-->

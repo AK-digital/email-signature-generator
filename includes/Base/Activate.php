@@ -20,6 +20,14 @@ class Activate extends BaseController {
      * Automatically triggered on plugin activation
      */
     public static function activate() {
-         flush_rewrite_rules();
+
+        $plugin_settings = get_option( ESG_PLUGIN_SETTINGS );
+
+        if ( !isset( $plugin_settings ) || empty( $plugin_settings ) ) {
+            $storeData = new StoreData();
+            $storeData->set_default_options();
+        }
+
+        flush_rewrite_rules();
     }
 }

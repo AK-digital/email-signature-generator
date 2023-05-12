@@ -131,20 +131,25 @@ class ManagerCallbacks extends BaseController {
      * @param $args
      */
     public function select_field( $args ) {
-        $name        = isset( $args['label_for'] ) && !empty( $args['label_for'] ) ? $args['label_for'] : '';
-        $option_name = isset( $args['option_name'] ) && !empty( $args['option_name'] ) ? $args['option_name'] : '';
-        $options     = isset( $args['select_options'] ) && !empty( $args['select_options'] ) ? $args['select_options'] : '';
-        $classes     = isset( $args['class'] ) && !empty( $args['class'] ) ? $args['class'] : '';
-        $disabled    = isset( $args['disabled'] ) && $args['disabled'] === true ? 'disabled' : '';
+        $name           = isset( $args['label_for'] ) && !empty( $args['label_for'] ) ? $args['label_for'] : '';
+        $option_name    = isset( $args['option_name'] ) && !empty( $args['option_name'] ) ? $args['option_name'] : '';
+        $select_options = isset( $args['select_options'] ) && !empty( $args['select_options'] ) ? $args['select_options'] : '';
+        $classes        = isset( $args['class'] ) && !empty( $args['class'] ) ? $args['class'] : '';
+        $disabled       = isset( $args['disabled'] ) && $args['disabled'] === true ? 'disabled' : '';
 
         echo '<select id="' . $name . '" name="' . $option_name . '[' . $name . ']" class="' . $classes . '" ' . $disabled . '>';
 
-        foreach ( $options as $key => $value ) {
-            if ( empty( $key ) || empty( $value ) ) {
+        foreach ( $select_options as $opt_name ) {
+            if ( !isset( $opt_name ) || empty( $opt_name ) ) {
                 continue;
             }
-            $selected = ( $key == $this->options[ $name ] ) ? 'selected' : '';
-            echo "<option value='$key' $selected >$value</option>";
+
+            $option_slug = str_replace( ' ', '', strtolower( $opt_name ) );
+
+            $font_style = $name === 'font_family' ? 'style="font-family:\'' . $opt_name . '\';"' : '';
+
+            $selected = ( $option_slug == $this->options[ $name ] ) ? 'selected' : '';
+            echo "<option value='$option_slug' $font_style $selected >$opt_name</option>";
         }
 
         echo '</select>';
@@ -210,7 +215,7 @@ class ManagerCallbacks extends BaseController {
             <input type="button" class="button-primary esg-button-upload" value="%s" />',
             isset( $this->options[ $name ] ) ? esc_attr( $this->options[ $name ] ) : $default_val,
             empty( $this->options[ $name ] ) ? 'style="display:none;"' : '',
-            __( 'Choissir une image', 'emailSignatureGenerator' ),
+            __( 'Choisir une image', 'esg-plugin' ),
         );
     }
 

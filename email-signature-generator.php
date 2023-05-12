@@ -8,7 +8,7 @@ Version: 1.4.5
 Author: aurelien@studiokrack.fr
 Author URI: https://studiokrack.fr/
 License: GPLv2 or later
-Text Domain: emailSignatureGenerator
+Text Domain: esg-plugin
 Domain Path: /languages
 */
 
@@ -31,6 +31,9 @@ Copyright 2005-2015 Automattic, Inc.
 */
 
 // If this file is called firectly, abort!!!
+
+use Includes\Base\StoreData;
+
 defined( 'ABSPATH' ) || die( 'Hey, what are you doing here? You silly human!' );
 
 // Require once the Composer Autoload
@@ -60,7 +63,6 @@ register_activation_hook( __FILE__, 'activate_esg_plugin' );
 function deactivate_esg_plugin() {
      Includes\Base\Deactivate::deactivate();
 }
-
 register_deactivation_hook( __FILE__, 'deactivate_esg_plugin' );
 
 /**
@@ -69,3 +71,11 @@ register_deactivation_hook( __FILE__, 'deactivate_esg_plugin' );
 if ( class_exists( 'Includes\\Init' ) ) {
     Includes\Init::register_services();
 }
+
+add_action( 'wp_ajax_reset_default', 'esg_reset_default' );
+function esg_reset_default() {
+    $store_data = new StoreData();
+    $store_data->set_default_options();
+    exit;
+}
+

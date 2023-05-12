@@ -61,13 +61,15 @@ class GhUpdater {
     private function get_repository_info() {
         if ( is_null( $this->github_response ) ) { // Do we have a response?
 
+
+
             $args        = array();
-            $request_uri = sprintf( 'https://api.github.com/repos/%s/%s/releases', $this->options['gh_options_username'], $this->options['gh_options_repo'] ); // Build URI
+            $request_uri = sprintf( 'https://api.github.com/repos/%s/%s/releases', $this->options['gh_username'], $this->options['gh_repo'] ); // Build URI
 
             $args = array();
 
-            if ( $this->options['gh_options_auth'] ) { // Is there an access token?
-                $args['headers']['Authorization'] = "token {$this->options['gh_options_auth']}"; // Set the headers
+            if ( $this->options['gh_auth'] ) { // Is there an access token?
+                $args['headers']['Authorization'] = "token {$this->options['gh_auth']}"; // Set the headers
             }
             $args['headers']['Accept'] = 'application/vnd.github+json'; // Set the headers
 
@@ -143,12 +145,12 @@ class GhUpdater {
                 $plugin = array(
                     'name'              => $this->plugin_data['Name'],
                     'slug'              => $this->basename,
-                    'requires'          => '5.0',
-                    'tested'            => '6.1.1',
+                    'requires'          => '5.2',
+                    'tested'            => '6.2',
                     'rating'            => '',
                     'num_ratings'       => '',
                     'downloaded'        => '999',
-                    'added'             => '2021-09-21',
+                    'added'             => '2021-03-22',
                     'version'           => $this->github_response['tag_name'],
                     'author'            => $this->plugin_data['AuthorName'],
                     'author_profile'    => $this->plugin_data['AuthorURI'],
@@ -171,8 +173,8 @@ class GhUpdater {
     public function download_package( $args, $url ) {
 
         if ( null !== $args['filename'] ) {
-            if ( $this->options['gh_options_auth'] ) {
-                $args = array_merge( $args, array( 'headers' => array( 'Authorization' => "token {$this->options['gh_options_auth']}" ) ) );
+            if ( $this->options['gh_auth'] ) {
+                $args = array_merge( $args, array( 'headers' => array( 'Authorization' => "token {$this->options['gh_auth']}" ) ) );
             }
         }
 
@@ -184,7 +186,7 @@ class GhUpdater {
     public function after_install( $response, $hook_extra, $result ) {
         global $wp_filesystem; // Get global FS object
 
-        $install_directory = SJ_PLUGIN_PATH; // Our plugin directory
+        $install_directory = ESG_PLUGIN_PATH; // Our plugin directory
         $wp_filesystem->move( $result['destination'], $install_directory ); // Move files to the plugin dir
         $result['destination'] = $install_directory; // Set the destination for the rest of the stack
 

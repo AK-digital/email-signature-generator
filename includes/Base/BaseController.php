@@ -170,6 +170,7 @@ class BaseController {
                         'input_type' => 'select',
                         'options'    => array(
                             'select_options' => array( 'Arial', 'Calibri', 'Cambria', 'Comic Sans MS', 'Courier', 'Georgia', 'Garamond', 'Helvetica', 'Open Sans', 'Serif', 'Sans Serif', 'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana' ),
+                            'default_val' => 'Arial',
                         ),
                     ),
                     'company_name'    => array(
@@ -214,29 +215,44 @@ class BaseController {
                         'title'      => 'Prénom',
                         'input_type' => 'hidden',
                         'style'      => $style,
+                        'options'    => array(
+                            'default_val' => 'John',
+                        ),
                         'required'   => true,
                     ),
                     'user_surname'   => array(
                         'title'      => 'Nom',
                         'input_type' => 'hidden',
+                        'options'    => array(
+                            'default_val' => 'Doe',
+                        ),
                         'style'      => $style,
                         'required'   => true,
                     ),
                     'user_title'     => array(
                         'title'      => 'Fonction',
                         'input_type' => 'hidden',
+                        'options'    => array(
+                            'default_val' => 'CEO',
+                        ),
                         'style'      => $style,
                         'required'   => true,
                     ),
                     'user_email'     => array(
                         'title'      => 'Email',
                         'input_type' => 'hidden',
+                        'options'    => array(
+                            'default_val' => 'john@doe.com',
+                        ),
                         'style'      => $style,
                         'required'   => true,
                     ),
                     'user_mobile'    => array(
                         'title'      => 'Mobile',
                         'input_type' => 'hidden',
+                        'options'    => array(
+                            'default_val' => '0112336545',
+                        ),
                         'style'      => $style,
                         'required'   => true,
                     ),
@@ -250,7 +266,7 @@ class BaseController {
                         'title'      => 'Label icones sociaux',
                         'input_type' => 'text',
                         'options'    => array(
-                            'default_val' => __( 'Suivez-nous sur les réseaux sociaux', 'emailSignatureGenerator' ),
+                            'default_val' => __( 'Suivez-nous sur les réseaux sociaux', 'esg-plugin' ),
                         ),
                         'style'      => $style,
                     ),
@@ -313,25 +329,24 @@ class BaseController {
                 ),
             ),
             array(
-                'id'       => 'gh_options',
-                'title'    => 'Update from Github',
-                'has_cron' => false,
-                'fields'   => array(
-                    'repo'     => array(
+                'id'     => 'gh_options',
+                'title'  => 'Update from Github',
+                'fields' => array(
+                    'gh_repo'     => array(
                         'title'      => 'Github Repo',
                         'input_type' => 'text',
                         'options'    => array(
                             'default_val' => 'email-signature-generator',
                         ),
                     ),
-                    'username' => array(
+                    'gh_username' => array(
                         'title'      => 'Github Username',
                         'input_type' => 'text',
                         'options'    => array(
                             'default_val' => 'AK-digital',
                         ),
                     ),
-                    'auth'     => array(
+                    'gh_auth'     => array(
                         'title'      => 'Token Auth Github',
                         'input_type' => 'password',
                     ),

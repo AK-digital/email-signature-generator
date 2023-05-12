@@ -102,12 +102,12 @@ class Admin extends BaseController {
     public function setSections() {
          $args = array();
 
-        foreach ( $this->managers as $row ) {
+        foreach ( $this->managers as $manager ) {
 
             $args[] = array( // Set section from $managers
-                'id'    => $this->slugify( $row['id'] ),
-                'title' => $row['title'],
-                'page'  => $row['id'],
+                'id'    => $this->slugify( $manager['id'] ),
+                'title' => $manager['title'],
+                'page'  => $manager['id'],
             );
         }
 
