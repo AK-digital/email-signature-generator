@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
-    $('#reset_default').on('click', function () {
+    $('#esg_reset_default').on('click', function () {
         confirm('Êtes-vous sûr de vouloir restaurer les paramètres par défaut ? (le token Github sera supprimé.');
         ajaxCall(this.id);
     });

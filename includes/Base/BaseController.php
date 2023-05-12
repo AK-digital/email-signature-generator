@@ -513,17 +513,16 @@ class BaseController {
         }
 
         /* Additionnal content */
-
         $additional_content = '';
         if ( isset( $option['additional_content'] ) && !empty( $option['additional_content'] ) ) {
             $additional_content = '<span class="additional-content" style="font-family:'
             . $opt_font_family . ';font-weight:'
-            . ( isset( $option['user_additional_content_font_weight'] ) ?$option['user_additional_content_font_weight'] : '' ) . ';font-style:'
-            . ( isset( $option['user_additional_content_font_style'] ) ? $option['user_additional_content_font_style'] : '' ) . ';font-size:'
-            . ( isset( $option['user_additional_content_font_size'] ) ? $option['user_additional_content_font_size'] : '' ) . 'px; line-height:'
-            . ( isset( $option['user_additional_content_line_height'] ) ? $option['user_additional_content_line_height'] : '' ) . 'px;text-align:'
-            . ( isset( $option['user_additional_content_text_align'] ) ? $option['user_additional_content_text_align'] : '' ) . ';color:'
-            . ( isset( $option['user_additional_content_color'] ) ? $option['user_additional_content_color'] : '' ) . ';">'
+            . ( isset( $option['additional_content_font_weight'] ) ?$option['additional_content_font_weight'] : '' ) . ';font-style:'
+            . ( isset( $option['additional_content_font_style'] ) ? $option['additional_content_font_style'] : '' ) . ';font-size:'
+            . ( isset( $option['additional_content_font_size'] ) ? $option['additional_content_font_size'] : '' ) . 'px; line-height:'
+            . ( isset( $option['additional_content_line_height'] ) ? $option['additional_content_line_height'] : '' ) . 'px;text-align:'
+            . ( isset( $option['additional_content_text_align'] ) ? $option['additional_content_text_align'] : '' ) . ';color:'
+            . ( isset( $option['additional_content_color'] ) ? $option['additional_content_color'] : '' ) . ';">'
             . $option['additional_content'] . '</span>';
         }
 
@@ -532,12 +531,12 @@ class BaseController {
         $before_social_text = '';
         if ( isset( $option['before_social_text'] ) && !empty( $option['before_social_text'] ) ) {
             $before_social_text = '<span class="before_social-text" style="font-family:' . $opt_font_family . ';vertical-align: middle;font-weight:'
-            . ( isset( $option['user_before_social_text_font_weight'] ) ?$option['user_before_social_text_font_weight'] : '' ) . ';font-style:'
-            . ( isset( $option['user_before_social_text_font_style'] ) ? $option['user_before_social_text_font_style'] : '' ) . ';font-size:'
-            . ( isset( $option['user_before_social_text_font_size'] ) ? $option['user_before_social_text_font_size'] : '' ) . 'px; line-height:'
-            . ( isset( $option['user_before_social_text_line_height'] ) ? $option['user_before_social_text_line_height'] : '' ) . 'px;text-align:'
-            . ( isset( $option['user_before_social_text_text_align'] ) ? $option['user_before_social_text_text_align'] : '' ) . ';color:'
-            . ( isset( $option['user_before_social_text_color'] ) ? $option['user_before_social_text_color'] : '' ) . ';">'
+            . ( isset( $option['before_social_text_font_weight'] ) ?$option['before_social_text_font_weight'] : '' ) . ';font-style:'
+            . ( isset( $option['before_social_text_font_style'] ) ? $option['before_social_text_font_style'] : '' ) . ';font-size:'
+            . ( isset( $option['before_social_text_font_size'] ) ? $option['before_social_text_font_size'] : '' ) . 'px; line-height:'
+            . ( isset( $option['before_social_text_line_height'] ) ? $option['before_social_text_line_height'] : '' ) . 'px;text-align:'
+            . ( isset( $option['before_social_text_text_align'] ) ? $option['before_social_text_text_align'] : '' ) . ';color:'
+            . ( isset( $option['before_social_text_color'] ) ? $option['before_social_text_color'] : '' ) . ';">'
             . $option['before_social_text'] . '</span>';
         }
 

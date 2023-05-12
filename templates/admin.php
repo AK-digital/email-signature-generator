@@ -123,6 +123,6 @@
             </div>
         </div>
     </form>
-    <button type="submit" id="reset_default" class="button-secondary">Restaurer les données par défaut</button>
+    <button type="submit" id="esg_reset_default" class="button-secondary">Restaurer les données par défaut</button>
 </div>
 <!--<p id="donate-link">Vous aimez ce plugin ? Soutenez son créateur en <a href="https://developpeur-wordpress.fr/don">faisant un don</a></p>-->
