@@ -18,6 +18,7 @@ class UserProfile extends BaseController {
     public function register() {
         add_filter( 'user_contactmethods', array( $this, 'user_title' ) );
         add_filter( 'user_contactmethods', array( $this, 'user_linkedin' ) );
+        add_filter( 'user_contactmethods', array( $this, 'user_phone' ) );
 
         $options = get_option( 'esg_settings' );
 

@@ -14,7 +14,7 @@ class DynamicRouting {
 
     public function prefix_get_endpoint() {
          // rest_ensure_response() wraps the data we want to return into a WP_REST_Response, and ensures it will be properly returned.
-        $options    = get_option( ESG_PLUGIN_SETTINGS );
+        $options    = get_option( 'esg_admin_settings' );
         $bannerlink = $options['banner_link'];
         wp_redirect( $bannerlink );
         exit();

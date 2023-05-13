@@ -16,8 +16,6 @@
                         <li class="js-tabs__title"><?php echo __( 'Infos utilisateur' ); ?></li>
                         <li class="js-tabs__title"><?php echo __( 'Réseaux sociaux' ); ?></li>
                         <li class="js-tabs__title"><?php echo __( 'Contenu additionnel' ); ?></li>
-                        <li class="js-tabs__title float-right"><?php echo __( 'Mise à jour' ); ?></li>
-                        <li class="js-tabs__title float-right"><?php echo __( 'Shortcodes' ); ?></li>
                     </ul>
 
                     <div class="tab-content">
@@ -63,30 +61,6 @@
                             ?>
                         </div>
 
-                        
-                        <div id="gh-update" class="js-tabs__content">
-                            <?php
-                            settings_fields( 'esg_template' );
-                            do_settings_sections( 'gh_options' );
-                            ?>
-                        </div>
-
-                        <div id="shortcodes" class="js-tabs__content">
-                            <h3><?php echo __( 'Shortcodes' ); ?></h3>
-                            <h4><?php echo __( 'Ajouter ce shortcode dans le contenu de votre page WordPress' ); ?></h4>
-                            <!--                <p>-->
-                            <!--                <pre class="shortcode">[esg_user_data]</pre>-->
-                            <!--                -->
-                            <? //= __("Ce shortcode créera une signature e-mail en utilisant les données de l'utilisateur WordPress."); ?><!--</p>-->
-                            <p>
-                            <pre class="shortcode">[esg_form]</pre>
-                            <?php
-                            echo __(
-                                'Ce shortcode affichera un formulaire à remplir par vos visiteurs. Tout le monde peut créer une signature de
-                 les vôtres.'
-                            ); ?></p>
-                        </div>
-
                         <script type="text/javascript">
                             var tabs = new Tabs({
                                 elem: "tabs",
@@ -106,23 +80,32 @@
                     </a>
                     <div id="sign-preview">
                         <?php
+                        $current_user = wp_get_current_user();
+                        $mobile = get_user_meta($current_user->ID, 'esg_phone', true);
+                        $title = get_user_meta($current_user->ID, 'esg_title', true);
+                        $linkedin = get_user_meta($current_user->ID,  'esg_linkedin',  true);
+
                         $user_data = array(
-                            'firstname'     => 'John',
-                            'surname'       => 'Doe',
-                            'email'         => 'john@doe.com',
-                            'mobile'        => '41 75 65 94 12',
-                            'title'         => 'Lead developer',
+                            'firstname'     => isset( $current_user->user_firstname) ? $current_user->user_firstname : 'John',
+                            'surname'       => isset( $current_user->user_lastname) ? $current_user->user_lastname : 'Doe',
+                            'email'         => isset( $current_user->user_email) ? $current_user->user_email : 'john@doe.com',
+                            'mobile'        => isset( $mobile ) ? $mobile : '41 75 65 94 12',
+                            'title'         => isset( $title ) ? $title : 'Lead developer',
 
                             // Personal social network links
-                            'user_linkedin' => '#',
+                            'user_linkedin' =>  isset( $linkedin ) ? $linkedin : '',
                         );
                         echo $this->generate_signature( $user_data ) ?>
                     </div>
                 </div>
-                <?php submit_button(); ?>
+                <div style="margin:25px 0;">
+                Utilisez le shortcode <pre class="shortcode">[esg_form]</pre> pour afficher le formulaire de création de signature sur n'importe laquelle de vos pages.
+                </div>
+                <button type="submit" id="esg_reset_default" class="button-secondary">Restaurer les données par défaut</button>
             </div>
         </div>
+        <?php submit_button(); ?>
     </form>
-    <button type="submit" id="esg_reset_default" class="button-secondary">Restaurer les données par défaut</button>
+
 </div>
 <!--<p id="donate-link">Vous aimez ce plugin ? Soutenez son créateur en <a href="https://developpeur-wordpress.fr/don">faisant un don</a></p>-->
