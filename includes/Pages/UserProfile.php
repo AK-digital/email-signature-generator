@@ -50,7 +50,6 @@ class UserProfile extends BaseController {
     }
 
     public function user_signature( $user_contact ) {
-        echo '<strong>$user_contact : </strong>'; var_dump( $user_contact ); echo ' <br/>';
 
         $user_data = array(
             'firstname'     => $user_contact->user_firstname,
