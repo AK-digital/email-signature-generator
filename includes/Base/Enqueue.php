@@ -14,11 +14,8 @@ use Includes\Base\BaseController;
 class Enqueue extends BaseController {
 
     public function register() {
-        global $pagenow;
         // We only load admin style and scripts if we are on the esg-settings page
-        if ( $pagenow == 'admin.php' && $_GET['page'] == 'esg-settings' ) {
-            add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ) );
-        }
+        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ) );
 
         add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue' ) );
     }
@@ -51,7 +48,7 @@ class Enqueue extends BaseController {
 
         wp_enqueue_script( 'esg-common-script', ESG_PLUGIN_URL . 'assets/js/common-functions.js' );
         wp_enqueue_style( 'esg-common-style', ESG_PLUGIN_URL . 'assets/css/common-style.css' );
-      
+
         wp_enqueue_style( 'esg-front-style', ESG_PLUGIN_URL . 'assets/css/frontend-style.css' );
         //        wp_enqueue_script('esg-front-script', ESG_PLUGIN_URL . 'assets/js/front-functions.js', array(), '1.0.0', true);
     }

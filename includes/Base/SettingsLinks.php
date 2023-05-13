@@ -13,8 +13,11 @@ class SettingsLinks extends BaseController {
     }
 
     public function settings_link( $links ) {
-        $settings_link = '<a href="/wp-admin/admin.php?page=esg-settings">Settings</a>';
+
+        $settings_link = '<a href="/wp-admin/admin.php?page=esg_settings">'. __('Paramètres','esg-plugin'). '</a>';
         array_push( $links, $settings_link );
+        $template_link = '<a href="/wp-admin/admin.php?page=esg_template">'. __('Créer votre signature','esg-plugin'). '</a>';
+        array_push( $links, $template_link );
         return $links;
     }
 }

@@ -3,19 +3,16 @@
  * @package  emailSignatureGenerator
  */
 
-namespace Includes\Pages;
+namespace Includes\Api;
 
 use Includes\Api\SettingsApi;
-use Includes\Base\BaseController;
 use Includes\Api\Callbacks\AdminCallbacks;
 use Includes\Api\Callbacks\ManagerCallbacks;
 
 /**
- * Class Admin
- *
- * @package Includes\Pages
+ * Class AdminApi
  */
-class Admin extends BaseController {
+class AdminApi {
 
     /**
      * Holds the values to be used in the fields callbacks
@@ -26,17 +23,17 @@ class Admin extends BaseController {
     /**
      * @var
      */
-    public $settings;
+    public $settings = array();
 
     /**
      * @var
      */
-    public $callbacks;
+    public $callbacks = array();
 
     /**
      * @var
      */
-    public $callbacks_mngr;
+    public $callbacks_mngr = array();
 
     /**
      * @var array
@@ -47,48 +44,22 @@ class Admin extends BaseController {
     /**
      * This function is triggered automatically from init.php
      */
-    public function register() {
-         $this->settings = new SettingsApi();
+    public function __construct() {
+        $this->settings = new SettingsApi();
 
         $this->callbacks = new AdminCallbacks();
 
         $this->callbacks_mngr = new ManagerCallbacks();
-
-        $this->setPages();
-
-        $this->setSettings();
-        $this->setSections();
-        $this->setFields();
-
-        $this->settings->addPages( $this->pages )->register();
-    }
-
-
-    /**
-     * Set WordPress admin page for the plugin
-     */
-    public function setPages() {
-         $this->pages = array(
-             array(
-                 'page_title' => 'Email signature generator settings',
-                 'menu_title' => 'Email Signature',
-                 'capability' => 'manage_options',
-                 'menu_slug'  => 'esg-settings',
-                 'callback'   => array( $this->callbacks, 'adminDashboard' ),
-                 'icon_url'   => 'dashicons-id',
-                 'position'   => 110,
-             ),
-         );
     }
 
     /**
      * Save the plugin settings on admin page update - see ManagerCallbacks.php to handle the sanitizer
      */
-    public function setSettings() {
+    public function setSettings( $opt_group, $opt_name ) {
          $args = array(
              array(
-                 'option_group' => 'esg_option_group',
-                 'option_name'  => ESG_PLUGIN_SETTINGS,
+                 'option_group' => $opt_group,
+                 'option_name'  => $opt_name,
                  'callback'     => array( $this->callbacks_mngr, 'sanitize' ),
              ),
          );
@@ -99,13 +70,13 @@ class Admin extends BaseController {
     /**
      * Set WordPress admin page sections for the plugin
      */
-    public function setSections() {
+    public function setSections( $managers ) {
          $args = array();
 
-        foreach ( $this->managers as $manager ) {
+        foreach ( $managers as $manager ) {
 
             $args[] = array( // Set section from $managers
-                'id'    => $this->slugify( $manager['id'] ),
+                'id'    => str_replace( '-', '_', $manager['id'] ),
                 'title' => $manager['title'],
                 'page'  => $manager['id'],
             );
@@ -117,25 +88,25 @@ class Admin extends BaseController {
     /**
      * Get WordPress admin page fields for the plugin
      */
-    public function setFields() {
+    public function setFields( $managers, $opt_name ) {
         $args = array();
 
-        foreach ( $this->managers as $manager ) {
+        foreach ( $managers as $manager ) {
 
             if ( !isset( $manager['fields'] ) && empty( $manager['fields'] ) ) {
                 continue;
             }
 
             foreach ( $manager['fields'] as $field_id => $field ) {
-
+         
                 $arg = array(
-                    'id'       => $this->slugify( $field_id ),
+                    'id'       => str_replace( '-', '_', $field_id ),
                     'title'    => $field['title'],
                     'callback' => array( $this->callbacks_mngr, $field['input_type'] . '_field' ),
                     'page'     => $manager['id'],
-                    'section'  => $this->slugify( $manager['id'] ),
+                    'section'  => str_replace( '-', '_', $manager['id'] ),
                     'args'     => array(
-                        'option_name' => ESG_PLUGIN_SETTINGS,
+                        'option_name' => $opt_name,
                         'label_for'   => $field_id,
                     ),
                 );
@@ -144,7 +115,7 @@ class Admin extends BaseController {
                     $arg['args'] += $field['options'];
                 }
 
-               isset( $field['style'] ) && !empty( $field['style'] ) ? $arg['args']['class'] = 'parent-' . $field_id : '';
+                isset( $field['style'] ) && !empty( $field['style'] ) ? $arg['args']['class'] = 'parent-' . $field_id : '';
 
                 $args[] = $arg;
 
@@ -152,14 +123,14 @@ class Admin extends BaseController {
                 if ( isset( $field['required'] ) && $field['required'] === true ) {
 
                     $required = array(
-                        'id'       => $this->slugify( $field_id ) . '_required',
+                        'id'       => str_replace( '-', '_', $field_id ) . '_required',
                         'title'    => 'Requis',
                         'callback' => array( $this->callbacks_mngr, 'checkbox_field' ),
                         'page'     => $manager['id'],
-                        'section'  => $this->slugify( $manager['id'] ),
+                        'section'  => str_replace( '-', '_', $manager['id'] ),
                         'args'     => array(
-                            'option_name' => ESG_PLUGIN_SETTINGS,
-                            'label_for'   => $this->slugify( $field_id ) . '_required',
+                            'option_name' => $opt_name,
+                            'label_for'   => str_replace( '-', '_', $field_id ) . '_required',
                             'class'       => 'required',
                         ),
                     );
@@ -175,14 +146,14 @@ class Admin extends BaseController {
                     foreach ( $field['style'] as $style_id => $style_value ) {
 
                         $style = array(
-                            'id'       => $this->slugify( $field_id ) . '_' . $this->slugify( $style_id ),
+                            'id'       => str_replace( '-', '_', $field_id ) . '_' . str_replace( '-', '_', $style_id ),
                             'title'    => $style_value['title'],
                             'callback' => array( $this->callbacks_mngr, $style_value['input_type'] . '_field' ),
                             'page'     => $manager['id'],
-                            'section'  => $this->slugify( $manager['id'] ),
+                            'section'  => str_replace( '-', '_', $manager['id'] ),
                             'args'     => array(
-                                'option_name' => ESG_PLUGIN_SETTINGS,
-                                'label_for'   => $this->slugify( $field_id ) . '_' . $this->slugify( $style_id ),
+                                'option_name' => $opt_name,
+                                'label_for'   =>str_replace( '-', '_', $field_id ) . '_' . str_replace( '-', '_', $style_id ),
                                 'class'       => 'subsetting-' . $field_id,
                             ),
                         );
@@ -193,11 +164,32 @@ class Admin extends BaseController {
                         $args[] = $style;
                     }
                 }
-
-                // echo '<h3>$args</h3><pre>' . var_export( $args, true ) . '</pre>';
             }
         }
         $this->settings->setFields( $args );
+    }
+
+    public function set_default_options( $managers, $opt_name ) {
+
+        $default_options = array();
+
+        foreach ( $managers as $manager ) {
+            if ( $manager['fields'] ) {
+                foreach ( $manager['fields'] as $key => $value ) {  // Set fields from $managers['fields']
+
+                    if ( isset( $value['options']['default_val'] ) && !empty( $value['options']['default_val'] ) ) {
+                        $default_options[ $key ] = $value['options']['default_val'];
+                    }
+
+                    if ( isset( $value['style'] ) && !empty( $value['style'] ) ) {
+                        foreach ( $value['style'] as $k => $v ) {
+                            $default_options[ str_replace( '-', '_', $key ) . '_' . str_replace( '-', '_', $k ) ] = $v['options']['default_val'];
+                        }
+                    }
+                }
+            }
+        }
+        update_option( $opt_name, $default_options );
     }
 }
 

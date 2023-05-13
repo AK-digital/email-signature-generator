@@ -22,7 +22,9 @@ final class Init {
             Base\Enqueue::class,
             Base\SettingsLinks::class,
             Base\Shortcode::class,
-            Pages\Admin::class,
+            Pages\Template::class,
+            Pages\Settings::class,
+            Pages\Updater::class,
             Pages\UserProfile::class,
             Base\GhUpdater::class,
         );

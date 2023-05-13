@@ -241,3 +241,7 @@
     }
 }
 
+#your-profile .email-signature{
+    background-color:white;
+    padding:25px;
+}

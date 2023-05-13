@@ -9,7 +9,6 @@ use Includes\Base\BaseController;
 
 class Shortcode extends BaseController {
 
-
     public $company_data = array();
 
     function register() {
@@ -45,7 +44,6 @@ class Shortcode extends BaseController {
 
         //Display the landing signature page
         else {
-
             require_once ESG_PLUGIN_TEMPLATES . 'form.php';
         }
     }

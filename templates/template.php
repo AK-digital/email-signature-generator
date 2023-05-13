@@ -23,42 +23,42 @@
                     <div class="tab-content">
                         <div id="templates" class="js-tabs__content flex-col">
                             <?php
-                            settings_fields( 'esg_option_group' );
+                            settings_fields( 'esg_template' );
                             do_settings_sections( 'esg-settings-template' );
                             ?>
                         </div>
 
                         <div id="branding" class="js-tabs__content">
                             <?php
-                            settings_fields( 'esg_option_group' );
+                            settings_fields( 'esg_template' );
                             do_settings_sections( 'esg-settings-branding' );
                             ?>
                         </div>
 
                         <div id="details" class="js-tabs__content">
                             <?php
-                            settings_fields( 'esg_option_group' );
+                            settings_fields( 'esg_template' );
                             do_settings_sections( 'esg-settings-general' );
                             ?>
                         </div>
 
                         <div id="userinfos" class="js-tabs__content">
                             <?php
-                            settings_fields( 'esg_option_group' );
+                            settings_fields( 'esg_template' );
                             do_settings_sections( 'esg-settings-userinfos' );
                             ?>
                         </div>
 
                         <div id="social" class="js-tabs__content">
                             <?php
-                            settings_fields( 'esg_option_group' );
+                            settings_fields( 'esg_template' );
                             do_settings_sections( 'esg-settings-social' );
                             ?>
                         </div>
 
                         <div id="more" class="js-tabs__content">
                             <?php
-                            settings_fields( 'esg_option_group' );
+                            settings_fields( 'esg_template' );
                             do_settings_sections( 'esg-settings-additional' );
                             ?>
                         </div>
@@ -66,7 +66,7 @@
                         
                         <div id="gh-update" class="js-tabs__content">
                             <?php
-                            settings_fields( 'esg_option_group' );
+                            settings_fields( 'esg_template' );
                             do_settings_sections( 'gh_options' );
                             ?>
                         </div>

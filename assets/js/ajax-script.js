@@ -7,8 +7,6 @@ jQuery(document).ready(function ($) {
 
     ajaxCall = (action) => {
         // Ajax call to switch between faq category
-        console.log("called");
-        console.log(action);
 
         $.ajax({
             url: ajax.ajax_url,
@@ -25,7 +23,5 @@ jQuery(document).ready(function ($) {
             },
         });
     };
-
-
 });
 

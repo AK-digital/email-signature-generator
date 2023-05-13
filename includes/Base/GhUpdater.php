@@ -51,7 +51,7 @@ class GhUpdater {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
 
-        $this->options     = get_option( ESG_PLUGIN_SETTINGS );
+        $this->options     = get_option( 'esg_updater' );
         $this->plugin_data = get_plugin_data( ESG_PLUGIN_FILE );
         $this->basename    = plugin_basename( ESG_PLUGIN_FILE );
         $this->active      = is_plugin_active( $this->basename );
