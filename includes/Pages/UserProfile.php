@@ -53,7 +53,7 @@ class UserProfile extends BaseController {
 
         $user_data = array(
             'firstname'     => $user_contact->user_firstname,
-            'surname'       => $user_contact->user_surname,
+            'surname'       => $user_contact->user_lastname,
             'email'         => $user_contact->user_email,
             'mobile'        => $user_contact->user_phone,
             'title'         => $user_contact->esg_title,
