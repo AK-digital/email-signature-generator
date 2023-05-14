@@ -28,6 +28,9 @@ jQuery(document).ready(function ($) {
             parentNode.children('.upload-input-url').val(attachment.url);
             parentNode.children('.upload-image').attr('src', attachment.url).css('display', '');
             parentNode.children('.esg-button-remove').css('display', '');
+
+            $('.' + parentNode.children('.upload-input-url').attr('id')).attr('src', attachment.url);
+
             mediaUploader = undefined; //destroy store data in the var
         });
         mediaUploader.open(); //close the uploader
@@ -39,6 +42,7 @@ jQuery(document).ready(function ($) {
         parentNode.children('.upload-image').attr('src', '').css('display', 'none');
         parentNode.children('.upload-input-url').val('');
         parentNode.children('.esg-button-upload').val('Choose logo');
+        $('.' + parentNode.children('.upload-input-url').attr('id')).attr('src', '');
     });
 
 
@@ -82,5 +86,11 @@ jQuery(document).ready(function ($) {
             });
         });
     }
+
+    $('input[type=text], input[type=password], input[type=number], textarea').each(function () {
+        $(this).on('input', function () {
+            $('.' + $(this).attr('id')).text($(this).val());
+        });
+    });
 });
 

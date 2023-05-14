@@ -77,7 +77,7 @@ class ManagerCallbacks extends BaseController {
 
         printf(
             '<input type="text" id="%s" name="%s[%s]" class="%s" value="%s" placeholder="%s" %s />',
-            $name,
+            str_replace( '_', '-',$name),
             $option_name,
             $name,
             $classes,
@@ -100,7 +100,7 @@ class ManagerCallbacks extends BaseController {
 
         printf(
             '<input type="password" type="text" id="%s" name="%s[%s]" class="%s" value="%s" placeholder="%s" %s />',
-            $name,
+            str_replace( '_', '-',$name),
             $option_name,
             $name,
             $classes,
@@ -123,7 +123,7 @@ class ManagerCallbacks extends BaseController {
 
         printf(
             '<textarea id="%s" name="%s[%s]" class="%s" placeholder="%s" %s ">%s</textarea>',
-            $name,
+            str_replace( '_', '-', $name),
             $option_name,
             $name,
             $classes,
@@ -214,12 +214,16 @@ class ManagerCallbacks extends BaseController {
         $option_name = isset( $args['option_name'] ) && !empty( $args['option_name'] ) ? $args['option_name'] : '';
         $default_val = isset( $args['default_val'] ) && !empty( $args['default_val'] ) ? $args['default_val'] : '';
         $option      = get_option( $option_name );
-        printf( '<img class="upload-image" src="%s" %s/>', isset( $option[ $name ] ) ? esc_attr( $option[ $name ] ) : $default_val, empty( $option[ $name ] ) ? 'style="display:none;"' : '' );
+    
 
         printf(
-            '<input type="text" class="upload-input-url" name="' . $option_name . '[' . $name . ']" class="' . $classes . '" value="%s" />
+            '<input type="text" id="%s" name="%s[%s]" class="upload-input-url %s" value="%s" />
             <input type="button" class="button-secondary esg-button-remove" value="Remove" %s />
             <input type="button" class="button-primary esg-button-upload" value="%s" />',
+            str_replace( '_', '-', $name),
+            $option_name,
+            $name,
+            $classes,
             isset( $option[ $name ] ) ? esc_attr( $option[ $name ] ) : $default_val,
             empty( $option[ $name ] ) ? 'style="display:none;"' : '',
             __( 'Choisir une image', 'esg-plugin' ),

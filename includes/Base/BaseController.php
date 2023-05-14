@@ -33,13 +33,20 @@ class BaseController {
         $logo = '';
         if ( isset( $option['logo'] ) && !empty( $option['logo'] ) ) {
             $opt_logo_margin = isset( $option['logo_margin'] ) && !empty( $option['logo_margin'] ) ? $option['logo_margin'] : '';
-            $logo            = '<img class="company-logo" src="' . $option['logo'] . '" style="margin-top:' . $opt_logo_margin . 'px; margin-bottom:' . $opt_logo_margin . 'px;" alt="company logo"/>';
+            $logo_border_radius      = isset( $option['logo_border_radius'] ) && !empty( $option['logo_border_radius'] ) ? $option['logo_border_radius'] : '';
+            $logo_width      = isset( $option['logo_width'] ) && !empty( $option['logo_width'] ) ? $option['logo_width'] : '';
+            $logo_margin      = isset( $option['logo_margin'] ) && !empty( $option['logo_margin'] ) ? $option['logo_margin'] : '';
+            $logo            = '<img class="logo" src="' . $option['logo'] . '" style="margin-bottom:' . $opt_logo_margin . 'px;border-radius:' . $logo_border_radius . 'px;width:' . $logo_width . 'px;" alt="company logo"/>';
         }
 
         $banner = '';
         if ( isset( $option['banner'] ) && !empty( $option['banner'] ) ) {
             $opt_banner_margin = isset( $option['banner_margin'] ) && !empty( $option['banner_margin'] ) ? $option['banner_margin'] : '';
-            $banner            = '<a href="/wp-json/email-signature-generator/v1/bannerlink"><img class="company-banner"  style="margin-top:' . $opt_banner_margin . 'px; margin-bottom:' . $opt_banner_margin . 'px;" src="' . $option['banner'] . '" alt="company banner"/></a>';
+            $banner_border_radius      = isset( $option['banner_border_radius'] ) && !empty( $option['banner_border_radius'] ) ? $option['banner_border_radius'] : '';
+            $banner_width      = isset( $option['banner_width'] ) && !empty( $option['banner_width'] ) ? $option['banner_width'] : '';
+            $banner_margin      = isset( $option['banner_margin'] ) && !empty( $option['banner_margin'] ) ? $option['banner_margin'] : '';
+
+            $banner            = '<a href="/wp-json/email-signature-generator/v1/bannerlink"><img class="banner"  style="margin-bottom:' . $opt_banner_margin . 'px;border-radius:' . $banner_border_radius . 'px;width:' . $banner_width . 'px;" src="' . $option['banner'] . '" alt="company banner"/></a>';
         }
 
         /* Infos générales */
@@ -206,27 +213,27 @@ class BaseController {
 
         $facebook_icon = '';
         if ( isset( $option['facebook_link'] ) && !empty( $option['facebook_link'] ) ) {
-            $facebook_icon = '<a href="' . $option['facebook_link'] . '"><img class="facebook-icon" width="' . $icon_size . 'px" style="vertical-align: middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/facebook-icon.png" alt="facebook icon"/></a>';
+            $facebook_icon = '<a class="facebook-link" href="' . $option['facebook_link'] . '"><img class="facebook-icon" width="' . $icon_size . 'px" style="vertical-align: middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/facebook-icon.png" alt="facebook icon"/></a>';
         }
 
         $instagram_icon = '';
         if ( isset( $option['instagram_link'] ) && !empty( $option['instagram_link'] ) ) {
-            $instagram_icon = '<a href="' . $option['instagram_link'] . '"><img class="instagram-icon" width="' . $icon_size . 'px" style="vertical-align:middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/instagram-icon.png" alt="instagram icon"/></a>';
+            $instagram_icon = '<a class="instagram-link" href="' . $option['instagram_link'] . '"><img class="instagram-icon" width="' . $icon_size . 'px" style="vertical-align:middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/instagram-icon.png" alt="instagram icon"/></a>';
         }
 
         $youtube_icon = '';
         if ( isset( $option['youtube_link'] ) && !empty( $option['youtube_link'] ) ) {
-            $youtube_icon = '<a href="' . $option['youtube_link'] . '"><img class="youtube-icon" width="' . $icon_size . 'px" style="vertical-align:middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/youtube-icon.png" alt="youtube icon"/></a>';
+            $youtube_icon = '<a class="youtube-link" href="' . $option['youtube_link'] . '"><img class="youtube-icon" width="' . $icon_size . 'px" style="vertical-align:middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/youtube-icon.png" alt="youtube icon"/></a>';
         }
 
         $linkedin_icon = '';
         if ( isset( $option['linkedin_link'] ) && !empty( $option['linkedin_link'] ) ) {
-            $linkedin_icon = '<a href="' . $option['linkedin_link'] . '"><img class="linkedin-icon" width="' . $icon_size . 'px" style="vertical-align:middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/linkedin-icon.png" alt="linkedin icon"/></a>';
+            $linkedin_icon = '<a class="linkedin-link" href="' . $option['linkedin_link'] . '"><img class="linkedin-icon" width="' . $icon_size . 'px" style="vertical-align:middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/linkedin-icon.png" alt="linkedin icon"/></a>';
         }
 
         $twitter_icon = '';
         if ( isset( $option['twitter_link'] ) && !empty( $option['twitter_link'] ) ) {
-            $twitter_icon = '<a href="' . $option['twitter_link'] . '"><img class="twitter-icon" width="' . $icon_size . 'px" style="vertical-align:middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/twitter-icon.png" alt="twitter icon"/></a>';
+            $twitter_icon = '<a class="twitter-link" href="' . $option['twitter_link'] . '"><img class="twitter-icon" width="' . $icon_size . 'px" style="vertical-align:middle;background-color:' . $icon_color . '" src="' . ESG_PLUGIN_URL . 'assets/img/twitter-icon.png" alt="twitter icon"/></a>';
         }
 
         if ( isset( $option['template'] ) && !empty( $option['template'] ) ) {

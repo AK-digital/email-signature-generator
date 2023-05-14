@@ -48,7 +48,7 @@ class Template {
 
     public function getFields() {
 
-        $style = array(
+        $text_style = array(
             'font-weight' => array(
                 'title'      => 'Font weight',
                 'input_type' => 'select',
@@ -98,6 +98,33 @@ class Template {
             ),
         );
 
+        $image_style = array(
+            'border-radius' => array(
+                'title'      => 'Border radius',
+                'input_type' => 'number',
+                'options'    => array(
+                    'suffix'      => 'px',
+                    'default_val' => '0',
+                ),
+            ),
+            'margin'   => array(
+                'title'      => 'Marges basses',
+                'input_type' => 'number',
+                'options'    => array(
+                    'class'       => 'margin',
+                    'default_val' => '0',
+                    'suffix'      => 'px',
+                ),
+            ),
+            'width'   => array(
+                'title'      => 'Largeur de l\'image',
+                'input_type' => 'number',
+                'options'    => array(
+                    'suffix'      => 'px',
+                ),
+            ),
+        );
+
         // Manage settings sections - add / remove sections here
         $this->managers = array( 
             array(
@@ -124,16 +151,7 @@ class Template {
                             'class'       => 'logo-image',
                             'default_val' => ESG_PLUGIN_URL . 'assets/img/default-logo.png',
                         ),
-                    ),
-                    'logo_margin'   => array(
-                        'title'      => 'Marges verticales logo',
-                        'input_type' => 'number',
-                        'options'    => array(
-                            'class'       => 'logo-margin',
-                            'max'         => '100',
-                            'default_val' => '0',
-                            'suffix'      => 'px',
-                        ),
+                        'style' => $image_style,
                     ),
                     'banner'        => array(
                         'title'      => 'Bannière',
@@ -142,16 +160,7 @@ class Template {
                             'class'       => 'banner-image',
                             'default_val' => ESG_PLUGIN_URL . 'assets/img/default-banner.png',
                         ),
-                    ),
-                    'banner_margin' => array(
-                        'title'      => 'Marges verticales bannière',
-                        'input_type' => 'number',
-                        'options'    => array(
-                            'class'       => 'banner-margin',
-                            'max'         => '100',
-                            'default_val' => '0',
-                            'suffix'      => 'px',
-                        ),
+                        'style' => $image_style,
                     ),
                     'banner_link'   => array(
                         'title'      => 'Lien bannière',
@@ -196,7 +205,7 @@ class Template {
                         'options'    => array(
                             'default_val' => 'Ma Super Boite',
                         ),
-                        'style'      => $style,
+                        'style'      => $text_style,
                     ),
                     'company_address' => array(
                         'title'      => 'Adresse',
@@ -204,7 +213,7 @@ class Template {
                         'options'    => array(
                             'default_val' => '1801 rue de la victoire',
                         ),
-                        'style'      => $style,
+                        'style'      => $text_style,
                     ),
                     'company_phone'   => array(
                         'title'      => 'Numéro de téléphone',
@@ -212,7 +221,7 @@ class Template {
                         'options'    => array(
                             'default_val' => '01 02 03 04 05 06',
                         ),
-                        'style'      => $style,
+                        'style'      => $text_style,
                     ),
                     'company_website' => array(
                         'title'      => 'Lien site internet (avec https://)',
@@ -220,7 +229,7 @@ class Template {
                         'options'    => array(
                             'default_val' => 'https://www.masuperboite.fr',
                         ),
-                        'style'      => $style,
+                        'style'      => $text_style,
                     ),
                 ),
             ),
@@ -231,7 +240,7 @@ class Template {
                     'user_firstname' => array(
                         'title'      => 'Prénom',
                         'input_type' => 'hidden',
-                        'style'      => $style,
+                        'style'      => $text_style,
                         'options'    => array(
                             'default_val' => 'John',
                         ),
@@ -243,7 +252,7 @@ class Template {
                         'options'    => array(
                             'default_val' => 'Doe',
                         ),
-                        'style'      => $style,
+                        'style'      => $text_style,
                         'required'   => true,
                     ),
                     'user_title'     => array(
@@ -252,7 +261,7 @@ class Template {
                         'options'    => array(
                             'default_val' => 'CEO',
                         ),
-                        'style'      => $style,
+                        'style'      => $text_style,
                         'required'   => true,
                     ),
                     'user_email'     => array(
@@ -261,7 +270,7 @@ class Template {
                         'options'    => array(
                             'default_val' => 'john@doe.com',
                         ),
-                        'style'      => $style,
+                        'style'      => $text_style,
                         'required'   => true,
                     ),
                     'user_mobile'    => array(
@@ -270,7 +279,7 @@ class Template {
                         'options'    => array(
                             'default_val' => '0112336545',
                         ),
-                        'style'      => $style,
+                        'style'      => $text_style,
                         'required'   => true,
                     ),
                 ),
@@ -285,7 +294,7 @@ class Template {
                         'options'    => array(
                             'default_val' => __( 'Suivez-nous sur les réseaux sociaux', 'esg-plugin' ),
                         ),
-                        'style'      => $style,
+                        'style'      => $text_style,
                     ),
                     'social_section_margin' => array(
                         'title'      => 'Marges verticales',
@@ -341,7 +350,7 @@ class Template {
                     'additional_content' => array(
                         'title'      => 'Mentions légales ou autre texte personnalisé',
                         'input_type' => 'textarea',
-                        'style'      => $style,
+                        'style'      => $text_style,
                     ),
                 ),
             ),

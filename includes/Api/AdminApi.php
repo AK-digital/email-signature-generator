@@ -154,7 +154,7 @@ class AdminApi {
                             'args'     => array(
                                 'option_name' => $opt_name,
                                 'label_for'   =>str_replace( '-', '_', $field_id ) . '_' . str_replace( '-', '_', $style_id ),
-                                'class'       => 'subsetting-' . $field_id,
+                                'class'       => 'subsetting-' . $field_id ,
                             ),
                         );
 

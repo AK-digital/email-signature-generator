@@ -106,6 +106,4 @@
         </div>
         <?php submit_button(); ?>
     </form>
-
 </div>
-<!--<p id="donate-link">Vous aimez ce plugin ? Soutenez son créateur en <a href="https://developpeur-wordpress.fr/don">faisant un don</a></p>-->
