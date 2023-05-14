@@ -61,7 +61,9 @@ class GhUpdater {
     private function get_repository_info() {
         if ( is_null( $this->github_response ) ) { // Do we have a response?
 
-
+            if(!isset($options['gh_username']) || isset($this->options['gh_repo']) || $this->options['gh_auth']){
+                return;
+            }
 
             $args        = array();
             $request_uri = sprintf( 'https://api.github.com/repos/%s/%s/releases', $this->options['gh_username'], $this->options['gh_repo'] ); // Build URI
