@@ -47,11 +47,16 @@ class GhUpdater {
 
     public function register() {
 
+        $this->options = get_option( 'esg_updater' );
+
+        if ( !$this->options['gh_username'] || !$this->options['gh_repo'] || !$this->options['gh_auth'] ) {
+            return;
+        }
+
         if ( !function_exists( 'get_plugin_data' ) ) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
 
-        $this->options     = get_option( 'esg_updater' );
         $this->plugin_data = get_plugin_data( ESG_PLUGIN_FILE );
         $this->basename    = plugin_basename( ESG_PLUGIN_FILE );
         $this->active      = is_plugin_active( $this->basename );
@@ -61,19 +66,11 @@ class GhUpdater {
     private function get_repository_info() {
         if ( is_null( $this->github_response ) ) { // Do we have a response?
 
-            if(!isset($options['gh_username']) || isset($this->options['gh_repo']) || $this->options['gh_auth']){
-                return;
-            }
-
-            $args        = array();
             $request_uri = sprintf( 'https://api.github.com/repos/%s/%s/releases', $this->options['gh_username'], $this->options['gh_repo'] ); // Build URI
 
-            $args = array();
-
-            if ( $this->options['gh_auth'] ) { // Is there an access token?
-                $args['headers']['Authorization'] = "token {$this->options['gh_auth']}"; // Set the headers
-            }
-            $args['headers']['Accept'] = 'application/vnd.github+json'; // Set the headers
+            $args                             = array();
+            $args['headers']['Authorization'] = "token {$this->options['gh_auth']}"; // Set the headers
+            $args['headers']['Accept']        = 'application/vnd.github+json'; // Set the headers
 
             $response = json_decode( wp_remote_retrieve_body( wp_remote_get( $request_uri, $args ) ), true ); // Get JSON and parse it
 
@@ -106,7 +103,6 @@ class GhUpdater {
         if ( property_exists( $transient, 'checked' ) ) { // Check if transient has a checked property
 
             if ( $checked = $transient->checked ) { // Did WordPress check for updates?
-
                 $out_of_date = false;
                 $this->get_repository_info(); // Get the repo info
 
@@ -120,18 +116,16 @@ class GhUpdater {
 
                     $slug = current( explode( '/', $this->basename ) ); // Create valid slug
 
-                    $plugin = array( // setup our plugin info
+                    $plugin                                 = array( // setup our plugin info
                         'url'         => $this->plugin_data['PluginURI'],
                         'slug'        => $slug,
                         'package'     => $new_files,
                         'new_version' => $this->github_response['tag_name'],
                     );
-
                     $transient->response[ $this->basename ] = (object) $plugin; // Return it in response
                 }
             }
         }
-
         return $transient; // Return filtered transient
     }
 
@@ -175,9 +169,7 @@ class GhUpdater {
     public function download_package( $args, $url ) {
 
         if ( null !== $args['filename'] ) {
-            if ( $this->options['gh_auth'] ) {
                 $args = array_merge( $args, array( 'headers' => array( 'Authorization' => "token {$this->options['gh_auth']}" ) ) );
-            }
         }
 
         remove_filter( 'http_request_args', array( $this, 'download_package' ) );
