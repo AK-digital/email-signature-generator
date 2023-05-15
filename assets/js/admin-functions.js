@@ -68,11 +68,9 @@ jQuery(document).ready(function ($) {
             $('.' + v).wrapAll('<tr class="group-subsetting-row"><td colspan="100%" class="group-subsetting group-' + v + '"></td></tr>');
         });
 
-
         $(uniqueParClasses).each(function (i, p) {
             let pc = p.replace('parent-', '');
-
-            $('.' + p + ' td').append('<button class="button-' + pc + ' button button-primary subsetting-button"><span class="dashicons dashicons-plus"></span> style</button>').click(function (e) {
+            let $style_btn = $('<button class="button-' + pc + ' button button-primary subsetting-button"><span class="dashicons dashicons-plus"></span> style</button>').click(function (e) {
                 e.preventDefault();
                 if ($('.group-subsetting-' + pc).hasClass("open")) {
                     $('.group-subsetting-' + pc).removeClass('open');
@@ -84,6 +82,7 @@ jQuery(document).ready(function ($) {
                 }
                 $(this).find('.dashicons').toggleClass('dashicons-minus dashicons-plus');
             });
+            $('.' + p + ' td').append(  $style_btn );
         });
     }
 
